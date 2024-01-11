@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registraion Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="sticky">Registration Form</h1>
+    <div class="pagination">
+        <a href="#personal_details" class="active">Personal Details</a>
+        <a href="#contact_details">Contact Details</a>
+        <a href="#academic_details">Academic Details</a>
+        <a href="#other_details">Other Details</a>
+    </div>
+    <form autocomplete="on">
+        <div class="grid-container">
+            <div class="item1">
+                <h3>Personal Details</h3>
+                <div id="personal_details">
+                    <h4>Enter Name:</h4>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="fname">First name*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="fname" name="fname" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="mname">Middle name:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="mname" name="mname">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="lname">Last name:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="lname" name="lname">
+                        </div>
+                    </div>
+                    <h4>Enter Address:</h4>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="address1">Address(1st line)*: </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="address1" name="address1" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="address2">Address(2nd line): </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="address1" name="address1" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="code">Pincode*: </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="code" name="code" maxlength="6" inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="country">Country:</label>
+                        </div>
+                        <div class="col2">
+                            <select name="country" id="country">
+                                <option value="india" selected>India</option>
+                                <option value="china">China</option>
+                                <option value="pakistan">Pakistan</option>
+                                <option value="afghanistan">Afghanistan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="state">State:</label>
+                        </div>
+                        <div class="col2">
+                            <select name="state" id="state">
+                                <option value="odisha" selected>Odisha</option>
+                                <option value="westbengal">West Bengal</option>
+                                <option value="uttarpadesh">UttarPradesh</option>
+                                <option value="jk">Jammu & kashmir</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="gender">Gender*:</label>
+                        </div>
+                        <div class="col2">
+                            <select name="gender" id="gender">
+                                <option value="female" selected>Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="dob">Date of Birth*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="age">Age:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="number" id="age" maxlength="2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="photo">Select your Photo:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="file" id="photo" name="photo">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="resume">Select your Resume:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="file" id="resume" name="resume">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item2">
+                <h3>Academic Details</h3>
+                <div id="academic_details">
+                    <h4>Class 10:</h4>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="10thmarks">Percentage*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="number" id="10thmarks" required min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="board">Board:</label>
+                        </div>
+                        <div class="col2">
+                            <select name="board" id="board">
+                                <option value="cbse" selected>CBSE</option>
+                                <option value="icse">ICSE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="10thschool">School: </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="10thschool" name="school">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="10thyear">Year of completion(month and year):</label>
+                        </div>
+                        <div class="col2">
+                            <input type="month" id="10thyear" name="10thyear">
+                        </div>
+                    </div>
+                    <h4>Class 12:</h4>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="12thmarks">Percentage*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="number" id="12thmarks" required min="0" max="100">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="board2">Board:</label>
+                        </div>
+                        <div class="col2">
+                            <select name="board2" id="board2">
+                                <option value="cbse" selected>CBSE</option>
+                                <option value="isc">ISC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="12thschool">School: </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="12thschool" name="school">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="12thyear">Year of completion(month and year):</label>
+                        </div>
+                        <div class="col2">
+                            <input type="month" id="12thyear" name="12thyear">
+                        </div>
+                    </div>
+                    <h4>Graduation:</h4>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="graduate_marks">CGPA*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="number" id="graduate_marks" required min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="university">University: </label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="university" name="university">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="graduate_year">Year of completion(month and year):</label>
+                        </div>
+                        <div class="col2">
+                            <input type="month" id="graduate_year" name="graduate_year">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item3">
+                <h3>Contact Details</h3>
+                <div id="contact_details">
+                    <div class="row">
+                        <div class="col1">
+                            <label for="email">Email*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="phone">Phone number*:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="tel" id="phone" name="phone" required maxlength="10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item4">
+                <h3>Other Details</h3>
+                <div id="other_details">
+                    <div class="row">
+                        <div class="col1">
+                            <label for="hobbies">Hobbies:</label>
+                        </div>
+                        <div class="col2">
+                            <input type="text" id="hobbies" name="hobbies" size="50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="comments">Comments/Feedback: </label>
+                        </div>
+                        <div class="col2">
+                            <textarea id="comments" rows="4" cols="50">write your comments/feedback here.</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+
+</html>
