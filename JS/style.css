@@ -1,0 +1,136 @@
+h1 {
+    background-color: #a2a8d3;
+    text-align: center;
+    border: 2px solid #113f67;
+    border-radius: 5px;
+    padding: 10px;
+}
+    
+h1.sticky{
+    
+  position: sticky;
+  top: 0;
+}
+h3 {
+    font-size: larger;
+    font-weight: bolder;
+    background-color: #233142;
+    color: white;
+    padding: 5px;
+    margin-bottom: 0%;
+    text-align: center;
+}
+
+h4 {
+    font-size: large;
+    padding: 6px 6px 6px 0;
+
+}
+
+#personalDetails,
+#contactDetails,
+#academicDetails,
+#otherDetails {
+    background-color: #e7eaf6;
+    border: 2px solid #113f67;
+    padding: 15px;
+
+}
+
+label {
+    padding: 12px 12px 12px 8px;
+    display: inline-block;
+    font-size: large;
+    
+
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+
+}
+
+input[type=submit]
+{
+    background-color: #a2a8d3;
+    padding: 14px ;
+    margin:auto;
+    border-radius: 5px;
+font-size: larger;
+width: 200px;
+font-weight: 600;
+}
+input[type=submit]:hover{
+    background-color: #233142;
+    color: white;
+}
+.col1 {
+    float: left;
+    width: 25%;
+    margin-top: 5px;
+}
+
+.col2 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+
+    .col1,
+    .col2,
+   input[type=submit]{
+        width: 100%;
+        margin-top: 0;
+    }
+
+    body .grid-container {
+        grid-template-columns: auto;
+        grid-template-rows: repeat(4, auto);
+    }
+
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    background-color: #233142;
+    border-radius: 3px;
+    margin: 3px;
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #a2a8d3;
+    color: black;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    padding: 5px;
+
+}
+
+* {
+    box-sizing: border-box;
+}
