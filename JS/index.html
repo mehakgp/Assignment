@@ -177,18 +177,18 @@
                     </div>
                     <div class="row">
                         <div class="col1">
-                            <label for="10thschool">School: </label>
+                            <label for="school10th">School: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="10thschool" name="school">
+                            <input type="text" class="details" id="school10th" name="school">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col1">
-                            <label for="10thyear">Year of completion(month and year):</label>
+                            <label for="year10th">Year of completion(month and year):</label>
                         </div>
                         <div class="col2">
-                            <input type="month" class="details" id="10thyear" name="10thyear">
+                            <input type="month" class="details" id="year10th" name="year10th">
                         </div>
                     </div>
                     <h4>Class 12:</h4>
@@ -214,18 +214,18 @@
                     </div>
                     <div class="row">
                         <div class="col1">
-                            <label for="12thschool">School: </label>
+                            <label for="school12th">School: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="12thschool" name="school">
+                            <input type="text" class="details" id="school12th" name="school">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col1">
-                            <label for="12thyear">Year of completion(month and year):</label>
+                            <label for="year12th">Year of completion(month and year):</label>
                         </div>
                         <div class="col2">
-                            <input type="month" class="details" id="12thyear" name="12thyear">
+                            <input type="month" class="details" id="year12th" name="year12th">
                         </div>
                     </div>
                     <h4>Graduation:</h4>
@@ -236,7 +236,6 @@
                         <div class="col2">
                             <input type="number" class="details" id="graduateMarks" name="graduateMarks">
                             <span id="graduateMarksError" class="error-message"></span>
-
                         </div>
                     </div>
                     <div class="row">
@@ -304,10 +303,9 @@
         </div>
         <br>
         <div>
-            <input type="submit"  onclick="submitForm()" value="Submit" >
+            <input type="button"  onclick="submitForm()" value="Submit" >
         </div>
     </form>
-     <!-- Popup for user verification -->
      <div id="popup" class="popup">
         <p>Please verify your details:</p>
         <div id="popup-details"></div>
@@ -316,8 +314,6 @@
             <button onclick="confirmSubmit()">OK/Submit</button>
         </div>
     </div>
-
-    <!-- Overlay background for the popup -->
     <div id="overlay" class="overlay"></div>
 
     <script src="javascript.js"></script>
