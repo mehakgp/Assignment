@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registraion Form</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+   
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <a href="#academic_details">Academic Details</a>
         <a href="#other_details">Other Details</a>
     </div>
-    <form autocomplete="on">
+    <form autocomplete="on" id="registrationForm">
         <div class="grid-container">
             <div class="item1">
                 <h3>Personal Details</h3>
@@ -29,6 +29,7 @@
                         </div>
                         <div class="col2">
                             <input type="text"  class="details" id="firstName" name="firstName">
+                            <span id="firstNameError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -54,6 +55,7 @@
                         </div>
                         <div class="col2">
                             <input type="text" class="details" id="address1" name="address1" >
+                            <span id="address1Error" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -70,6 +72,7 @@
                         </div>
                         <div class="col2">
                             <input type="text" class="details"  id="code" name="code">
+                            <span id="codeError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -116,6 +119,7 @@
                         </div>
                         <div class="col2">
                             <input type="date" class="details"  id="dob" name="dob" >
+                            <span id="dobError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -124,6 +128,7 @@
                         </div>
                         <div class="col2">
                             <input type="number" class="details" id="age">
+                            <span id="ageError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -132,6 +137,7 @@
                         </div>
                         <div class="col2">
                             <input type="file" class="details" id="photo" name="photo">
+                            <span id="photoError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -140,6 +146,7 @@
                         </div>
                         <div class="col2">
                             <input type="file" class="details" id="resume" name="resume">
+                            <span id="resumeError" class="error-message"></span>
                         </div>
                     </div>
                 </div>
@@ -150,10 +157,11 @@
                     <h4>Class 10:</h4>
                     <div class="row">
                         <div class="col1">
-                            <label for="10thmarks">Percentage*:</label>
+                            <label for="marks10th">Percentage*:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="10thmarks">
+                            <input type="number" class="details" id="marks10th">
+                            <span id="marks10thError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -186,10 +194,11 @@
                     <h4>Class 12:</h4>
                     <div class="row">
                         <div class="col1">
-                            <label for="12thmarks">Percentage*:</label>
+                            <label for="marks12th">Percentage*:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details"  id="12thmarks">
+                            <input type="number" class="details"  id="marks12th">
+                            <span id="marks12thError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -226,6 +235,8 @@
                         </div>
                         <div class="col2">
                             <input type="number" class="details" id="graduateMarks" name="graduateMarks">
+                            <span id="graduateMarksError" class="error-message"></span>
+
                         </div>
                     </div>
                     <div class="row">
@@ -255,6 +266,7 @@
                         </div>
                         <div class="col2">
                             <input type="text" class="details" id="email" name="email">
+                            <span id="emailError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -263,6 +275,7 @@
                         </div>
                         <div class="col2">
                             <input type="tel" class="details" id="phone" name="phone" >
+                            <span id="phoneError" class="error-message"></span>
                         </div>
                     </div>
                 </div>
@@ -294,6 +307,20 @@
             <input type="submit"  onclick="submitForm()" value="Submit" >
         </div>
     </form>
+     <!-- Popup for user verification -->
+     <div id="popup" class="popup">
+        <p>Please verify your details:</p>
+        <div id="popup-details"></div>
+        <div class="popup-buttons">
+            <button onclick="clearForm()">Clear</button>
+            <button onclick="confirmSubmit()">OK/Submit</button>
+        </div>
+    </div>
+
+    <!-- Overlay background for the popup -->
+    <div id="overlay" class="overlay"></div>
+
+    <script src="javascript.js"></script>
 </body>
 
 </html>
