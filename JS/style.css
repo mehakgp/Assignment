@@ -56,7 +56,7 @@ textarea {
 
 }
 
-input[type=submit]
+input[type=button]
 {
     background-color: #a2a8d3;
     padding: 14px ;
@@ -66,7 +66,7 @@ font-size: larger;
 width: 200px;
 font-weight: 600;
 }
-input[type=submit]:hover{
+input[type=button]:hover{
     background-color: #233142;
     color: white;
 }
@@ -151,7 +151,6 @@ button {
     cursor: pointer;
 }
 
-/* Styles for the modal */
 .popup {
     display: none;
     position: fixed;
@@ -164,7 +163,6 @@ button {
     z-index: 1;
 }
 
-/* Styles for the overlay background */
 .overlay {
     display: none;
     position: fixed;
@@ -176,14 +174,19 @@ button {
     z-index: 0;
 }
 
-/* Styles for buttons in the popup */
 .popup-buttons {
     text-align: center;
     margin-top: 20px;
+
 }
 
 .popup-buttons button {
     padding: 10px 20px;
-    margin: 0 10px;
+    margin: 10px 10px;
     cursor: pointer;
+    background-color: #a2a8d3;
+}
+.popup-buttons button:hover {
+    background-color: #233142;
+    color: white;
 }
