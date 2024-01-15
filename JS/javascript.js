@@ -1,4 +1,14 @@
 var userDetails = {};
+var flag = true;
+function isValidEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function isValidDate(dateString) {
+    var regex = /^\d{4}-\d{2}-\d{2}$/;
+    return regex.test(dateString);
+}
 
 function validateField(fieldName) {
     var inputElement = document.getElementById(fieldName);
@@ -9,10 +19,10 @@ function validateField(fieldName) {
 
     var inputValue = userDetails[fieldName] ? userDetails[fieldName].trim() : '';
 
-   
+
     var isValid = true;
 
-    if (inputValue === '' ) {
+    if (inputValue === '') {
         errorElement.textContent = fieldName + ' is required.';
         inputElement.classList.add('error-border');
         isValid = false;
@@ -32,11 +42,12 @@ function validateField(fieldName) {
         errorElement.textContent = 'Invalid phone number. Must be a 10-digit number.';
         inputElement.classList.add('error-border');
         isValid = false;
-    } else if (fieldName === 'age' && (inputValue.length !== 2 || isNaN(inputValue))) {
-        errorElement.textContent = 'Invalid age. Must be a 2-digit number.';
+    } else if (fieldName === 'aadhar' && (inputValue.length !== 12 || isNaN(inputValue))) {
+        errorElement.textContent = 'Invalid Aadhar Number. Must be a 12-digit number.';
         inputElement.classList.add('error-border');
         isValid = false;
-    } else if ((fieldName === 'marks10th' || fieldName === 'marks12th') && (isNaN(inputValue) || inputValue < 1 || inputValue > 100)) {
+    }
+    else if ((fieldName === 'marks10th' || fieldName === 'marks12th') && (isNaN(inputValue) || inputValue < 1 || inputValue > 100)) {
         errorElement.textContent = 'Invalid value. Must be a number in the range 1-100.';
         inputElement.classList.add('error-border');
         isValid = false;
@@ -44,67 +55,75 @@ function validateField(fieldName) {
         errorElement.textContent = 'Invalid value. Must be a number in the range 1-10.';
         inputElement.classList.add('error-border');
         isValid = false;
+    } else if (fieldName === "photo" && inputElement.files[0].type != 'image/jpeg') {
+        errorElement.textContent = 'Invalid file. Must be in jpeg';
+        inputElement.classList.add('error-border');
+        isValid = false;
+    } else if (fieldName === "resume" && inputElement.files[0].type != 'application/pdf') {
+        errorElement.textContent = 'Invalid file. Must be in pdf';
+        inputElement.classList.add('error-border');
+        isValid = false;
     }
+
 
     return isValid;
 }
 
-function isValidEmail(email) {
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function isValidDate(dateString) {
-    var regex = /^\d{4}-\d{2}-\d{2}$/;
-    return regex.test(dateString);
-}
-
 function submitForm() {
-    window.flag = true;
+    flag = true;
 
-    var elements = document.querySelectorAll('input.details');
+    var elements = document.querySelectorAll('.details');
     elements.forEach(function (element) {
-        var id = element.id;
+        var key = element.id;
         var value = element.value;
-        userDetails[id] = value;
+        userDetails[key] = value;
+        if (key === 'firstName' || key === 'address1' || key === 'code' || key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
+            flag = validateField(key);
+            if (flag == false)
+                return;
 
-        // if (!validateField(id)) {
-        //     window.flag = false;
-        // }
+        }
+
     });
-
-
-    // if (!window.flag) 
-    //{
-    //     return;
-    // }
+    if (flag == false)
+        return;
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
 
     showPopup(userDetails);
 }
+function calculateAge(dob) {
+
+    var dobDate = new Date(dob);
+    var currentDate = new Date();
+
+    var age = currentDate.getFullYear() - dobDate.getFullYear();
+    if (currentDate.getMonth() < dobDate.getMonth() || (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() < dobDate.getDate())) {
+        age--;
+    }
+
+    return age;
+}
 
 function showPopup(userDetails) {
-    
+
+    var age = calculateAge(userDetails.dob);
     var popupDetails = document.getElementById('popup-details');
     popupDetails.innerHTML = `
-        <p><strong>Name:</strong> ${userDetails.firstName} ${userDetails.middleName} ${userDetails.lastName}</p>
-        <p><strong>Address:</strong> ${userDetails.address1},${userDetails.address2}</p>
-        <p><strong>Pincode:</strong> ${userDetails.code}</p>
-        <p><strong>Country:</strong> ${userDetails.country} <strong>State:</strong> ${userDetails.state}</p>
-        <p><strong>Gender:</strong> ${userDetails.gender}</p>
-        <p><strong>DOB:</strong> ${userDetails.dob} <strong>Age:</strong> ${userDetails.age}</p>
-        <p><strong>Photo:</strong> ${userDetails.photo} <strong>Resume:</strong> ${userDetails.resume}</p>
-        <p><strong>10th Marks:</strong> ${userDetails.marks10th} <strong>Board:</strong> ${userDetails.board}</p>
-        <p><strong>School:</strong> ${userDetails.school10th} <strong>Year:</strong> ${userDetails.year10th}</p>
-        <p><strong>12th Marks:</strong> ${userDetails.marks12th} <strong>Board:</strong> ${userDetails.board2}</p>
-        <p><strong>School:</strong> ${userDetails.school12th} <strong>Year:</strong> ${userDetails.year12th}</p>
-        <p><strong>CGPA:</strong> ${userDetails.graduateMarks} <strong>University:</strong> ${userDetails.university} <strong>Year:</strong> ${userDetails.graduateYear}</p>
-        <p><strong>Email:</strong> ${userDetails.email}</p>
-        <p><strong>Phone:</strong> ${userDetails.phone}</p>
-        <p><strong>Hobbies:</strong> ${userDetails.hobbies}</p>
-        <p><strong>Feedback/comments:</strong> ${userDetails.comments}</p>
-
-    `;
+    <p><strong>Name:</strong> ${userDetails.firstName} ${userDetails.middleName} ${userDetails.lastName}</p>
+    <p><strong>Address:</strong> ${userDetails.address1 || 'NA'}&nbsp; ${userDetails.address2}</p>
+    <p><strong>Pincode:</strong> ${userDetails.code || 'NA'}</p>
+    <p><strong>Country:</strong> ${userDetails.country || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.state || 'NA'}</p>
+    <p><strong>Gender:</strong> ${userDetails.gender || 'NA'}&nbsp;&nbsp;<strong>DOB:</strong> ${userDetails.dob || 'NA'} <strong>&nbsp;&nbsp;Age:</strong> ${age || 'NA'}</p>
+    <p><strong>Photo:</strong> ${userDetails.photo || 'NA'}&nbsp;&nbsp;<strong>Resume:</strong> ${userDetails.resume || 'NA'}</p>
+    <p><strong>10th Marks:</strong> ${userDetails.marks10th || 'NA'}&nbsp;&nbsp;<strong>Board:</strong> ${userDetails.board || 'NA'}
+    <strong>School:</strong> ${userDetails.school10th || 'NA'}&nbsp;&nbsp;<strong>Year:</strong> ${userDetails.year10th || 'NA'}</p>
+    <p><strong>12th Marks:</strong> ${userDetails.marks12th || 'NA'}&nbsp;&nbsp;<strong>Board:</strong> ${userDetails.board2 || 'NA'}
+    <strong>School:</strong> ${userDetails.school12th || 'NA'}&nbsp;&nbsp;<strong>Year:</strong> ${userDetails.year12th || 'NA'}</p>
+    <p><strong>CGPA:</strong> ${userDetails.graduateMarks || 'NA'}&nbsp;&nbsp;<strong>University:</strong> ${userDetails.university || 'NA'} <strong>Year:</strong> ${userDetails.graduateYear || 'NA'}</p>
+    <p><strong>Email:</strong> ${userDetails.email || 'NA'}&nbsp;&nbsp;<strong>Phone:</strong> ${userDetails.phone || 'NA'}</p>
+    <p><strong>Hobbies:</strong> ${userDetails.hobbies || 'NA'}</p>
+    <p><strong>Feedback/comments:</strong> ${userDetails.comments || 'NA'}</p>
+`;
 
     document.getElementById('popup').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
@@ -117,9 +136,12 @@ function clearForm() {
     document.getElementById('popup').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
 }
-
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
 function confirmSubmit() {
-   
+
     alert('Submitting form...');
     clearForm();
 }
