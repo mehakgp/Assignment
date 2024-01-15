@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registraion Form</title>
     <link rel="stylesheet" href="style.css">
-   
+
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                             <label for="firstName">First name*:</label>
                         </div>
                         <div class="col2">
-                            <input type="text"  class="details" id="firstName" name="firstName">
+                            <input type="text" class="details" id="firstName" name="firstName">
                             <span id="firstNameError" class="error-message"></span>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             <label for="address1">Address(1st line)*: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="address1" name="address1" >
+                            <input type="text" class="details" id="address1" name="address1">
                             <span id="address1Error" class="error-message"></span>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <label for="address2">Address(2nd line): </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details"  id="address2" name="address2" >
+                            <input type="text" class="details" id="address2" name="address2">
                         </div>
                     </div>
                     <div class="row">
@@ -71,7 +71,7 @@
                             <label for="code">Pincode*: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details"  id="code" name="code">
+                            <input type="text" class="details" id="code" name="code">
                             <span id="codeError" class="error-message"></span>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                             <label for="country">Country:</label>
                         </div>
                         <div class="col2">
-                            <select name="country" class="details"  id="country">
-                                <option value="india" >India</option>
+                            <select name="country" class="details" id="country">
+                                <option value="india">India</option>
                                 <option value="china">China</option>
                                 <option value="pakistan">Pakistan</option>
                                 <option value="afghanistan">Afghanistan</option>
@@ -93,8 +93,8 @@
                             <label for="state">State:</label>
                         </div>
                         <div class="col2">
-                            <select name="state" class="details"  id="state">
-                                <option value="odisha" >Odisha</option>
+                            <select name="state" class="details" id="state">
+                                <option value="odisha">Odisha</option>
                                 <option value="westbengal">West Bengal</option>
                                 <option value="uttarpadesh">UttarPradesh</option>
                                 <option value="jk">Jammu & kashmir</option>
@@ -107,28 +107,31 @@
                         </div>
                         <div class="col2">
                             <select name="gender" class="details" id="gender">
-                                <option value="female" selected>Female</option>
+                                <option disabled selected value>select an option</option>
+                                <option value="female">Female</option>
                                 <option value="male">Male</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
                     </div>
+
+
                     <div class="row">
                         <div class="col1">
                             <label for="dob">Date of Birth*:</label>
                         </div>
                         <div class="col2">
-                            <input type="date" class="details"  id="dob" name="dob" >
+                            <input type="date" class="details" id="dob" name="dob">
                             <span id="dobError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col1">
-                            <label for="age">Age:</label>
+                            <label for="aadhar">Aadhar No*:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="age">
-                            <span id="ageError" class="error-message"></span>
+                            <input type="number" class="details" id="aadhar">
+                            <span id="aadharError" class="error-message"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -197,7 +200,7 @@
                             <label for="marks12th">Percentage*:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details"  id="marks12th">
+                            <input type="number" class="details" id="marks12th">
                             <span id="marks12thError" class="error-message"></span>
                         </div>
                     </div>
@@ -243,7 +246,7 @@
                             <label for="university">University: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details"  id="university" name="university">
+                            <input type="text" class="details" id="university" name="university">
                         </div>
                     </div>
                     <div class="row">
@@ -273,7 +276,7 @@
                             <label for="phone">Phone number*:</label>
                         </div>
                         <div class="col2">
-                            <input type="tel" class="details" id="phone" name="phone" >
+                            <input type="tel" class="details" id="phone" name="phone">
                             <span id="phoneError" class="error-message"></span>
                         </div>
                     </div>
@@ -287,7 +290,7 @@
                             <label for="hobbies">Hobbies:</label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details"  id="hobbies" name="hobbies" size="50">
+                            <input type="text" class="details" id="hobbies" name="hobbies" size="50">
                         </div>
                     </div>
                     <div class="row">
@@ -295,7 +298,8 @@
                             <label for="comments">Comments/Feedback: </label>
                         </div>
                         <div class="col2">
-                            <textarea id="comments" class="details" rows="4" cols="50">write your comments/feedback here.</textarea>
+                            <textarea id="comments" class="details" rows="4" cols="50"
+                                placeholder="write your comments/feedback here."></textarea>
                         </div>
                     </div>
                 </div>
@@ -303,20 +307,22 @@
         </div>
         <br>
         <div>
-            <input type="button"  onclick="submitForm()" value="Submit" >
+            <input type="button" onclick="submitForm()" value="Submit">
         </div>
     </form>
-     <div id="popup" class="popup">
-        <p>Please verify your details:</p>
+    <div id="popup" class="popup">
+        <h1>Please verify your details:</h1>
         <div id="popup-details"></div>
         <div class="popup-buttons">
             <button onclick="clearForm()">Clear</button>
             <button onclick="confirmSubmit()">OK/Submit</button>
+            <button onclick="closePopup()">Close</button>
         </div>
     </div>
     <div id="overlay" class="overlay"></div>
 
     <script src="javascript.js"></script>
 </body>
+
 
 </html>
