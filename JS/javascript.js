@@ -71,6 +71,7 @@ function validateField(fieldName) {
 
 function submitForm() {
     flag = true;
+    var flag2=true;
 
     var elements = document.querySelectorAll('.details');
     elements.forEach(function (element) {
@@ -80,12 +81,12 @@ function submitForm() {
         if (key === 'firstName' || key === 'address1' || key === 'code' || key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
             flag = validateField(key);
             if (flag == false)
-                return;
+                flag2=false;
 
         }
 
     });
-    if (flag == false)
+    if (flag2 == false)
         return;
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
 
