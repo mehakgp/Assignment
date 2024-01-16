@@ -1,5 +1,38 @@
 var userDetails = {};
 var flag = true;
+function copyAddress() {
+    var sameAddressCheckbox = document.getElementById('sameAddress');
+    var permanentAddress1 = document.getElementById('permanentAddress1');
+    var permanentAddress2 = document.getElementById('permanentAddress2');
+    var permanentPincode = document.getElementById('permanentPincode');
+    var permanentCountry = document.getElementById('permanentCountry');
+    var permanentState = document.getElementById('permanentState');
+
+    if (sameAddressCheckbox.checked) {
+        permanentAddress1.value = document.getElementById('currentAddress1').value;
+        permanentAddress2.value = document.getElementById('currentAddress2').value;
+        permanentPincode.value = document.getElementById('currentPincode').value;
+        permanentCountry.value = document.getElementById('currentCountry').value;
+        permanentState.value = document.getElementById('currentState').value;
+
+        // Set the "readonly" attribute for permanent address fields
+        permanentAddress1.setAttribute('readonly', true);
+        permanentAddress2.setAttribute('readonly', true);
+        permanentPincode.setAttribute('readonly', true);
+        permanentCountry.setAttribute('readonly', true);
+        permanentState.setAttribute('readonly', true);
+    } else {
+        // If checkbox is unchecked, remove the "readonly" attribute
+        permanentAddress1.removeAttribute('readonly');
+        permanentAddress2.removeAttribute('readonly');
+        permanentPincode.removeAttribute('readonly');
+        permanentCountry.removeAttribute('readonly');
+        permanentState.removeAttribute('readonly');
+    }
+}
+
+
+
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -26,7 +59,7 @@ function validateField(fieldName) {
         errorElement.textContent = fieldName + ' is required.';
         inputElement.classList.add('error-border');
         isValid = false;
-    } else if (fieldName === 'code' && (inputValue.length !== 6 || isNaN(inputValue))) {
+    } else if ((fieldName === 'currentPincode'|| fieldName === 'permanentPincode') && (inputValue.length !== 6 || isNaN(inputValue))) {
         errorElement.textContent = 'Invalid pincode. Must be a 6-digit number.';
         inputElement.classList.add('error-border');
         isValid = false;
@@ -71,17 +104,16 @@ function validateField(fieldName) {
 
 function submitForm() {
     flag = true;
-    var flag2=true;
-
+     var flag2=true;
     var elements = document.querySelectorAll('.details');
     elements.forEach(function (element) {
         var key = element.id;
         var value = element.value;
         userDetails[key] = value;
-        if (key === 'firstName' || key === 'address1' || key === 'code' || key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
+        if (key === 'firstName' || key === 'currentAddress1'|| key === 'permanentAddress1' || key === 'currentPincode' ||key === 'permanentPincode'|| key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
             flag = validateField(key);
             if (flag == false)
-                flag2=false;
+               flag2=false; 
 
         }
 
@@ -111,9 +143,12 @@ function showPopup(userDetails) {
     var popupDetails = document.getElementById('popup-details');
     popupDetails.innerHTML = `
     <p><strong>Name:</strong> ${userDetails.firstName} ${userDetails.middleName} ${userDetails.lastName}</p>
-    <p><strong>Address:</strong> ${userDetails.address1 || 'NA'}&nbsp; ${userDetails.address2}</p>
-    <p><strong>Pincode:</strong> ${userDetails.code || 'NA'}</p>
-    <p><strong>Country:</strong> ${userDetails.country || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.state || 'NA'}</p>
+    <p><strong> Current Address:</strong> ${userDetails.currentAddress1}&nbsp; ${userDetails.currentAddress2}</p>
+    <p><strong>Pincode:</strong> ${userDetails.currentPincode}</p>
+    <p><strong>Country:</strong> ${userDetails.currentCountry || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.currentState || 'NA'}</p>
+    <p><strong> Permanent Address:</strong> ${userDetails.permanentAddress1 || 'NA'}&nbsp; ${userDetails.permanentAddress2}</p>
+    <p><strong>Pincode:</strong> ${userDetails.permanentPincode }</p>
+    <p><strong>Country:</strong> ${userDetails.permanentCountry || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.permanentState || 'NA'}</p>
     <p><strong>Gender:</strong> ${userDetails.gender || 'NA'}&nbsp;&nbsp;<strong>DOB:</strong> ${userDetails.dob || 'NA'} <strong>&nbsp;&nbsp;Age:</strong> ${age || 'NA'}</p>
     <p><strong>Photo:</strong> ${userDetails.photo || 'NA'}&nbsp;&nbsp;<strong>Resume:</strong> ${userDetails.resume || 'NA'}</p>
     <p><strong>10th Marks:</strong> ${userDetails.marks10th || 'NA'}&nbsp;&nbsp;<strong>Board:</strong> ${userDetails.board || 'NA'}
