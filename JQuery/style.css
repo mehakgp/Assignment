@@ -28,7 +28,9 @@ h4 {
     padding: 6px 6px 6px 0;
 
 }
-
+.star{
+    color:red;
+}
 #personalDetails,
 #contactDetails,
 #academicDetails,
