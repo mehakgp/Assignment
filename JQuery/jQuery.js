@@ -1,34 +1,38 @@
+$(document).ready(function () {
+    var storedDetails = localStorage.getItem('userDetails');
+
+    if (storedDetails) {
+        var userDetails = JSON.parse(storedDetails);
+        for (var fieldName in userDetails) {
+            if (userDetails.hasOwnProperty(fieldName)) {
+                if (fieldName === 'photo' || fieldName === 'resume')
+                    $('#' + fieldName + 'Error').text('Please select the file again!');
+                else
+                    $('#' + fieldName).val(userDetails[fieldName]);
+            }
+        }
+    }
+});
 var userDetails = {};
 var flag = true;
 function copyAddress() {
     var sameAddressCheckbox = $('#sameAddress');
-    var permanentAddress1 = $('#permanentAddress1');
-    var permanentAddress2 = $('#permanentAddress2');
-    var permanentPincode = $('#permanentPincode');
-    var permanentCountry = $('#permanentCountry');
-    var permanentState = $('#permanentState');
+    var permanentFields = ['#permanentAddress1', '#permanentAddress2', '#permanentPincode', '#permanentCountry', '#permanentState'];
 
     if (sameAddressCheckbox.prop('checked')) {
-        var currentAddress1 = $('#currentAddress1').val();
-        var currentAddress2 = $('#currentAddress2').val();
-        var currentPincode = $('#currentPincode').val();
-        var currentCountry = $('#currentCountry').val();
-        var currentState = $('#currentState').val();
+        var currentFields = ['#currentAddress1', '#currentAddress2', '#currentPincode', '#currentCountry', '#currentState'];
 
-        permanentAddress1.val(currentAddress1).prop('readonly', true);
-        permanentAddress2.val(currentAddress2).prop('readonly', true);
-        permanentPincode.val(currentPincode).prop('readonly', true);
-        permanentCountry.val(currentCountry).prop('readonly', true);
-        permanentState.val(currentState).prop('readonly', true);
+        for (var i = 0; i < permanentFields.length; i++) {
+            var currentField = $(currentFields[i]);
+            var permanentField = $(permanentFields[i]);
+            permanentField.val(currentField.val()).prop('readonly', true);
+        }
     } else {
-        permanentAddress1.prop('readonly', false);
-        permanentAddress2.prop('readonly', false);
-        permanentPincode.prop('readonly', false);
-        permanentCountry.prop('readonly', false);
-        permanentState.prop('readonly', false);
+        for (var i = 0; i < permanentFields.length; i++) {
+            $(permanentFields[i]).prop('readonly', false);
+        }
     }
 }
-
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -106,7 +110,7 @@ function submitForm() {
         var key = $(element).attr('id');
         var value = $(element).val();
         userDetails[key] = value;
-        if ($(element).data('mandatory') === true){
+        if ($(element).attr('data-mandatory') === 'true') {
             flag = validateField(key);
             if (flag == false)
                 flag2 = false;
@@ -161,7 +165,10 @@ function showPopup(userDetails) {
     $('#overlay').css('display', 'block');
 
 }
-
+function resetForm() {
+    localStorage.removeItem('userDetails');
+    $('#registrationForm')[0].reset();
+}
 function clearForm() {
     localStorage.removeItem('userDetails');
     $('#registrationForm')[0].reset();
