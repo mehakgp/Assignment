@@ -54,7 +54,7 @@ function validateField(fieldName) {
         errorElement.text(fieldName + ' is required.');
         inputElement.addClass('error-border');
         isValid = false;
-    } else if ((fieldName === 'currentPincode'||fieldName === 'permanentPincode') && (inputValue.length !== 6 || isNaN(inputValue))) {
+    } else if ((fieldName === 'currentPincode' || fieldName === 'permanentPincode') && (inputValue.length !== 6 || isNaN(inputValue))) {
         errorElement.text('Invalid pincode. Must be a 6-digit number.');
         inputElement.addClass('error-border');
         isValid = false;
@@ -97,24 +97,23 @@ function validateField(fieldName) {
 
 function submitForm() {
     flag = true;
-     var flag2=true;
+    var flag2 = true;
 
-   
-        var testArray = $('.details');
-        for(var i = 0; i < testArray.length; i++)
-        {
-            element=testArray[i];
-            var key = $(element).attr('id');
-            var value = $(element).val();
-            userDetails[key] = value;
-            if (key === 'firstName' || key === 'currentAddress1' || key === 'permanentAddress1'|| key === 'currentPincode' ||key==='permanentPincode'|| key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
-                flag = validateField(key);
-                if (flag==false)
-                flag2=false;
-                    
-            }
+
+    var testArray = $('.details');
+    for (var i = 0; i < testArray.length; i++) {
+        element = testArray[i];
+        var key = $(element).attr('id');
+        var value = $(element).val();
+        userDetails[key] = value;
+        if ($(element).data('mandatory') === true){
+            flag = validateField(key);
+            if (flag == false)
+                flag2 = false;
+
         }
-    
+    }
+
     if (flag2 == false)
         return;
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
@@ -138,13 +137,13 @@ function showPopup(userDetails) {
 
     var age = calculateAge(userDetails.dob);
     var popupDetails = $('#popup-details');
-    popupDetails.html ( `
+    popupDetails.html(`
     <p><strong>Name:</strong> ${userDetails.firstName} ${userDetails.middleName} ${userDetails.lastName}</p>
     <p><strong> Current Address:</strong> ${userDetails.currentAddress1}&nbsp; ${userDetails.currentAddress2}</p>
     <p><strong>Pincode:</strong> ${userDetails.currentPincode}</p>
     <p><strong>Country:</strong> ${userDetails.currentCountry || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.currentState || 'NA'}</p>
     <p><strong> Permanent Address:</strong> ${userDetails.permanentAddress1 || 'NA'}&nbsp; ${userDetails.permanentAddress2}</p>
-    <p><strong>Pincode:</strong> ${userDetails.permanentPincode }</p>
+    <p><strong>Pincode:</strong> ${userDetails.permanentPincode}</p>
     <p><strong>Country:</strong> ${userDetails.permanentCountry || 'NA'}&nbsp;&nbsp;<strong>State:</strong> ${userDetails.permanentState || 'NA'}</p>
     <p><strong>Gender:</strong> ${userDetails.gender || 'NA'}&nbsp;&nbsp;<strong>DOB:</strong> ${userDetails.dob || 'NA'} <strong>&nbsp;&nbsp;Age:</strong> ${age || 'NA'}</p>
     <p><strong>Photo:</strong> ${userDetails.photo || 'NA'}&nbsp;&nbsp;<strong>Resume:</strong> ${userDetails.resume || 'NA'}</p>
@@ -158,8 +157,8 @@ function showPopup(userDetails) {
     <p><strong>Feedback/comments:</strong> ${userDetails.comments || 'NA'}</p>
 `)
 
-$('#popup').css('display', 'block');
-$('#overlay').css('display', 'block');
+    $('#popup').css('display', 'block');
+    $('#overlay').css('display', 'block');
 
 }
 
