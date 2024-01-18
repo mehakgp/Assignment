@@ -15,14 +15,12 @@ function copyAddress() {
         permanentCountry.value = document.getElementById('currentCountry').value;
         permanentState.value = document.getElementById('currentState').value;
 
-        // Set the "readonly" attribute for permanent address fields
         permanentAddress1.setAttribute('readonly', true);
         permanentAddress2.setAttribute('readonly', true);
         permanentPincode.setAttribute('readonly', true);
         permanentCountry.setAttribute('readonly', true);
         permanentState.setAttribute('readonly', true);
-    } else {
-        // If checkbox is unchecked, remove the "readonly" attribute
+    } else { 
         permanentAddress1.removeAttribute('readonly');
         permanentAddress2.removeAttribute('readonly');
         permanentPincode.removeAttribute('readonly');
@@ -110,7 +108,7 @@ function submitForm() {
         var key = element.id;
         var value = element.value;
         userDetails[key] = value;
-        if (key === 'firstName' || key === 'currentAddress1'|| key === 'permanentAddress1' || key === 'currentPincode' ||key === 'permanentPincode'|| key === 'dob' || key === 'aadhar' || key === 'photo' || key === 'resume' || key === 'marks10th' || key === 'marks12th' || key === 'graduateMarks' || key === 'email' || key === 'phone') {
+        if (element.getAttribute('data-mandatory') === 'true') {
             flag = validateField(key);
             if (flag == false)
                flag2=false; 

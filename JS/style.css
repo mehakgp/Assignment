@@ -28,7 +28,9 @@ h4 {
     padding: 6px 6px 6px 0;
 
 }
-
+.star{
+    color: red;
+}
 #personalDetails,
 #contactDetails,
 #academicDetails,
@@ -100,22 +102,6 @@ input[type=button]:hover {
     clear: both;
 }
 
-@media screen and (max-width: 600px) {
-
-    .col1,
-    .col2,
-    input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
-
-    body .grid-container {
-        grid-template-columns: 1fr; 
-    }
-
-
-}
-
 .pagination {
     display: inline-block;
 }
@@ -163,7 +149,40 @@ input[type=button]:hover {
     grid-row-start: 3;
     grid-row-end: 4;
 }
+@media screen and (max-width: 600px) {
 
+    .col1,
+    .col2,
+    input[type=button] {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    body .grid-container {
+        width: 100%;
+        grid-template-columns: 1fr; 
+    }
+
+    .item1 {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    
+    .item2 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    .item3 {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    
+    .item4 {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+}
 * {
     box-sizing: border-box;
 }

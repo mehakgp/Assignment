@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <h1 class="sticky">Registration Form</h1>
     <div class="pagination">
         <a href="#personal_details" class="active">Personal Details</a>
@@ -30,7 +29,7 @@
                             <label for="firstName">First name<span class="star">*</span>: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="firstName" name="firstName">
+                            <input type="text" class="details" data-mandatory="true" id="firstName" name="firstName">
                             <span id="firstNameError" class="error-message"></span>
                         </div>
                     </div>
@@ -56,7 +55,7 @@
                             <label for="currentAddress1">Address (1st line)<span class="star">*</span>: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="currentAddress1" name="currentAddress1"
+                            <input type="text" class="details" data-mandatory="true" id="currentAddress1" name="currentAddress1"
                                 oninput="copyAddress()">
                             <span id="currentAddress1Error" class="error-message"></span>
                         </div>
@@ -75,7 +74,7 @@
                             <label for="currentPincode">Pincode<span class="star">*</span>: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="currentPincode" name="currentPincode"
+                            <input type="text" class="details" data-mandatory="true" id="currentPincode" name="currentPincode"
                                 oninput="copyAddress()">
                             <span id="currentPincodeError" class="error-message"></span>
                         </div>
@@ -121,7 +120,7 @@
                             <label for="permanentAddress1">Address (1st line)<span class="star">*</span>: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="permanentAddress1" name="permanentAddress1" >
+                            <input type="text" class="details" data-mandatory="true" id="permanentAddress1" name="permanentAddress1" >
                             <span id="permanentAddress1Error" class="error-message"></span>
                         </div>
                     </div>
@@ -138,7 +137,7 @@
                             <label for="permanentPincode">Pincode<span class="star">*</span>: </label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="permanentPincode" name="permanentPincode" >
+                            <input type="text" class="details" data-mandatory="true" id="permanentPincode" name="permanentPincode" >
                             <span id="permanentPincodeError" class="error-message"></span>
                         </div>
                     </div>
@@ -188,7 +187,7 @@
                             <label for="dob">Date of Birth<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="date" class="details" id="dob" name="dob">
+                            <input type="date" class="details" data-mandatory="true" id="dob" name="dob">
                             <span id="dobError" class="error-message"></span>
                         </div>
                     </div>
@@ -197,7 +196,7 @@
                             <label for="aadhar">Aadhar No<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="aadhar">
+                            <input type="number" class="details" data-mandatory="true" id="aadhar">
                             <span id="aadharError" class="error-message"></span>
                         </div>
                     </div>
@@ -206,7 +205,7 @@
                             <label for="photo">Select your Photo<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="file" class="details" id="photo" name="photo">
+                            <input type="file" class="details" data-mandatory="true" id="photo" name="photo">
                             <span id="photoError" class="error-message"></span>
                         </div>
                     </div>
@@ -215,7 +214,7 @@
                             <label for="resume">Select your Resume<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="file" class="details" id="resume" name="resume">
+                            <input type="file" class="details" data-mandatory="true" id="resume" name="resume">
                             <span id="resumeError" class="error-message"></span>
                         </div>
                     </div>
@@ -230,7 +229,7 @@
                             <label for="marks10th">Percentage<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="marks10th">
+                            <input type="number" class="details" data-mandatory="true" id="marks10th">
                             <span id="marks10thError" class="error-message"></span>
                         </div>
                     </div>
@@ -267,7 +266,7 @@
                             <label for="marks12th">Percentage<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="marks12th">
+                            <input type="number" class="details" data-mandatory="true" id="marks12th">
                             <span id="marks12thError" class="error-message"></span>
                         </div>
                     </div>
@@ -304,7 +303,7 @@
                             <label for="graduateMarks">CGPA<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="number" class="details" id="graduateMarks" name="graduateMarks">
+                            <input type="number" class="details" data-mandatory="true" id="graduateMarks" name="graduateMarks">
                             <span id="graduateMarksError" class="error-message"></span>
                         </div>
                     </div>
@@ -334,7 +333,7 @@
                             <label for="email">Email<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="text" class="details" id="email" name="email">
+                            <input type="text" class="details" data-mandatory="true" id="email" name="email">
                             <span id="emailError" class="error-message"></span>
                         </div>
                     </div>
@@ -343,7 +342,7 @@
                             <label for="phone">Phone number<span class="star">*</span>:</label>
                         </div>
                         <div class="col2">
-                            <input type="tel" class="details" id="phone" name="phone">
+                            <input type="tel" class="details" data-mandatory="true" id="phone" name="phone">
                             <span id="phoneError" class="error-message"></span>
                         </div>
                     </div>
