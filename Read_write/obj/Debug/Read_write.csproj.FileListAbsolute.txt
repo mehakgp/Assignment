@@ -1,7 +1,0 @@
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\bin\Debug\Read_write.exe.config
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\bin\Debug\Read_write.exe
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\bin\Debug\Read_write.pdb
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\obj\Debug\Read_write.csproj.AssemblyReference.cache
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\obj\Debug\Read_write.csproj.CoreCompileInputs.cache
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\obj\Debug\Read_write.exe
-C:\Users\mehakg\Desktop\Projects\Assignment\Read_write\obj\Debug\Read_write.pdb
