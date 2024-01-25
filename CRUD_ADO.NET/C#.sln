@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_ADO.NET", "CRUD_ADO.NET.csproj", "{271C9021-2562-4B80-85FA-E62CC44484A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read_write", "..\Read_write\Read_write.csproj", "{A58E8815-BA9E-4E46-9F1A-2EB3446CBFED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read_write", "..\Read_write\Read_write.csproj", "{5F2DB1C1-C4CA-40A8-A47C-4F193456309C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{271C9021-2562-4B80-85FA-E62CC44484A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{271C9021-2562-4B80-85FA-E62CC44484A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{271C9021-2562-4B80-85FA-E62CC44484A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A58E8815-BA9E-4E46-9F1A-2EB3446CBFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A58E8815-BA9E-4E46-9F1A-2EB3446CBFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A58E8815-BA9E-4E46-9F1A-2EB3446CBFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A58E8815-BA9E-4E46-9F1A-2EB3446CBFED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2DB1C1-C4CA-40A8-A47C-4F193456309C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2DB1C1-C4CA-40A8-A47C-4F193456309C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2DB1C1-C4CA-40A8-A47C-4F193456309C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2DB1C1-C4CA-40A8-A47C-4F193456309C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
