@@ -29,5 +29,6 @@ namespace CRUD_ENTITY_FRAMEWORK.DataAccessLayer
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<LogException> LogExceptions { get; set; }
     }
 }

@@ -63,3 +63,180 @@ StackTrace:    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
    at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Class1.ReadOperation() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\Class1.cs:line 135
 --------------------------------------------------
+30-01-2024 14:56:15 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Class1.UpdateOperation() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\Class1.cs:line 282
+--------------------------------------------------
+31-01-2024 11:37:04 - Exception: The best overloaded method match for 'System.Data.Entity.DbSet<CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student>.Add(CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student)' has some invalid arguments
+StackTrace:    at CallSite.Target(Closure , CallSite , DbSet`1 , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+31-01-2024 11:42:21 - Exception: The best overloaded method match for 'System.Data.Entity.DbSet<CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student>.Add(CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student)' has some invalid arguments
+StackTrace:    at CallSite.Target(Closure , CallSite , DbSet`1 , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+31-01-2024 11:50:34 - Exception: The best overloaded method match for 'System.Data.Entity.DbSet<CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student>.Add(CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student)' has some invalid arguments
+StackTrace:    at CallSite.Target(Closure , CallSite , DbSet`1 , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+31-01-2024 11:51:42 - Exception: The best overloaded method match for 'CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.UpdateCourse(CRUD_ENTITY_FRAMEWORK.DataAccessLayer.CRUD_DBEntities, CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Course, int)' has some invalid arguments
+StackTrace:    at CallSite.Target(Closure , CallSite , Type , CRUD_DBEntities , Object , Int32 )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid4[T0,T1,T2,T3](CallSite site, T0 arg0, T1 arg1, T2 arg2, T3 arg3)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.UpdateOperation(EntityChoice entityChoice, Object entityData, Int32 entityId) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 93
+--------------------------------------------------
+31-01-2024 12:48:04 - Exception: The best overloaded method match for 'System.Data.Entity.DbSet<CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student>.Add(CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student)' has some invalid arguments
+StackTrace:    at CallSite.Target(Closure , CallSite , DbSet`1 , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid2[T0,T1](CallSite site, T0 arg0, T1 arg1)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+31-01-2024 12:53:10 - Exception: Unable to cast object of type 'Student' to type 'CRUD_ENTITY_FRAMEWORK.DataAccessLayer.Student'.
+StackTrace:    at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+31-01-2024 13:07:11 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 49
+--------------------------------------------------
+31-01-2024 13:09:11 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 29
+--------------------------------------------------
+31-01-2024 13:11:04 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 29
+--------------------------------------------------
+31-01-2024 15:13:52 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 67
+--------------------------------------------------
+31-01-2024 15:14:49 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 67
+--------------------------------------------------
+31-01-2024 15:24:11 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 29
+--------------------------------------------------
+31-01-2024 15:28:44 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 66
+--------------------------------------------------
+31-01-2024 15:34:47 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 66
+--------------------------------------------------
+31-01-2024 15:34:47 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+--------------------------------------------------
+31-01-2024 16:22:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 65
+--------------------------------------------------
+31-01-2024 16:22:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+--------------------------------------------------
+31-01-2024 16:56:57 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 66
+--------------------------------------------------
+31-01-2024 16:58:21 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 66
+--------------------------------------------------
+31-01-2024 17:11:58 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 68
+--------------------------------------------------
+31-01-2024 22:27:33 - Exception: 'CRUD_ENTITY_FRAMEWORK.UtilityLayer.Utility.setStudent' does not contain a definition for 'FirgstName'
+StackTrace:    at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateOperation(EntityChoice entityChoice, Object entityData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+01-02-2024 12:58:18 - Exception: Please set the ExcelPackage.LicenseContext property. See https://epplussoftware.com/developers/licenseexception
+StackTrace:    at OfficeOpenXml.ExcelPackage.get_Workbook()
+   at OfficeOpenXml.ExcelPackage.CreateBlankWb()
+   at OfficeOpenXml.ExcelPackage.ConstructNewFile(String password)
+   at OfficeOpenXml.ExcelPackage..ctor()
+   at CRUD_ENTITY_FRAMEWORK.Program.ExportToExcel(String entityName, List`1 data) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 408
+   at CRUD_ENTITY_FRAMEWORK.Program.ExportOperation() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 398
+   at CRUD_ENTITY_FRAMEWORK.Program.Main(String[] args) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 362
+--------------------------------------------------
+01-02-2024 14:57:54 - Exception: Please set the ExcelPackage.LicenseContext property. See https://epplussoftware.com/developers/licenseexception
+StackTrace:    at OfficeOpenXml.ExcelPackage.get_Workbook()
+   at OfficeOpenXml.ExcelPackage.CreateBlankWb()
+   at OfficeOpenXml.ExcelPackage.ConstructNewFile(String password)
+   at OfficeOpenXml.ExcelPackage..ctor()
+   at CRUD_ENTITY_FRAMEWORK.Program.ExportToExcel(String entityName, List`1 data) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 454
+   at CRUD_ENTITY_FRAMEWORK.Program.ExportOperation() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 409
+   at CRUD_ENTITY_FRAMEWORK.Program.Main(String[] args) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK\Program.cs:line 364
+--------------------------------------------------
+01-02-2024 17:03:40 - Exception: Nullable object must have a value.
+StackTrace:    at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.<>c.<GetCoursesByStudent>b__9_2(Course course) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 234
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.GetCoursesByStudent(Int32 studentId) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 234
+--------------------------------------------------
+01-02-2024 17:05:43 - Exception: Nullable object must have a value.
+StackTrace:    at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.<>c.<GetAllCourses>b__6_0(Course course) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 160
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.GetAllCourses() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 160
+--------------------------------------------------

@@ -1,29 +1,24 @@
--- Create Student table
 CREATE TABLE Student (
-    StudentID INT PRIMARY KEY,
+    StudentID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50)
 );
 
--- Create Teacher table
 CREATE TABLE Teacher (
-    TeacherID INT PRIMARY KEY,
+    TeacherID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50)
 );
 
--- Create Course table with cascading delete on Teacher
 CREATE TABLE Course (
-    CourseID INT PRIMARY KEY,
+    CourseID INT IDENTITY(100,1) PRIMARY KEY,
     CourseName VARCHAR(100),
     Credits INT,
     TeacherID INT,
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID) ON DELETE SET NULL
 );
-
--- Create Enrollment table with cascading delete on Student and set null on Course
 CREATE TABLE Enrollment (
-    EnrollmentID INT PRIMARY KEY,
+    EnrollmentID INT IDENTITY(1,1) PRIMARY KEY,
     StudentID INT,
     CourseID INT,
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID) ON DELETE CASCADE,
@@ -31,37 +26,40 @@ CREATE TABLE Enrollment (
     CONSTRAINT UC_Enrollment UNIQUE (StudentID, CourseID)
 );
 
--- Insert data into Student table
-INSERT INTO Student (StudentID, FirstName, LastName)
+INSERT INTO Student (FirstName, LastName)
 VALUES
-    (1, 'John', 'Doe'),
-    (2, 'Jane', 'Smith'),
-    (3, 'Alice', 'Johnson');
+    ('John', 'Doe'),
+    ('Jane', 'Smith'),
+    ('Alice', 'Johnson');
 
--- Insert data into Teacher table
-INSERT INTO Teacher (TeacherID, FirstName, LastName)
+INSERT INTO Teacher (FirstName, LastName)
 VALUES
-    (1, 'Professor', 'Anderson'),
-    (2, 'Dr.', 'Miller'),
-    (3, 'Ms.', 'Davis');
+    ('Professor', 'Anderson'),
+    ('Dr.', 'Miller'),
+    ('Ms.', 'Davis');
 
--- Insert data into Course table
-INSERT INTO Course (CourseID, CourseName, Credits, TeacherID)
+INSERT INTO Course (CourseName, Credits, TeacherID)
 VALUES
-    (101, 'Introduction to Computer Science', 3, 1),
-    (102, 'Mathematics for Engineers', 4, 2),
-    (103, 'Literature and Composition', 3, 3);
+    ('Introduction to Computer Science', 3, 1),
+    ('Mathematics for Engineers', 4, 2),
+    ('Literature and Composition', 3, 3);
 
--- Insert data into Enrollment table
-INSERT INTO Enrollment (EnrollmentID, StudentID, CourseID)
+INSERT INTO Enrollment (StudentID, CourseID)
 VALUES
-    (1, 1, 101),
-    (2, 1, 102),
-    (3, 2, 101),
-    (4, 3, 103);
+    (1, 100),
+    (1, 102),
+    (2, 101),
+    (3, 102);
 
--- Display the data in tables
 SELECT * FROM Student;
 SELECT * FROM Teacher;
 SELECT * FROM Course;
 SELECT * FROM Enrollment;
+
+CREATE TABLE LogException (
+    ExceptionID INT IDENTITY(1,1) PRIMARY KEY,
+    LogTime DATETIME,
+    ExceptionMessage NVARCHAR(MAX),
+    StackTrace NVARCHAR(MAX)
+);
+ SELECT *FROM LogException;

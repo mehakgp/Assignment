@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Business.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\CRUD_ENTITY_FRAMEWORK.DataAccessLayer.csproj">
       <Project>{902a5b3d-a262-4f6d-bb67-86249a40115f}</Project>
       <Name>CRUD_ENTITY_FRAMEWORK.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRUD_ENTITY_FRAMEWORK.ModelView\CRUD_ENTITY_FRAMEWORK.ModelView.csproj">
+      <Project>{fe693a62-de31-438d-9f78-62305f1f1218}</Project>
+      <Name>CRUD_ENTITY_FRAMEWORK.ModelView</Name>
     </ProjectReference>
     <ProjectReference Include="..\CRUD_ENTITY_FRAMEWORK.UtilityLayer\CRUD_ENTITY_FRAMEWORK.UtilityLayer.csproj">
       <Project>{2727d0a8-6d14-4c3c-a430-4c8e427d3a5e}</Project>
