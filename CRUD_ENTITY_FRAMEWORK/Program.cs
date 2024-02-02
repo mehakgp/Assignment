@@ -11,6 +11,7 @@ using static CRUD_ENTITY_FRAMEWORK.ModelView.Model;
 using OfficeOpenXml;
 using System.Globalization;
 using System.Diagnostics.Eventing.Reader;
+using System.Configuration;
 
 namespace CRUD_ENTITY_FRAMEWORK
 {
@@ -504,7 +505,8 @@ namespace CRUD_ENTITY_FRAMEWORK
     private static void ExportToCSV(string entityName, List<object> data)
     {
         string fileName = $"{entityName}_{DateTime.Now.ToString("yyyy-MM-dd")}.csv";
-        string filePath = Path.Combine("C:\\Users\\mehakg\\Desktop\\Projects\\Assignment\\CRUD_ENTITY_FRAMEWORK", fileName);
+            string folderPath = ConfigurationManager.AppSettings["ExportFolderPath"];
+            string filePath = Path.Combine(folderPath, fileName);
 
         var properties = data.First().GetType().GetProperties();
         string header = string.Join(",", properties.Select(p => p.Name));
@@ -543,9 +545,10 @@ namespace CRUD_ENTITY_FRAMEWORK
 
             string fileName = $"{entityName}_{DateTime.Now.ToString("yyyy-MM-dd")}.xlsx";
 
-            string filePath = Path.Combine("C:\\Users\\mehakg\\Desktop\\Projects\\Assignment\\CRUD_ENTITY_FRAMEWORK", fileName);
+                string folderPath = ConfigurationManager.AppSettings["ExportFolderPath"];
+                string filePath = Path.Combine(folderPath, fileName);
 
-            FileInfo excelFile = new FileInfo(filePath);
+                FileInfo excelFile = new FileInfo(filePath);
             package.SaveAs(excelFile);
 
             Console.WriteLine("Export successful.");
