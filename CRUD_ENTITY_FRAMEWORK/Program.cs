@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Runtime.InteropServices;
 using CRUD_ENTITY_FRAMEWORK.BusinessLayer;
 using static CRUD_ENTITY_FRAMEWORK.UtilityLayer.Utility;
 using static CRUD_ENTITY_FRAMEWORK.ModelView.Model;
 using OfficeOpenXml;
-using System.Globalization;
-using System.Diagnostics.Eventing.Reader;
 using System.Configuration;
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace CRUD_ENTITY_FRAMEWORK
 {
@@ -45,6 +41,8 @@ namespace CRUD_ENTITY_FRAMEWORK
             Console.WriteLine($"{(int)ChoiceForReadOperation.Enrollment}.Enrollment");
             Console.WriteLine($"{(int)ChoiceForReadOperation.StudentsInCourse}.Students in a Course");
             Console.WriteLine($"{(int)ChoiceForReadOperation.CoursesByStudent}.Courses taken by a Student");
+            Console.WriteLine($"{(int)ChoiceForReadOperation.CoursesAndStudentsByTeacher}.Students and Courses taught by a Teacher");
+
 
         }
 
@@ -214,32 +212,32 @@ namespace CRUD_ENTITY_FRAMEWORK
             var readChoice = GetReadChoice();
 
             object entityData = null;
-            string entityType = null;
+         
 
             switch (readChoice)
             {
                 case ChoiceForReadOperation.Student:
                     entityData = Business.GetAllStudents();
-                    entityType = "StudentModel";
+                    Console.WriteLine("\nAll Students:");
                     break;
                 case ChoiceForReadOperation.Teacher:
                     entityData = Business.GetAllTeachers();
-                    entityType = "TeacherModel";
+                    Console.WriteLine("\nAll Teachers:");
                     break;
                 case ChoiceForReadOperation.Course:
                     entityData = Business.GetAllCourses();
-                    entityType = "CourseModel";
+                    Console.WriteLine("\nAll Courses:");
                     break;
                 case ChoiceForReadOperation.Enrollment:
                     entityData = Business.GetAllEnrollments();
-                    entityType = "EnrollmentModel";
+                    Console.WriteLine("\nAll Enrollments:");
                     break;
                 case ChoiceForReadOperation.StudentsInCourse:
                     Console.Write("Enter Course ID: ");
                     if (int.TryParse(Console.ReadLine(), out int courseID))
                     {
                         entityData = Business.GetStudentsByCourse(courseID);
-                        entityType = "StudentModel";
+                        Console.WriteLine($"\nAll Students in Course {courseID}:");
                     }
                     else
                     {
@@ -251,11 +249,23 @@ namespace CRUD_ENTITY_FRAMEWORK
                     if (int.TryParse(Console.ReadLine(), out int studentID))
                     {
                         entityData = Business.GetCoursesByStudent(studentID);
-                        entityType = "CourseModel";
+                        Console.WriteLine($"\nAll Courses studied by Student {studentID}:");
                     }
                     else
                     {
                         Console.WriteLine("Invalid input for student ID.");
+                    }
+                    break;
+                case ChoiceForReadOperation.CoursesAndStudentsByTeacher:
+                    Console.Write("Enter Teacher ID: ");
+                    if (int.TryParse(Console.ReadLine(), out int teacherID))
+                    {
+                        entityData = Business.GetCoursesAndStudentsByTeacher(teacherID);
+                        Console.WriteLine($"\nAll Courses and Students taught by Teacher {teacherID}:");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input for teacher ID.");
                     }
                     break;
                 default:
@@ -263,7 +273,7 @@ namespace CRUD_ENTITY_FRAMEWORK
                     return;
             }
 
-            PrintEntity(entityData, entityType);
+            PrintEntity(entityData);
         }
 
         public static void UpdateOperation()
@@ -382,9 +392,8 @@ namespace CRUD_ENTITY_FRAMEWORK
 
     
 
-    private static void PrintEntity(object entityData, string entityType)
+    private static void PrintEntity(object entityData)
     {
-        Console.WriteLine($"\nAll {entityType}s:");
 
         if (entityData is IEnumerable<object> entities)
         {
@@ -396,22 +405,42 @@ namespace CRUD_ENTITY_FRAMEWORK
         }
         else
         {
-            Console.WriteLine($"No {entityType}s found.");
+            Console.WriteLine($"No Data found.");
         }
     }
-    private static void PrintProperties(object obj)
-    {
-        var properties = obj.GetType().GetProperties();
-        foreach (var property in properties)
+
+        private static void PrintProperties(object obj)
         {
-            Console.WriteLine($"{property.Name}: {property.GetValue(obj)}");
+            var properties = obj.GetType().GetProperties();
+           
+            foreach (var property in properties)
+            {
+                Console.Write($"{property.Name}: ");
+
+                if (property.PropertyType.IsGenericType &&
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+                {
+                    
+                    var list = (IEnumerable<object>)property.GetValue(obj);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine("\n");
+                        PrintProperties(item);
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"{property.GetValue(obj)}");
+                }
+            }
+
+            Console.WriteLine();
         }
-        Console.WriteLine();
-    }
 
 
 
-    static void Main(string[] args)
+        static void Main(string[] args)
     {
 
         while (true)

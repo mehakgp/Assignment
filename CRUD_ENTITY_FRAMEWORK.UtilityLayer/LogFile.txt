@@ -240,3 +240,17 @@ StackTrace:    at System.ThrowHelper.ThrowInvalidOperationException(ExceptionRes
    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
    at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.GetAllCourses() in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 160
 --------------------------------------------------
+02-02-2024 12:49:25 - Exception: The underlying provider failed on Open.
+StackTrace:    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at CRUD_ENTITY_FRAMEWORK.DataAccessLayer.DataAccess.CreateStudent(StudentModel studentData) in C:\Users\mehakg\Desktop\Projects\Assignment\CRUD_ENTITY_FRAMEWORK.DataAccessLayer\DataAccess.cs:line 24
+--------------------------------------------------

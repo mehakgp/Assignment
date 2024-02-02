@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static CRUD_ENTITY_FRAMEWORK.UtilityLayer.Utility;
-using System.IO;
 using CRUD_ENTITY_FRAMEWORK.DataAccessLayer;
 using static CRUD_ENTITY_FRAMEWORK.ModelView.Model;
 
@@ -55,16 +51,20 @@ namespace CRUD_ENTITY_FRAMEWORK.BusinessLayer
             return DataAccess.GetAllEnrollments();
         }
 
-        public static List<StudentModel> GetStudentsByCourse(int courseId)
+        public static List<StudentModel> GetStudentsByCourse(int courseID)
         {
-            return DataAccess.GetStudentsByCourse(courseId);
+            return DataAccess.GetStudentsByCourse(courseID);
         }
 
-        public static List<CourseModel> GetCoursesByStudent(int studentId)
+        public static List<CourseModel> GetCoursesByStudent(int studentID)
         {
-            return DataAccess.GetCoursesByStudent(studentId);
+            return DataAccess.GetCoursesByStudent(studentID);
         }
 
+        public static List<TeacherCourseStudentsModel> GetCoursesAndStudentsByTeacher(int teacherID)
+        {
+            return DataAccess.GetCoursesAndStudentsByTeacher(teacherID);
+        }
 
         public static bool UpdateStudent(StudentModel studentData, int studentID)
         {

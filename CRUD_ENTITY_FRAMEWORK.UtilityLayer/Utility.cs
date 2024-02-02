@@ -11,8 +11,8 @@ namespace CRUD_ENTITY_FRAMEWORK.UtilityLayer
 {
     public class Utility
     {
-        public static string logFilePath = "C:\\Users\\mehakg\\Desktop\\Projects\\Assignment\\CRUD_ENTITY_FRAMEWORK.UtilityLayer\\LogFile.txt";
-
+      
+        public static string logFilePath = ConfigurationManager.AppSettings["logFilePath"];
         public static void LogException(Exception ex)
         {
             try
@@ -28,7 +28,7 @@ namespace CRUD_ENTITY_FRAMEWORK.UtilityLayer
                 using (var connection = new SqlConnection(ConString))
                 {
                     connection.Open();
-
+                    
                     using (var command = connection.CreateCommand())
                     {
                         command.CommandText = "INSERT INTO LogException (LogTime, ExceptionMessage, StackTrace) VALUES (@LogTime, @ExceptionMessage, @StackTrace)";
@@ -72,6 +72,7 @@ namespace CRUD_ENTITY_FRAMEWORK.UtilityLayer
             Enrollment,
             StudentsInCourse,
             CoursesByStudent,
+            CoursesAndStudentsByTeacher,
             Exit
         }
         public enum ExportFormat

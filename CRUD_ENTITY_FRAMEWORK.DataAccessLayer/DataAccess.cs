@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static CRUD_ENTITY_FRAMEWORK.ModelView.Model;
 using static CRUD_ENTITY_FRAMEWORK.UtilityLayer.Utility;
 
@@ -196,14 +193,14 @@ namespace CRUD_ENTITY_FRAMEWORK.DataAccessLayer
             }
         }
 
-        public static List<StudentModel> GetStudentsByCourse(int courseId)
+        public static List<StudentModel> GetStudentsByCourse(int courseID)
         {
             try
             {
                 using (var context = new CRUD_DBEntities())
                 {
                     var studentsInCourse = (from enrollment in context.Enrollments
-                                            where enrollment.CourseID == courseId
+                                            where enrollment.CourseID == courseID
                                             select enrollment.Student).ToList();
 
                     return studentsInCourse.Select(student => new StudentModel
@@ -221,14 +218,14 @@ namespace CRUD_ENTITY_FRAMEWORK.DataAccessLayer
             }
         }
        
-        public static List<CourseModel> GetCoursesByStudent(int studentId)
+        public static List<CourseModel> GetCoursesByStudent(int studentID)
         {
             try
             {
                 using (var context = new CRUD_DBEntities())
                 {
                     var coursesByStudent = (from enrollment in context.Enrollments
-                                            where enrollment.StudentID == studentId
+                                            where enrollment.StudentID == studentID
                                             select enrollment.Course).ToList();
 
                     return coursesByStudent.Select(course => new CourseModel
@@ -244,6 +241,43 @@ namespace CRUD_ENTITY_FRAMEWORK.DataAccessLayer
             {
                 LogException(ex);
                 return new List<CourseModel>();
+            }
+        }
+
+        public static List<TeacherCourseStudentsModel> GetCoursesAndStudentsByTeacher(int teacherID)
+        {
+            try
+            {
+                using (var context = new CRUD_DBEntities())
+                {
+                    var coursesTaughtByTeacher = (from course in context.Courses
+                                                  where course.TeacherID == teacherID
+                                                  select course).ToList();
+
+                    var teacherCourseStudentsList = new List<TeacherCourseStudentsModel>();
+
+                    foreach (var course in coursesTaughtByTeacher)
+                    {
+                        var studentsInCourse = GetStudentsByCourse(course.CourseID);
+
+                        var teacherCourseStudentsModel = new TeacherCourseStudentsModel
+                        {
+                            CourseID = course.CourseID,
+                            CourseName = course.CourseName,
+                            Credits = (int)course.Credits,
+                            Students = studentsInCourse
+                        };
+
+                        teacherCourseStudentsList.Add(teacherCourseStudentsModel);
+                    }
+
+                    return teacherCourseStudentsList;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+                return new List<TeacherCourseStudentsModel>();
             }
         }
 
@@ -318,6 +352,7 @@ namespace CRUD_ENTITY_FRAMEWORK.DataAccessLayer
                     {
                         courseToUpdate.CourseName = courseData.CourseName;
                         courseToUpdate.Credits = courseData.Credits;
+                        courseToUpdate.TeacherID = courseData.TeacherID;
 
                         return context.SaveChanges() > 0;
                     }

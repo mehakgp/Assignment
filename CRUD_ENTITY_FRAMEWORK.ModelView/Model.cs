@@ -35,5 +35,12 @@ namespace CRUD_ENTITY_FRAMEWORK.ModelView
             public int StudentID { get; set; }
             public int CourseID { get; set; }
         }
+        public class TeacherCourseStudentsModel
+        {
+            public int CourseID { get; set; }
+            public string CourseName { get; set; }
+            public int Credits { get; set; }
+            public List<StudentModel> Students { get; set; }
+        }
     }
 }

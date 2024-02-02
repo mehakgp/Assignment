@@ -22,7 +22,7 @@ CREATE TABLE Enrollment (
     StudentID INT,
     CourseID INT,
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID) ON DELETE CASCADE,
-    FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON DELETE SET NULL,
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON DELETE CASCADE,
     CONSTRAINT UC_Enrollment UNIQUE (StudentID, CourseID)
 );
 
@@ -42,7 +42,8 @@ INSERT INTO Course (CourseName, Credits, TeacherID)
 VALUES
     ('Introduction to Computer Science', 3, 1),
     ('Mathematics for Engineers', 4, 2),
-    ('Literature and Composition', 3, 3);
+    ('Literature and Composition', 3, 3),
+	('Machine Learning', 3, 1);
 
 INSERT INTO Enrollment (StudentID, CourseID)
 VALUES
