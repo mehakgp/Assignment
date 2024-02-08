@@ -11,16 +11,25 @@ namespace Demo_ASP.NET
 {
 
 
-    public partial class _Default
+    public partial class DataList
     {
 
         /// <summary>
-        /// studentcontrol control.
+        /// DataList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Demo_ASP.NET.StudentUserControl studentcontrol;
+        protected global::System.Web.UI.WebControls.DataList DataList1;
+
+        /// <summary>
+        /// DataGrid1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid1;
     }
 }

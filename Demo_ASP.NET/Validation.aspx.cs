@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Demo_ASP.NET
 {
-    public partial class Demo_Validation : System.Web.UI.Page
+    public partial class Validation : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

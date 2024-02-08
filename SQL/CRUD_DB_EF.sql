@@ -64,3 +64,4 @@ CREATE TABLE LogException (
     StackTrace NVARCHAR(MAX)
 );
  SELECT *FROM LogException;
+

@@ -1,13 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Demo_DataList.aspx.cs" Inherits="Demo_ASP.NET.Demo_DataList" %>
+﻿<%@ Page Title="DataList" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DataList.aspx.cs" Inherits="Demo_ASP.NET.DataList" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <main>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
         <div>
             <div>
                 <p>The DataList shows data of DataTable</p>
@@ -31,7 +26,5 @@
             <p>This DataGrid contains DataTable records </p>
             <asp:DataGrid ID="DataGrid1" runat="server"></asp:DataGrid>
         </div>
-    </form>
-
-</body>
-</html>
+    </main>
+</asp:Content>

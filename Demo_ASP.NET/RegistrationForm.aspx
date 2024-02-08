@@ -1,23 +1,18 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Demo_WebForm.aspx.cs" Inherits="Demo_ASP.NET.Demo_WebForm" %>
+﻿<%@ Page Title="RegistrationForm" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="RegistrationForm.aspx.cs" Inherits="Demo_ASP.NET.RegistrationForm" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
     <style>
         td {
             width: 121px;
         }
-  #submit{
 
-      margin-top:10px;
-  }
+        #submit {
+            margin-top: 10px;
+        }
     </style>
-</head>
-<body>
+    <main>
 
-    <form id="form1" runat="server">
         <div>
             <h2>Welcome to the Web Forms!</h2>
         </div>
@@ -71,36 +66,36 @@
         </div>
 
         <div>
-            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButtonClicked" >LinkButtonTest</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButtonClicked">LinkButtonTest</asp:LinkButton>
         </div>
-    </form>
+        </form>
 
 
 
     <div>
         <asp:Label ID="displayLinkButton" runat="server"></asp:Label>
     </div>
-    <div>
-        <asp:Label ID="displayName" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:Label ID="FileUploadStatus" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:Label ID="displayGender" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:Label ID="displayDate" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:Label ID="displayCourse" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:Label ID="displayCity" runat="server"></asp:Label>
-    </div>
-    <div>
-        <asp:HyperLink ID="HyperLink1" runat="server" Text="Visit JavaTpoint" NavigateUrl="www.javatpoint.com"></asp:HyperLink>
-    </div>
+        <div>
+            <asp:Label ID="displayName" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="FileUploadStatus" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="displayGender" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="displayDate" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="displayCourse" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="displayCity" runat="server"></asp:Label>
+        </div>
+        <div>
+            <asp:HyperLink ID="HyperLink1" runat="server" Text="Visit JavaTpoint" NavigateUrl="www.javatpoint.com"></asp:HyperLink>
+        </div>
 
-</body>
-</html>
+    </main>
+</asp:Content>

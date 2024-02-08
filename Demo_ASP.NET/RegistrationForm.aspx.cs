@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Demo_ASP.NET
 {
-    public partial class Demo_WebForm : System.Web.UI.Page
+    public partial class RegistrationForm : System.Web.UI.Page
     {
         protected System.Web.UI.HtmlControls.HtmlInputFile File1;
         protected System.Web.UI.HtmlControls.HtmlInputSubmit Submit1;

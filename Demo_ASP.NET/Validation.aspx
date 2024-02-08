@@ -1,18 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Demo_Validation.aspx.cs" Inherits="Demo_ASP.NET.Demo_Validation" %>
+﻿<%@ Page Title="Validation" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Validation.aspx.cs" Inherits="Demo_ASP.NET.Validation" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
     <style>
         #submit {
             margin-top: 20px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+    <main>
         <div>
             <h3>Enter Name: *</h3>
             <asp:TextBox ID="nameTextBox" runat="server"></asp:TextBox>
@@ -40,7 +35,7 @@
                     ForeColor="Red" ErrorMessage="It must be a 10 digit number" OnServerValidate="PhoneNoValidate"></asp:CustomValidator>
             </div>
         </div>
-        
+
         <div>
             <h3>Select Gender:</h3>
             <asp:RadioButton ID="RadioButton1" runat="server" Text="Male" GroupName="gender" />
@@ -70,31 +65,28 @@
         <div>
             <asp:Button ID="submit" runat="server" Text="submit" OnClick="SubmitButton" />
         </div>
-    </form>
 
-    <div>
         <div>
-            <asp:Label ID="displayName" runat="server"></asp:Label>
+            <div>
+                <asp:Label ID="displayName" runat="server"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="displayEmail" runat="server"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="displayGender" runat="server"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="displayCourse" runat="server"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="displayCity" runat="server"></asp:Label>
+            </div>
         </div>
-        <div>
-            <asp:Label ID="displayEmail" runat="server"></asp:Label>
-        </div>
-        <div>
-            <asp:Label ID="displayGender" runat="server"></asp:Label>
-        </div>
-        <div>
-            <asp:Label ID="displayCourse" runat="server"></asp:Label>
-        </div>
-        <div>
-            <asp:Label ID="displayCity" runat="server"></asp:Label>
-        </div>
-    </div>
 
+    </main>
 
-
-
-</body>
-</html>
+</asp:Content>
 
 
 

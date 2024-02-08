@@ -14,7 +14,31 @@ namespace Demo_ASP.NET
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                BindGridView();
+            }
+        }
 
+        private void BindGridView()
+        {
+            int currentPageIndex = GridView1.PageIndex;
+            int pageSize = GridView1.PageSize;
+            int totalCount = GetTotalCount();
+
+            GridView1.VirtualItemCount = totalCount;
+            GetPageData(currentPageIndex, pageSize);
+        }
+        private int GetTotalCount()
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Student", connection))
+                {
+                    connection.Open();
+                    return (int)command.ExecuteScalar();
+                }
+            }
         }
         protected void InsertButton(object sender, EventArgs e)
         {
@@ -27,7 +51,6 @@ namespace Demo_ASP.NET
                 cmd.Parameters.AddWithValue("@FirstName", TextBox1.Text);
                 cmd.Parameters.AddWithValue("@LastName", TextBox2.Text);
                 cmd.ExecuteNonQuery();
-                Response.Write("data inserted successfully");
                 Response.Redirect("GridView.aspx");
             }
         }
@@ -39,25 +62,63 @@ namespace Demo_ASP.NET
         }
 
 
+        protected void PagingGridView(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            BindGridView(); // Rebind data on page change
+        }
+
+        public void GetPageData(int currentPageIndex, int pageSize)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            {
+                string sortExpression = ViewState["SortExpression"] != null ? ViewState["SortExpression"].ToString() : "StudentID";
+                string sortDirection = ViewState["SortDirection"] != null ? ViewState["SortDirection"].ToString() : "ASC";
+
+        
+                string query = string.Format(@"SELECT * FROM (
+                                            SELECT ROW_NUMBER() OVER (ORDER BY {0} {1}) AS RowNum, * 
+                                            FROM Student
+                                        ) AS Students 
+                                        WHERE RowNum BETWEEN @StartIndex AND @EndIndex", sortExpression, sortDirection);
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int startIndex = currentPageIndex * pageSize + 1;
+                    int endIndex = startIndex + pageSize - 1;
+
+                    command.Parameters.AddWithValue("@StartIndex", startIndex);
+                    command.Parameters.AddWithValue("@EndIndex", endIndex);
+
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        GridView1.DataSource = dt;
+                        GridView1.DataBind();
+                    }
+                }
+            }
+        }
         protected void SortingGridView(object sender, GridViewSortEventArgs e)
         {
-            string sortDirection = ViewState["SortDirection"] as string;
-            if (string.IsNullOrEmpty(sortDirection))
+            string sortDirection = "ASC";
+            if (ViewState["SortDirection"] != null)
             {
-                sortDirection = "ASC";
+                sortDirection = ViewState["SortDirection"].ToString();
+                if (e.SortExpression == ViewState["SortExpression"].ToString())
+                {
+                    sortDirection = (sortDirection == "ASC") ? "DESC" : "ASC";
+                }
             }
 
-            sortDirection = (sortDirection == "ASC") ? "DESC" : "ASC";
+            ViewState["SortExpression"] = e.SortExpression;
             ViewState["SortDirection"] = sortDirection;
 
-            SqlDataSource1.SelectCommand = "SELECT * FROM [Student]";
-            if (!string.IsNullOrEmpty(e.SortExpression))
-            {
-                SqlDataSource1.SelectCommand += " ORDER BY " + e.SortExpression + " " + sortDirection;
-            }
-
-            GridView1.DataBind();
+            BindGridView();
         }
+
 
     }
 }
