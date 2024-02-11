@@ -61,5 +61,16 @@ namespace DemoUserManagement.ModelView
             public string State { get; set; }
         }
 
+        public class GridViewUserDetailsModel
+        {
+            public int UserID { get; set; }
+            public string FirstName { get; set; }
+            public string Gender { get; set; }
+            public DateTime? DateOfBirth { get; set; }
+            public string AadharNo { get; set; }
+            public string Email { get; set; }
+            public string PhoneNumber { get; set; }
+       
+        }
     }
 }

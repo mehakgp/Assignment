@@ -1,0 +1,93 @@
+11-02-2024 20:58:46 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement._Default.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\Default.aspx.cs:line 53
+--------------------------------------------------
+11-02-2024 20:59:02 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement._Default.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\Default.aspx.cs:line 53
+--------------------------------------------------
+11-02-2024 21:01:15 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement._Default.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\Default.aspx.cs:line 53
+--------------------------------------------------
+11-02-2024 21:18:11 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------
+11-02-2024 21:18:19 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------
+11-02-2024 21:18:40 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------
+11-02-2024 21:18:50 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------
+11-02-2024 21:22:38 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------
+11-02-2024 21:40:02 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
+--------------------------------------------------
+11-02-2024 21:53:01 - Exception: No connection string named 'DemoUserManagementEntities' could be found in the application config file.
+StackTrace:    at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 28
+--------------------------------------------------

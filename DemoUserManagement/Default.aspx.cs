@@ -17,12 +17,15 @@ namespace DemoUserManagement
         {
 
         }
+
+
+
         protected void btnSubmitClick(object sender, EventArgs e)
         {
             try
             {
-               
-                UserDetailsModel userDetails=new UserDetailsModel
+
+                UserDetailsModel userDetails = new UserDetailsModel
                 {
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
@@ -46,45 +49,43 @@ namespace DemoUserManagement
                     Hobbies = txtHobbies.Text,
                     Comments = txtComments.Text
                 };
+                AddressDetailsModel currentAddress = new AddressDetailsModel();
 
-                AddressDetailsModel currentAddress = new AddressDetailsModel
-                {
-                    AddressType = 1, 
-                    AddressLine1 = txtCurrentAddressLine1.Text,
-                    AddressLine2 = txtCurrentAddressLine2.Text,
-                    Pincode = txtCurrentPincode.Text,
-                    Country = ddlCurrentCountry.SelectedItem.Text,
-                    State = ddlCurrentState.SelectedItem.Text
-                };
+                // Check and assign values, replacing null values with an empty string
+                currentAddress.AddressType = 1;
+                currentAddress.AddressLine1 = txtCurrentAddressLine1?.Text ?? "";
+                currentAddress.AddressLine2 = txtCurrentAddressLine2?.Text ?? "";
+                currentAddress.Pincode = txtCurrentPincode?.Text ?? "";
+                currentAddress.Country = ddlCurrentCountry?.SelectedItem?.Text ?? "";
+                currentAddress.State = ddlCurrentState?.SelectedItem?.Text ?? "";
 
-                AddressDetailsModel  permanentAddress = new AddressDetailsModel
-                {
-                    AddressType = 2,
-                    AddressLine1 = txtPermanentAddressLine1.Text,
-                    AddressLine2 = txtPermanentAddressLine2.Text,
-                    Pincode = txtPermanentPincode.Text,
-                    Country = ddlPermanentCountry.SelectedItem.Text,
-                    State = ddlPermanentState.SelectedItem.Text
-                };
+                AddressDetailsModel permanentAddress = new AddressDetailsModel();
+
+                // Check and assign values, replacing null values with an empty string
+                permanentAddress.AddressType = 2;
+                permanentAddress.AddressLine1 = txtPermanentAddressLine1?.Text ?? "";
+                permanentAddress.AddressLine2 = txtPermanentAddressLine2?.Text ?? "";
+                permanentAddress.Pincode = txtPermanentPincode?.Text ?? "";
+                permanentAddress.Country = ddlPermanentCountry?.SelectedItem?.Text ?? "";
+                permanentAddress.State = ddlPermanentState?.SelectedItem?.Text ?? "";
+
 
 
                 Business business = new Business();
                 bool success = business.SaveUserDetails(userDetails, currentAddress, permanentAddress);
 
-              
-
                 if (success)
                 {
                     Response.Redirect("Users.aspx");
                 }
-              
+
             }
             catch (Exception ex)
             {
                 Utility.LogException(ex);
             }
         }
- 
+
 
 
     }

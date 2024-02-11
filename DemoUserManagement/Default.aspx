@@ -69,7 +69,7 @@
             <h2>Personal Details</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="txtFirstName">First Name:</label>
+                    <label for="txtFirstName">First Name: *</label>
                     <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
@@ -92,11 +92,11 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-4">
-                    <label for="txtDateOfBirth">Date of Birth:</label>
+                    <label for="txtDateOfBirth">Date of Birth: *</label>
                     <asp:TextBox ID="txtDateOfBirth" runat="server" CssClass="form-control" TextMode="Date" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
-                    <label for="txtAadharNo">Aadhar No:</label>
+                    <label for="txtAadharNo">Aadhar No: *</label>
                     <asp:TextBox ID="txtAadharNo" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
             </div>
@@ -104,11 +104,11 @@
             <h2>Contact Details</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="txtEmail">Email:</label>
+                    <label for="txtEmail">Email: *</label>
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
-                    <label for="txtPhoneNumber">Phone Number:</label>
+                    <label for="txtPhoneNumber">Phone Number: *</label>
                     <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <h4>Current Address</h4>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="txtCurrentAddressLine1">Address Line 1:</label>
+                    <label for="txtCurrentAddressLine1">Address Line 1: *</label>
                     <asp:TextBox ID="txtCurrentAddressLine1" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
@@ -127,29 +127,29 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="ddlCurrentCountry">Country:</label>
+                    <label for="ddlCurrentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlCurrentCountry" runat="server" CssClass="form-control" ClientIDMode="Static">
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-4">
-                    <label for="ddlCurrentState">State:</label>
+                    <label for="ddlCurrentState">State: *</label>
                     <asp:DropDownList ID="ddlCurrentState" runat="server" CssClass="form-control" ClientIDMode="Static">
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-4">
-                    <label for="txtCurrentPincode">Pincode:</label>
+                    <label for="txtCurrentPincode">Pincode: *</label>
                     <asp:TextBox ID="txtCurrentPincode" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
             </div>
 
             <h4>Permanent Address</h4>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="chkSameAsCurrent">
+                <input type="checkbox" class="form-check-input" id="chkSameAsCurrent" onclick="copyCurrentAddress()">
                 <label class="form-check-label" for="chkSameAsCurrent">Same as Current Address</label>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="txtPermanentAddressLine1">Address Line 1:</label>
+                    <label for="txtPermanentAddressLine1">Address Line 1: *</label>
                     <asp:TextBox ID="txtPermanentAddressLine1" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
@@ -159,17 +159,17 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="ddlPermanentCountry">Country:</label>
+                    <label for="ddlPermanentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlPermanentCountry" runat="server" CssClass="form-control" ClientIDMode="Static">
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-4">
-                    <label for="ddlPermanentState">State:</label>
+                    <label for="ddlPermanentState">State: *</label>
                     <asp:DropDownList ID="ddlPermanentState" runat="server" CssClass="form-control" ClientIDMode="Static">
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-4">
-                    <label for="txtPermanentPincode">Pincode:</label>
+                    <label for="txtPermanentPincode">Pincode: *</label>
                     <asp:TextBox ID="txtPermanentPincode" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
             </div>
@@ -177,7 +177,7 @@
             <h4>Class 10</h4>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="txtMarks10th">Percentage:</label>
+                    <label for="txtMarks10th">Percentage: *</label>
                     <asp:TextBox ID="txtMarks10th" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
@@ -201,7 +201,7 @@
             <h4>Class 12</h4>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="txtMarks12th">Percentage:</label>
+                    <label for="txtMarks12th">Percentage: *</label>
                     <asp:TextBox ID="txtMarks12th" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
@@ -225,7 +225,7 @@
             <h4>Graduation</h4>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="txtCGPA">CGPA:</label>
+                    <label for="txtCGPA">CGPA: *</label>
                     <asp:TextBox ID="txtCGPA" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-3">
@@ -240,11 +240,11 @@
 
             <h2>Other Details</h2>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="txtHobbies">Hobbies:</label>
                     <asp:TextBox ID="txtHobbies" runat="server" CssClass="form-control"  TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="txtComments">Comments/ Feedback:</label>
                     <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
@@ -252,7 +252,7 @@
         </div>
          <div class="row mt-3">
                 <div class="col-md-12 text-center">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary"OnClientClick="return validateForm();" OnClick="btnSubmitClick" />
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="return validateForm();" OnClick="btnSubmitClick" />
                     <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-secondary ml-2" OnClientClick="resetForm();" />
                 </div>
             </div>

@@ -11,6 +11,8 @@ namespace DemoUserManagement.DataAccessLayer
 {
     public class DataAccess
     {
+
+       
         public bool SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
         {
             try
@@ -56,11 +58,58 @@ namespace DemoUserManagement.DataAccessLayer
                 return true;
             }
 
-
-
             catch (Exception ex)
             {
 
+                Utility.LogException(ex);
+                return false;
+            }
+        }
+
+        public List<GridViewUserDetailsModel> GetUsers()
+        {
+            List<GridViewUserDetailsModel> users = new List<GridViewUserDetailsModel>();
+
+            using (var context = new DemoUserManagementEntities())
+            {
+               
+                users = context.UserDetails.Select(u => new GridViewUserDetailsModel
+                {
+                    UserID = u.UserID,
+                    FirstName = u.FirstName,
+                    Gender = u.Gender,
+                    DateOfBirth = u.DateOfBirth,
+                    AadharNo = u.AadharNo,
+                    Email = u.Email,
+                    PhoneNumber = u.PhoneNumber
+                    // Populate other properties as needed
+                }).ToList();
+            }
+
+            return users;
+        }
+
+        public bool DeleteUser(int userId)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var user = context.UserDetails.FirstOrDefault(u => u.UserID == userId);
+                    if (user != null)
+                    {
+                        context.UserDetails.Remove(user);
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 Utility.LogException(ex);
                 return false;
             }

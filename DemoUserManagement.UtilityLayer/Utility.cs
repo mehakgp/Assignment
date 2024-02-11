@@ -24,22 +24,22 @@ namespace DemoUserManagement.UtilityLayer
                     writer.WriteLine($"StackTrace: {ex.StackTrace}");
                     writer.WriteLine("--------------------------------------------------");
                 }
-                string ConString = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
-                using (var connection = new SqlConnection(ConString))
-                {
-                    connection.Open();
+                //string ConString = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+                //using (var connection = new SqlConnection(ConString))
+                //{
+                //    connection.Open();
 
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = "INSERT INTO LogException (LogTime, ExceptionMessage, StackTrace) VALUES (@LogTime, @ExceptionMessage, @StackTrace)";
+                //    using (var command = connection.CreateCommand())
+                //    {
+                //        command.CommandText = "INSERT INTO LogException (LogTime, ExceptionMessage, StackTrace) VALUES (@LogTime, @ExceptionMessage, @StackTrace)";
 
-                        command.Parameters.AddWithValue("@LogTime", DateTime.Now);
-                        command.Parameters.AddWithValue("@ExceptionMessage", ex.Message);
-                        command.Parameters.AddWithValue("@StackTrace", ex.StackTrace);
+                //        command.Parameters.AddWithValue("@LogTime", DateTime.Now);
+                //        command.Parameters.AddWithValue("@ExceptionMessage", ex.Message);
+                //        command.Parameters.AddWithValue("@StackTrace", ex.StackTrace);
 
-                        command.ExecuteNonQuery();
-                    }
-                }
+                //        command.ExecuteNonQuery();
+                //    }
+                //}
             }
             catch (Exception logEx)
             {

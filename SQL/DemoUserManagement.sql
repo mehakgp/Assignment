@@ -68,3 +68,10 @@ VALUES ('ChinaState1', (SELECT CountryID FROM Country WHERE CountryName = 'China
 
 SELECT * FROM Country;
 SELECT * FROM State;
+
+CREATE TABLE LogException (
+    ExceptionID INT IDENTITY(1,1) PRIMARY KEY,
+    LogTime DATETIME,
+    ExceptionMessage NVARCHAR(MAX),
+    StackTrace NVARCHAR(MAX)
+);
