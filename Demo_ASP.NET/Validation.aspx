@@ -1,13 +1,21 @@
 ﻿<%@ Page Title="Validation" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Validation.aspx.cs" Inherits="Demo_ASP.NET.Validation" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<%@ Register Src="~/PageNameUserControl.ascx" TagPrefix="NameUC" TagName="PageNameUserControl" %>
+<%@ Register Src="~/NoteUserControl.ascx" TagPrefix="NoteUC" TagName="NoteUserControl" %>
 
+
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    
     <style>
         #submit {
             margin-top: 20px;
         }
     </style>
     <main>
+        <NameUC:PageNameUserControl runat="server" ID="PageNameUserControl" PageName="Validation"/>
+
+        <NoteUC:NoteUserControl runat="server" ID="NoteUserControl" PageName="Validation" />
         <div>
             <h3>Enter Name: *</h3>
             <asp:TextBox ID="nameTextBox" runat="server"></asp:TextBox>

@@ -1,80 +1,56 @@
 ﻿<%@ Page Title="GridView" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GridView.aspx.cs" Inherits="Demo_ASP.NET.GridView" %>
 
+<%@ Register Src="~/PageNameUserControl.ascx" TagPrefix="NameUC" TagName="PageNameUserControl" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style>
-        .gridview-container {
-            margin-bottom: 20px;
-        }
-
-        .gridview-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
-            font-weight: bold;
-        }
-
-        .gridview-row {
-            padding: 8px;
-        }
-
-            .gridview-row:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            .gridview-row:hover {
-                background-color: #cce5ff;
-            }
-
-        .gridview-action-buttons {
-            white-space: nowrap;
-        }
-
-        .input-container, .button-container {
-            margin-bottom: 10px;
-        }
-    </style>
     <main>
+        <NameUC:PageNameUserControl runat="server" ID="PageNameUserControl" PageName="GridView" />
         <div>
             <h3>STUDENT TABLE</h3>
+
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
                 AllowSorting="true" OnSorting="SortingGridView"
                 AllowPaging="True" AllowCustomPaging="true" PageSize="3" OnPageIndexChanging="PagingGridView"
                 CssClass="gridview">
 
                 <Columns>
+
                     <asp:BoundField DataField="StudentID" HeaderText="ID" SortExpression="StudentID" />
                     <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                    <asp:TemplateField HeaderText="Actions">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" CommandArgument='<%# Eval("StudentID") %>' Text="Edit" />
-                            <asp:LinkButton ID="DeleteButton" runat="server" CommandName="Delete" CommandArgument='<%# Eval("StudentID") %>' Text="Delete" />
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                            <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                        </EditItemTemplate>
-                    </asp:TemplateField>
+
                 </Columns>
+
+
             </asp:GridView>
 
+            <asp:Button ID="btnAdd" runat="server" Text="Add New Student" OnClick="btnAdd_Click" />
+            <asp:Button ID="btnUpdate" runat="server" Text="Update Student" OnClick="btnUpdate_Click" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete Student" OnClick="btnDelete_Click" />
+
+            <asp:Panel ID="pnlAddStudent" runat="server" Visible="false">
+                <h4>Add New Student</h4>
+                <asp:TextBox ID="txtAddFirstName" runat="server" placeholder="Enter First Name"></asp:TextBox>
+                <asp:TextBox ID="txtAddLastName" runat="server" placeholder="Enter Last Name"></asp:TextBox>
+                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+            </asp:Panel>
+            <asp:Panel ID="pnlUpdateStudent" runat="server" Visible="false">
+                <h4>Update Student</h4>
+                <asp:TextBox ID="txtUpdateStudentID" runat="server" placeholder="Enter Student ID"></asp:TextBox>
+                <asp:TextBox ID="txtUpdateFirstName" runat="server" placeholder="Enter First Name"></asp:TextBox>
+                <asp:TextBox ID="txtUpdateLastName" runat="server" placeholder="Enter Last Name"></asp:TextBox>
+                <asp:Button ID="btnUpdateSave" runat="server" Text="Save" OnClick="btnUpdateSave_Click" />
+            </asp:Panel>
+
+            <asp:Panel ID="pnlDeleteStudent" runat="server" Visible="false">
+                <h4>Delete Student</h4>
+                <asp:TextBox ID="txtDeleteStudentID" runat="server" placeholder="Enter Student ID"></asp:TextBox>
+                <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" OnClick="btnDeleteConfirm_Click" />
+            </asp:Panel>
 
 
-            <br />
-            <div class="input-container">
-                <label>First Name</label>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            </div>
-            <div class="input-container">
-                <label>Last Name</label>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            </div>
-            <div class="button-container">
-                <asp:Button ID="Button1" runat="server" Text="Insert" OnClick="InsertButton" />
-                <asp:Button ID="Button2" runat="server" Text="Reset" OnClick="ResetButton" />
-            </div>
         </div>
-
     </main>
 </asp:Content>

@@ -9,7 +9,6 @@ namespace Demo_ASP.NET
 {
     public partial class StudentUserControl : System.Web.UI.UserControl
     {
-        public string PageName {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -121,6 +121,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="DataList.aspx" />
+    <Content Include="NoteUserControl.ascx" />
+    <Content Include="PageNameUserControl.ascx" />
     <Content Include="Validation.aspx" />
     <Content Include="RegistrationForm.aspx" />
     <Content Include="favicon.ico" />
@@ -204,6 +206,20 @@
     </Compile>
     <Compile Include="DataList.aspx.designer.cs">
       <DependentUpon>DataList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NoteUserControl.ascx.cs">
+      <DependentUpon>NoteUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoteUserControl.ascx.designer.cs">
+      <DependentUpon>NoteUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PageNameUserControl.ascx.cs">
+      <DependentUpon>PageNameUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageNameUserControl.ascx.designer.cs">
+      <DependentUpon>PageNameUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Validation.aspx.cs">
       <DependentUpon>Validation.aspx</DependentUpon>

@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="RegistrationForm" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="RegistrationForm.aspx.cs" Inherits="Demo_ASP.NET.RegistrationForm" %>
 
+<%@ Register Src="~/PageNameUserControl.ascx" TagPrefix="NameUC" TagName="PageNameUserControl" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
@@ -12,7 +15,7 @@
         }
     </style>
     <main>
-
+        <NameUC:PageNameUserControl runat="server" ID="PageNameUserControl" PageName="RegistrationForm"/>
         <div>
             <h2>Welcome to the Web Forms!</h2>
         </div>
@@ -68,8 +71,7 @@
         <div>
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButtonClicked">LinkButtonTest</asp:LinkButton>
         </div>
-        </form>
-
+        
 
 
     <div>

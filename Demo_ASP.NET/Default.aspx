@@ -1,17 +1,21 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Demo_ASP.NET._Default" %>
+
 <%@ Register Src="~/StudentUserControl.ascx" TagName="Student" TagPrefix="uc" %>
+<%@ Register Src="~/PageNameUserControl.ascx" TagPrefix="NameUC" TagName="PageNameUserControl" %>
+<%@ Register Src="~/NoteUserControl.ascx" TagPrefix="NoteUC" TagName="NoteUserControl" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <%-- user control to display page name --%>
+    <NameUC:PageNameUserControl runat="server" ID="PageNameUserControl" PageName="Default" />
     <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-          
-        </section>
 
-       
+        <%-- Practicing user control --%>
+        <uc:Student ID="studentcontrol" runat="server" />
 
-         <uc:Student ID="studentcontrol" runat="server" />
+        <%-- usercontrol for note and gridview of notes of that id and pageName --%>
+        <NoteUC:NoteUserControl runat="server" ID="NoteUserControl" PageName="Default" />
     </main>
 
 </asp:Content>

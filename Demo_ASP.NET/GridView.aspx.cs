@@ -14,7 +14,7 @@ namespace Demo_ASP.NET
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 BindGridView();
             }
@@ -40,28 +40,6 @@ namespace Demo_ASP.NET
                 }
             }
         }
-        protected void InsertButton(object sender, EventArgs e)
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
-            {
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO Student (FirstName, LastName) VALUES (@FirstName, @LastName)";
-                cmd.Parameters.AddWithValue("@FirstName", TextBox1.Text);
-                cmd.Parameters.AddWithValue("@LastName", TextBox2.Text);
-                cmd.ExecuteNonQuery();
-                Response.Redirect("GridView.aspx");
-            }
-        }
-        protected void ResetButton(object sender, EventArgs e)
-        {
-
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-        }
-
-
         protected void PagingGridView(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
@@ -75,7 +53,7 @@ namespace Demo_ASP.NET
                 string sortExpression = ViewState["SortExpression"] != null ? ViewState["SortExpression"].ToString() : "StudentID";
                 string sortDirection = ViewState["SortDirection"] != null ? ViewState["SortDirection"].ToString() : "ASC";
 
-        
+
                 string query = string.Format(@"SELECT * FROM (
                                             SELECT ROW_NUMBER() OVER (ORDER BY {0} {1}) AS RowNum, * 
                                             FROM Student
@@ -117,6 +95,109 @@ namespace Demo_ASP.NET
             ViewState["SortDirection"] = sortDirection;
 
             BindGridView();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            pnlAddStudent.Visible = true;
+            pnlUpdateStudent.Visible = false;
+            pnlDeleteStudent.Visible = false;
+        }
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            pnlAddStudent.Visible = false;
+            pnlUpdateStudent.Visible = true;
+            pnlDeleteStudent.Visible = false;
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            pnlAddStudent.Visible = false;
+            pnlUpdateStudent.Visible = false;
+            pnlDeleteStudent.Visible = true;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            AddStudent(txtAddFirstName.Text, txtAddLastName.Text);
+            pnlAddStudent.Visible = false;
+            BindGridView(); // Rebind GridView after adding a new record
+        }
+       
+     
+        private void AddStudent(string firstName, string lastName)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            string query = "INSERT INTO Student (FirstName, LastName) VALUES (@FirstName, @LastName)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FirstName", firstName);
+                    command.Parameters.AddWithValue("@LastName", lastName);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        protected void btnUpdateSave_Click(object sender, EventArgs e)
+        {
+            int studentID = Convert.ToInt32(txtUpdateStudentID.Text);
+            string firstName = txtUpdateFirstName.Text;
+            string lastName = txtUpdateLastName.Text;
+
+            // Call the update method passing the student ID and other details
+            UpdateStudent(studentID, firstName, lastName);
+            pnlUpdateStudent.Visible = false;
+            BindGridView();
+        }
+
+        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
+        {
+            int studentID = Convert.ToInt32(txtDeleteStudentID.Text);
+
+            // Call the delete method passing the student ID
+            DeleteStudent(studentID);
+            pnlDeleteStudent.Visible = false;
+            BindGridView();
+        }
+        private void UpdateStudent(int studentID, string firstName, string lastName)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            string query = "UPDATE Student SET FirstName = @FirstName, LastName = @LastName WHERE StudentID = @StudentID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FirstName", firstName);
+                    command.Parameters.AddWithValue("@LastName", lastName);
+                    command.Parameters.AddWithValue("@StudentID", studentID);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void DeleteStudent(int studentID)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            string query = "DELETE FROM Student WHERE StudentID = @StudentID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StudentID", studentID);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
 

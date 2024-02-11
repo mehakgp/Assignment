@@ -28,4 +28,3 @@
 </table>
 <br />
 <asp:Label ID="Label1" runat="server" ></asp:Label>
-<asp:Label ID="label2" runat="server"></asp:Label>

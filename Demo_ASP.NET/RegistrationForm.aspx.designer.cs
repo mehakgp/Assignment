@@ -15,6 +15,15 @@ namespace Demo_ASP.NET
     {
 
         /// <summary>
+        /// PageNameUserControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Demo_ASP.NET.PageNameUserControl PageNameUserControl;
+
+        /// <summary>
         /// label1 control.
         /// </summary>
         /// <remarks>

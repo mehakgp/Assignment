@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="DataList" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DataList.aspx.cs" Inherits="Demo_ASP.NET.DataList" %>
 
+<%@ Register Src="~/PageNameUserControl.ascx" TagPrefix="NameUC" TagName="PageNameUserControl" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-
+        <NameUC:PageNameUserControl runat="server" ID="PageNameUserControl" PageName="DataList"/>
         <div>
             <div>
                 <p>The DataList shows data of DataTable</p>
