@@ -104,15 +104,15 @@ function validateForm() {
         isValid = false;
     }
 
-    //if (currentState === '') {
-    //    displayValidationMessage('ddlCurrentState', 'State is mandatory');
-    //    isValid = false;
-    //}
+    if (currentState === '') {
+        displayValidationMessage('ddlCurrentState', 'State is mandatory');
+        isValid = false;
+    }
 
-    //if (currentCountry === '') {
-    //    displayValidationMessage('ddlCurrentCountry', 'Country is mandatory');
-    //    isValid = false;
-    //}
+    if (currentCountry === '') {
+        displayValidationMessage('ddlCurrentCountry', 'Country is mandatory');
+        isValid = false;
+    }
 
     if (permanentAddressLine1 === '') {
         displayValidationMessage('txtPermanentAddressLine1', 'Address Line1 is mandatory');
@@ -124,15 +124,15 @@ function validateForm() {
         isValid = false;
     }
 
-    //if (permanentState === '') {
-    //    displayValidationMessage('ddlPermanentState', 'State is mandatory');
-    //    isValid = false;
-    //}
+    if (permanentState === '') {
+        displayValidationMessage('ddlPermanentState', 'State is mandatory');
+        isValid = false;
+    }
 
-    //if (permanentCountry === '') {
-    //    displayValidationMessage('ddlPermanentCountry', 'Country is mandatory');
-    //    isValid = false;
-    //}
+    if (permanentCountry === '') {
+        displayValidationMessage('ddlPermanentCountry', 'Country is mandatory');
+        isValid = false;
+    }
 
 
     if (marks10th === '' || isNaN(marks10th) || marks10th < 1 || marks10th > 100) {

@@ -4,13 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e0c6acfb2e74c16b28845fd5f1b2d50" Name="Diagram1" ZoomLevel="83">
+      <Diagram DiagramId="5e0c6acfb2e74c16b28845fd5f1b2d50" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="DemoUserManagementModel.AddressDetail" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoUserManagementModel.Country" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoUserManagementModel.State" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoUserManagementModel.UserDetail" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="DemoUserManagementModel.FK_UserID" ManuallyRouted="false" />
         <AssociationConnector Association="DemoUserManagementModel.FK_CountryID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.LogException" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Note" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

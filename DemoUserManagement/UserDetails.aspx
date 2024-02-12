@@ -1,67 +1,69 @@
-﻿<%@ Page Title="User Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="DemoUserManagement._Default" %>
+﻿<%@ Page Title="User Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="DemoUserManagement.UserDetials" %>
+
+<%@ Register Src="~/NoteUserControl.ascx" TagPrefix="uc1" TagName="NoteUserControl" %>
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="Scripts/DemoUserManagement.js"></script>
 
-       <style>
-   
+    <style>
         .container {
-            background-color: #f8f9fa; 
+            background-color: #f8f9fa;
             padding: 20px;
-            border: 1px solid #ced4da; 
+            border: 1px solid #ced4da;
             border-radius: 5px;
         }
-          h1 {
-      text-align: center; 
-      color: #0056b3; 
-      
-      padding-bottom: 10px; 
-  }
-         h2 {
-          
+
+        h1 {
+            text-align: center;
             color: #0056b3;
-          
-            border-bottom: 2px solid #007bff; 
             padding-bottom: 10px;
         }
-         h4{
-             color: #2076D3;
-             font-style:italic;
-         }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        h4 {
+            color: #2076D3;
+            font-style: italic;
+        }
 
         .row {
             margin-bottom: 20px;
         }
 
-    label {
-        font-weight: bold; 
-        color: #0056b3; 
-    }
+        label {
+            font-weight: bold;
+            color: #0056b3;
+        }
 
-    .form-control {
-        border: 1px solid #007bff;
-        border-radius: 3px; 
-        padding: 6px 10px; 
-    }
+        .form-control {
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            padding: 6px 10px;
+        }
 
-    .btn {
-        background-color: #007bff;
-        color: #fff; 
-        border: none; 
-        border-radius: 3px;
-        padding: 8px 20px; 
-        cursor: pointer; 
-    }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
 
-    
-    .btn-secondary {
-        background-color: #6c757d; 
-    }
 
- 
-    .form-check-input {
-        margin-top: 6px; 
-    }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+
+        .form-check-input {
+            margin-top: 6px;
+        }
     </style>
     <main>
         <div class="container">
@@ -128,13 +130,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlCurrentCountry">Country: *</label>
-                    <asp:DropDownList ID="ddlCurrentCountry" runat="server" CssClass="form-control" ClientIDMode="Static">
+                    <asp:DropDownList ID="ddlCurrentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
+                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" >
                     </asp:DropDownList>
+                    
+
                 </div>
                 <div class="col-md-4">
                     <label for="ddlCurrentState">State: *</label>
-                    <asp:DropDownList ID="ddlCurrentState" runat="server" CssClass="form-control" ClientIDMode="Static">
+                    <asp:DropDownList ID="ddlCurrentState" runat="server" CssClass="form-control" ClientIDMode="Static"
+                        AutoPostBack="true" AppendDataBoundItems="true" >
                     </asp:DropDownList>
+                   
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentPincode">Pincode: *</label>
@@ -160,13 +167,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlPermanentCountry">Country: *</label>
-                    <asp:DropDownList ID="ddlPermanentCountry" runat="server" CssClass="form-control" ClientIDMode="Static">
+                    <asp:DropDownList ID="ddlPermanentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
+                          AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
                     </asp:DropDownList>
+                   
                 </div>
                 <div class="col-md-4">
                     <label for="ddlPermanentState">State: *</label>
-                    <asp:DropDownList ID="ddlPermanentState" runat="server" CssClass="form-control" ClientIDMode="Static">
+                    <asp:DropDownList ID="ddlPermanentState" runat="server" CssClass="form-control" ClientIDMode="Static"
+                          AutoPostBack="true" AppendDataBoundItems="true">
                     </asp:DropDownList>
+                    
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentPincode">Pincode: *</label>
@@ -242,20 +253,28 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtHobbies">Hobbies:</label>
-                    <asp:TextBox ID="txtHobbies" runat="server" CssClass="form-control"  TextMode="MultiLine" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtHobbies" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
                     <label for="txtComments">Comments/ Feedback:</label>
                     <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
-        </div>
-         <div class="row mt-3">
-                <div class="col-md-12 text-center">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="return validateForm();" OnClick="btnSubmitClick" />
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-secondary ml-2" OnClientClick="resetForm();" />
+            <div class="row">
+                <div class="col-md-8">
+                     <uc1:NoteUserControl runat="server" ID="NoteUserControl" PageName="UserDetails" />
                 </div>
             </div>
+          
+           
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClientClick="return validateForm();" OnClick="btnSubmitClick" />
+                <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-secondary ml-2" OnClientClick="resetForm();" />
+            </div>
+        </div>
     </main>
 
 </asp:Content>

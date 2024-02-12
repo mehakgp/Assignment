@@ -25,27 +25,28 @@ namespace DemoUserManagement
             Response.Redirect("UserDetails.aspx");
         }
 
+      
+
         protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            int userId = Convert.ToInt32(gvUsers.DataKeys[e.NewEditIndex].Value);
-            Response.Redirect($"UserDetails.aspx?UserId={userId}");
+            int userID = Convert.ToInt32(gvUsers.DataKeys[e.NewEditIndex].Value);
+             Response.Redirect($"UserDetails.aspx?UserID={userID}");
         }
-
+        
         protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int userId = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Value);
+            int userID = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Value);
+
             Business business = new Business();
-            bool success = business.DeleteUser(userId);
+            bool success = business.DeleteUser(userID);
 
             if (success)
             {
                 BindGridView();
             }
-            else
-            {
-                // Handle delete failure
-            }
         }
+
+
 
         private void BindGridView()
         {

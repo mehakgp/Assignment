@@ -72,5 +72,14 @@ namespace DemoUserManagement.ModelView
             public string PhoneNumber { get; set; }
        
         }
+
+        public class NotesModel
+        {
+            public int ID { get; set; }
+            public int ObjectID { get; set; }
+            public string ObjectType { get; set; }
+            public string Notes { get; set; }
+            public DateTime DateTime { get; set; }
+        }
     }
 }

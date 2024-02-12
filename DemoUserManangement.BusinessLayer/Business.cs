@@ -9,6 +9,15 @@ namespace DemoUserManangement.BusinessLayer
     public class Business
     {
         DataAccess dataAccess = new DataAccess();
+
+       public List<CountryModel> GetCountries()
+        {
+            return dataAccess.GetCountries();
+        }
+        public List<StateModel> GetStates(int countryId)
+        {
+            return dataAccess.GetStates(countryId);
+        }
         public bool SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
         {
             try
@@ -23,6 +32,20 @@ namespace DemoUserManangement.BusinessLayer
                 return false;
             }
         }
+
+        public bool EditUserDetails(UserDetailsModel userDetails,AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress , int userID)
+        {
+            try
+            {
+                bool successs = dataAccess.EditUserDetails(userDetails, currentAddress, permanentAddress,userID);
+                return successs;
+            }
+            catch(Exception ex)
+            {
+                Utility.LogException(ex);   
+                return false;
+            }
+        }
         public List<GridViewUserDetailsModel> GetUsers()
         {
             return dataAccess.GetUsers();
@@ -32,5 +55,16 @@ namespace DemoUserManangement.BusinessLayer
         {
             return dataAccess.DeleteUser(userId);
         }
+
+        public UserDetailsModel GetUserDetails(int userID)
+        {
+            return dataAccess.GetUserDetails(userID);
+        }
+
+        public AddressDetailsModel GetAddressDetails(int userID, int addressType) 
+        {
+         return dataAccess.GetAddressDetails(userID, addressType);
+        }
     }
+
 }

@@ -75,3 +75,15 @@ CREATE TABLE LogException (
     ExceptionMessage NVARCHAR(MAX),
     StackTrace NVARCHAR(MAX)
 );
+CREATE TABLE Notes (
+    ID INT PRIMARY KEY IDENTITY,
+    ObjectID INT,
+    ObjectType VARCHAR(100),
+    Note NVARCHAR(MAX),
+    DateTime DATETIME
+);
+
+SELECT * FROM Country;
+SELECT * FROM State;
+SELECT * FROM UserDetails;
+SELECT * FROM AddressDetails;
