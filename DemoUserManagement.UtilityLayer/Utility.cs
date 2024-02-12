@@ -46,5 +46,7 @@ namespace DemoUserManagement.UtilityLayer
                 Console.WriteLine($"Error writing to log file: {logEx.Message}");
             }
         }
+
+
     }
 }

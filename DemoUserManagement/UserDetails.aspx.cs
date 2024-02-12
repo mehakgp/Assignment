@@ -60,7 +60,6 @@ namespace DemoUserManagement
             ddlCurrentCountry.DataBind();
             ddlPermanentCountry.DataBind();
 
-            // Add a default item
             ddlCurrentCountry.Items.Insert(0, new ListItem("-- Select Country --", ""));
             ddlPermanentCountry.Items.Insert(0, new ListItem("-- Select Country --", ""));
         }
@@ -72,8 +71,6 @@ namespace DemoUserManagement
             ddlCurrentState.DataTextField = "StateName";
             ddlCurrentState.DataValueField = "StateID";
             ddlCurrentState.DataBind();
-
-            // Add a default item
             ddlCurrentState.Items.Insert(0, new ListItem("-- Select State --", ""));
         }
 
@@ -84,8 +81,6 @@ namespace DemoUserManagement
             ddlPermanentState.DataTextField = "StateName";
             ddlPermanentState.DataValueField = "StateID";
             ddlPermanentState.DataBind();
-
-            // Add a default item
             ddlPermanentState.Items.Insert(0, new ListItem("-- Select State --", ""));
         }
 
@@ -168,7 +163,6 @@ namespace DemoUserManagement
         private void PopulateFields(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
         {
 
-            // Populate user details
             txtFirstName.Text = userDetails.FirstName;
             txtLastName.Text = userDetails.LastName;
             txtMiddleName.Text = userDetails.MiddleName;
@@ -191,14 +185,13 @@ namespace DemoUserManagement
             txtHobbies.Text = userDetails.Hobbies;
             txtComments.Text = userDetails.Comments;
 
-            // Populate current address
+          
             txtCurrentAddressLine1.Text = currentAddress.AddressLine1;
             txtCurrentAddressLine2.Text = currentAddress.AddressLine2;
             txtCurrentPincode.Text = currentAddress.Pincode;
             ddlCurrentCountry.SelectedValue = currentAddress.Country;
             ddlCurrentState.SelectedValue = currentAddress.State;
 
-            // Populate permanent address
             txtPermanentAddressLine1.Text = permanentAddress.AddressLine1;
             txtPermanentAddressLine2.Text = permanentAddress.AddressLine2;
             txtPermanentPincode.Text = permanentAddress.Pincode;

@@ -37,10 +37,10 @@ function resetForm() {
 }
 
 function validateForm() {
-    // Resetting previous validation styles and messages
+  
     resetValidation();
 
-    // Get form input values
+
     var firstName = document.getElementById('txtFirstName').value.trim();
     var dob = document.getElementById('txtDateOfBirth').value.trim();
     var aadharNo = document.getElementById('txtAadharNo').value.trim();
@@ -159,13 +159,10 @@ function displayValidationMessage(elementId, message) {
     validationMessage.className = 'text-danger';
     validationMessage.innerHTML = message;
     document.getElementById(elementId).parentNode.appendChild(validationMessage);
-
-    // Highlight the input element with red border
     document.getElementById(elementId).style.borderColor = 'red';
 }
 
 function resetValidation() {
-    // Remove any previous validation messages and reset input borders
     var validationMessages = document.querySelectorAll('.text-danger');
     validationMessages.forEach(function (message) {
         message.parentNode.removeChild(message);

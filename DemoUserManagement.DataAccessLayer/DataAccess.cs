@@ -78,7 +78,7 @@ namespace DemoUserManagement.DataAccessLayer
 
                     var current = new AddressDetail
                     {
-                        UserID = user.UserID,  // Assign the UserID of the newly created user
+                        UserID = user.UserID, 
                         AddressType = currentAddress.AddressType,
                         AddressLine1 = currentAddress.AddressLine1,
                         AddressLine2 = currentAddress.AddressLine2,
@@ -90,7 +90,7 @@ namespace DemoUserManagement.DataAccessLayer
 
                     var permanent = new AddressDetail
                     {
-                        UserID = user.UserID,  // Assign the UserID of the newly created user
+                        UserID = user.UserID,
                         AddressType = permanentAddress.AddressType,
                         AddressLine1 = permanentAddress.AddressLine1,
                         AddressLine2 = permanentAddress.AddressLine2,
@@ -198,7 +198,7 @@ namespace DemoUserManagement.DataAccessLayer
                     AadharNo = u.AadharNo,
                     Email = u.Email,
                     PhoneNumber = u.PhoneNumber
-                    // Populate other properties as needed
+                   
                 }).ToList();
             }
 
