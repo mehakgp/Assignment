@@ -11,7 +11,7 @@ namespace DemoUserManagement
 {
 
 
-    public partial class UserDetials
+    public partial class UserDetails
     {
 
         /// <summary>
@@ -274,6 +274,15 @@ namespace DemoUserManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYearOfCompletionGraduation;
+
+        /// <summary>
+        /// resume control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload resume;
 
         /// <summary>
         /// txtHobbies control.

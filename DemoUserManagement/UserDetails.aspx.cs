@@ -1,30 +1,32 @@
-﻿using DemoUserManagement.UtilityLayer;
+﻿
 using DemoUserManangement.BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static DemoUserManagement.ModelView.Model;
+using static DemoUserManagement.UtilityLayer.Utility;
 
 
 namespace DemoUserManagement
 {
-    public partial class UserDetials : Page
+    public partial class UserDetails : Page
     {
         Business business = new Business();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
                 PopulateCountries();
                 if (Request.QueryString["UserID"] != null)
                 {
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
+                    NoteUserControl.ObjectID = userID;
+                    NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
                     UserDetailsModel userDetails = GetUserDetails(userID);
-                    AddressDetailsModel currentAddress = GetAddressDetails(userID, 1);
-                    AddressDetailsModel permanentAddress = GetAddressDetails(userID, 2);
+                    AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
+                    AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
                     PopulateFields(userDetails, currentAddress, permanentAddress);
                     NoteUserControl.Visible = true;
                 }
@@ -34,6 +36,8 @@ namespace DemoUserManagement
                 }
             }
         }
+
+
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             int countryId;
@@ -66,6 +70,7 @@ namespace DemoUserManagement
 
         private void PopulateCurrentStates(int countryId)
         {
+            ddlCurrentState.Items.Clear();
             var states = business.GetStates(countryId);
             ddlCurrentState.DataSource = states;
             ddlCurrentState.DataTextField = "StateName";
@@ -76,6 +81,7 @@ namespace DemoUserManagement
 
         private void PopulatePermanentStates(int countryId)
         {
+            ddlPermanentState.Items.Clear();
             var states = business.GetStates(countryId);
             ddlPermanentState.DataSource = states;
             ddlPermanentState.DataTextField = "StateName";
@@ -88,13 +94,23 @@ namespace DemoUserManagement
         {
             try
             {
+                string fileName = "", fileExtension, uniqueFileName="", uploadFolderPath = "", filePath = "";
+                if (resume.HasFile)
+                {
+                    fileName = resume.FileName;
+                    fileExtension = Path.GetExtension(fileName);
+                    uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
+                    uploadFolderPath = Server.MapPath("~/Upload/");
+                    filePath = Path.Combine(uploadFolderPath, uniqueFileName);
+                    resume.SaveAs(filePath);
+                }
                 UserDetailsModel userDetails = new UserDetailsModel
                 {
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     MiddleName = txtMiddleName.Text,
                     Gender = ddlGender.SelectedItem.Text,
-                    DateOfBirth = string.IsNullOrEmpty(txtDateOfBirth.Text) ? null : (DateTime?)DateTime.Parse(txtDateOfBirth.Text),
+                    DateOfBirth = (DateTime)(string.IsNullOrEmpty(txtDateOfBirth.Text) ? null : (DateTime?)DateTime.Parse(txtDateOfBirth.Text)),
                     AadharNo = txtAadharNo.Text,
                     Email = txtEmail.Text,
                     PhoneNumber = txtPhoneNumber.Text,
@@ -110,7 +126,9 @@ namespace DemoUserManagement
                     University = txtUniversity.Text,
                     YearOfCompletionGraduation = string.IsNullOrEmpty(txtYearOfCompletionGraduation.Text) ? null : (DateTime?)DateTime.Parse(txtYearOfCompletionGraduation.Text),
                     Hobbies = txtHobbies.Text,
-                    Comments = txtComments.Text
+                    Comments = txtComments.Text,
+                    UniqueFileName = uniqueFileName,
+                    OriginalFileName = fileName
                 };
                 AddressDetailsModel currentAddress = new AddressDetailsModel
                 {
@@ -118,8 +136,8 @@ namespace DemoUserManagement
                     AddressLine1 = txtCurrentAddressLine1?.Text ?? "",
                     AddressLine2 = txtCurrentAddressLine2?.Text ?? "",
                     Pincode = txtCurrentPincode?.Text ?? "",
-                    Country = ddlCurrentCountry?.SelectedItem?.Text ?? "",
-                    State = ddlCurrentState?.SelectedItem?.Text ?? "",
+                    CountryID = int.TryParse(ddlCurrentCountry.SelectedValue, out int currentCountryId) ? currentCountryId : 0,
+                    StateID = int.TryParse(ddlCurrentState.SelectedValue, out int currentStateId) ? currentStateId : 0
                 };
                 AddressDetailsModel permanentAddress = new AddressDetailsModel
                 {
@@ -127,14 +145,14 @@ namespace DemoUserManagement
                     AddressLine1 = txtPermanentAddressLine1?.Text ?? "",
                     AddressLine2 = txtPermanentAddressLine2?.Text ?? "",
                     Pincode = txtPermanentPincode?.Text ?? "",
-                    Country = ddlPermanentCountry?.SelectedItem?.Text ?? "",
-                    State = ddlPermanentState?.SelectedItem?.Text ?? "",
+                    CountryID = int.TryParse(ddlPermanentCountry.SelectedValue, out int permanentCountryId) ? permanentCountryId : 0,
+                    StateID = int.TryParse(ddlPermanentState.SelectedValue, out int permanentStateId) ? permanentStateId : 0
                 };
 
                 if (!string.IsNullOrEmpty(Request.QueryString["UserID"]))
                 {
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
-                    bool success=business.EditUserDetails(userDetails,currentAddress,permanentAddress,userID);
+                    bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
                     if (success)
                         Response.Redirect("Users.aspx");
                 }
@@ -147,7 +165,7 @@ namespace DemoUserManagement
             }
             catch (Exception ex)
             {
-                Utility.LogException(ex);
+                LogException(ex);
             }
         }
 
@@ -167,7 +185,9 @@ namespace DemoUserManagement
             txtLastName.Text = userDetails.LastName;
             txtMiddleName.Text = userDetails.MiddleName;
             ddlGender.SelectedValue = userDetails.Gender;
-            txtDateOfBirth.Text = userDetails.DateOfBirth.HasValue ? userDetails.DateOfBirth.Value.ToString("yyyy-MM-dd") : "";
+            txtDateOfBirth.Text = userDetails.DateOfBirth != DateTime.MinValue ? userDetails.DateOfBirth.ToString("yyyy-MM-dd") : "";
+
+            //    txtDateOfBirth.Text = userDetails.DateOfBirth.HasValue ? userDetails.DateOfBirth.Value.ToString("yyyy-MM-dd") : "";
             txtAadharNo.Text = userDetails.AadharNo;
             txtEmail.Text = userDetails.Email;
             txtPhoneNumber.Text = userDetails.PhoneNumber;
@@ -185,18 +205,22 @@ namespace DemoUserManagement
             txtHobbies.Text = userDetails.Hobbies;
             txtComments.Text = userDetails.Comments;
 
-          
+
+
             txtCurrentAddressLine1.Text = currentAddress.AddressLine1;
             txtCurrentAddressLine2.Text = currentAddress.AddressLine2;
             txtCurrentPincode.Text = currentAddress.Pincode;
-            ddlCurrentCountry.SelectedValue = currentAddress.Country;
-            ddlCurrentState.SelectedValue = currentAddress.State;
+            ddlCurrentCountry.SelectedValue = currentAddress.CountryID.ToString();
+            PopulateCurrentStates(currentAddress.CountryID);
+            ddlCurrentState.SelectedValue = currentAddress.StateID.ToString();
+
 
             txtPermanentAddressLine1.Text = permanentAddress.AddressLine1;
             txtPermanentAddressLine2.Text = permanentAddress.AddressLine2;
             txtPermanentPincode.Text = permanentAddress.Pincode;
-            ddlPermanentCountry.SelectedValue = permanentAddress.Country;
-            ddlPermanentState.SelectedValue = permanentAddress.State;
+            ddlPermanentCountry.SelectedValue = permanentAddress.CountryID.ToString();
+            PopulatePermanentStates(permanentAddress.CountryID);
+            ddlPermanentState.SelectedValue = permanentAddress.StateID.ToString();
 
         }
 

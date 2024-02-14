@@ -43,7 +43,7 @@ namespace Demo_ASP.NET
         protected void PagingGridView(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            BindGridView(); // Rebind data on page change
+            BindGridView(); 
         }
 
         public void GetPageData(int currentPageIndex, int pageSize)

@@ -15,14 +15,16 @@ namespace DemoUserManagement.DataAccessLayer
     public partial class AddressDetail
     {
         public int AddressID { get; set; }
-        public Nullable<int> UserID { get; set; }
-        public Nullable<int> AddressType { get; set; }
+        public int UserID { get; set; }
+        public int AddressType { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string Pincode { get; set; }
-        public string Country { get; set; }
-        public string State { get; set; }
+        public int CountryID { get; set; }
+        public int StateID { get; set; }
     
         public virtual UserDetail UserDetail { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual State State { get; set; }
     }
 }

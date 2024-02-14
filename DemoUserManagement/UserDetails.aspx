@@ -1,33 +1,28 @@
-﻿<%@ Page Title="User Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="DemoUserManagement.UserDetials" %>
+﻿<%@ Page Title="User Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="DemoUserManagement.UserDetails" %>
 
 <%@ Register Src="~/NoteUserControl.ascx" TagPrefix="uc1" TagName="NoteUserControl" %>
+
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="Scripts/DemoUserManagement.js"></script>
 
     <style>
-        .container {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-
+      
         h1 {
             text-align: center;
-            color: #0056b3;
+            color: rgba(33,37,41);
             padding-bottom: 10px;
         }
 
         h2 {
-            color: #0056b3;
-            border-bottom: 2px solid #007bff;
+            color: rgba(33,37,41);
+            border-bottom: 2px solid rgba(33,37,41);
             padding-bottom: 10px;
         }
 
         h4 {
-            color: #2076D3;
+            color: rgba(33,37,41);
             font-style: italic;
         }
 
@@ -37,17 +32,12 @@
 
         label {
             font-weight: bold;
-            color: #0056b3;
+            color: rgba(33,37,41);
         }
 
-        .form-control {
-            border: 1px solid #007bff;
-            border-radius: 3px;
-            padding: 6px 10px;
-        }
 
         .btn {
-            background-color: #007bff;
+            background-color:rgba(33,37,41);
             color: #fff;
             border: none;
             border-radius: 3px;
@@ -131,17 +121,17 @@
                 <div class="col-md-4">
                     <label for="ddlCurrentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlCurrentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
-                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" >
+                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
                     </asp:DropDownList>
-                    
+
 
                 </div>
                 <div class="col-md-4">
                     <label for="ddlCurrentState">State: *</label>
                     <asp:DropDownList ID="ddlCurrentState" runat="server" CssClass="form-control" ClientIDMode="Static"
-                        AutoPostBack="true" AppendDataBoundItems="true" >
+                        AutoPostBack="true" AppendDataBoundItems="true">
                     </asp:DropDownList>
-                   
+
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentPincode">Pincode: *</label>
@@ -168,16 +158,16 @@
                 <div class="col-md-4">
                     <label for="ddlPermanentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlPermanentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
-                          AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
                     </asp:DropDownList>
-                   
+
                 </div>
                 <div class="col-md-4">
                     <label for="ddlPermanentState">State: *</label>
                     <asp:DropDownList ID="ddlPermanentState" runat="server" CssClass="form-control" ClientIDMode="Static"
-                          AutoPostBack="true" AppendDataBoundItems="true">
+                        AutoPostBack="true" AppendDataBoundItems="true">
                     </asp:DropDownList>
-                    
+
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentPincode">Pincode: *</label>
@@ -247,6 +237,11 @@
                     <label for="txtYearOfCompletionGraduation">Year of Completion:</label>
                     <asp:TextBox ID="txtYearOfCompletionGraduation" runat="server" CssClass="form-control" ClientIDMode="Static" TextMode="Month"></asp:TextBox>
                 </div>
+                <div class="col-md-3">
+                    <label for="resume">Upload your Resume:</label>
+                    <asp:FileUpload ID="resume" runat="server" CssClass="form-control" ClientIDMode="Static" />
+
+                </div>
             </div>
 
             <h2>Other Details</h2>
@@ -262,11 +257,11 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                     <uc1:NoteUserControl runat="server" ID="NoteUserControl" PageName="UserDetails" />
+                    <uc1:NoteUserControl runat="server" ID="NoteUserControl"    />
                 </div>
             </div>
-          
-           
+
+
         </div>
 
         <div class="row mt-3">

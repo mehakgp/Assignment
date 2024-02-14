@@ -25,7 +25,7 @@ namespace DemoUserManagement.DataAccessLayer
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
         public string AadharNo { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -42,6 +42,8 @@ namespace DemoUserManagement.DataAccessLayer
         public Nullable<System.DateTime> YearOfCompletionGraduation { get; set; }
         public string Hobbies { get; set; }
         public string Comments { get; set; }
+        public string UniqueFileName { get; set; }
+        public string OriginalFileName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddressDetail> AddressDetails { get; set; }

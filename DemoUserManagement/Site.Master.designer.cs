@@ -15,6 +15,33 @@ namespace DemoUserManagement
     {
 
         /// <summary>
+        /// UserDetailsLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UserDetailsLink;
+
+        /// <summary>
+        /// UsersListLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UsersListLink;
+
+        /// <summary>
+        /// PageTitleLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal PageTitleLiteral;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

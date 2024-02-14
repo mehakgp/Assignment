@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DemoUserManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DemoUserManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AddressDetails">
           <Key>
             <PropertyRef Name="AddressID" />
           </Key>
           <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" />
-          <Property Name="AddressType" Type="int" />
-          <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AddressType" Type="int" Nullable="false" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="Pincode" Type="nvarchar" MaxLength="20" />
-          <Property Name="Country" Type="nvarchar" MaxLength="100" />
-          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -25,32 +25,13 @@
           <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="LogException">
-          <Key>
-            <PropertyRef Name="ExceptionID" />
-          </Key>
-          <Property Name="ExceptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LogTime" Type="datetime" />
-          <Property Name="ExceptionMessage" Type="nvarchar(max)" />
-          <Property Name="StackTrace" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Notes">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ObjectID" Type="int" />
-          <Property Name="ObjectType" Type="varchar" MaxLength="100" />
-          <Property Name="Note" Type="nvarchar(max)" />
-          <Property Name="DateTime" Type="datetime" />
-        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="StateID" />
           </Key>
           <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CountryID" Type="int" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserDetails">
           <Key>
@@ -61,9 +42,9 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Gender" Type="nvarchar" MaxLength="10" />
-          <Property Name="DateOfBirth" Type="date" />
-          <Property Name="AadharNo" Type="nvarchar" MaxLength="20" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="AadharNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="Marks10th" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Board10th" Type="nvarchar" MaxLength="50" />
@@ -78,9 +59,11 @@
           <Property Name="YearOfCompletionGraduation" Type="date" />
           <Property Name="Hobbies" Type="nvarchar(max)" />
           <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="UniqueFileName" Type="nvarchar(max)" />
+          <Property Name="OriginalFileName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_CountryID">
-          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="State" Type="Self.State" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
@@ -92,7 +75,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserID">
-          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="AddressDetails" Type="Self.AddressDetails" Multiplicity="*" />
@@ -105,11 +88,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FKCountryID">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="AddressDetails" Type="Self.AddressDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="AddressDetails">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStateID">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="AddressDetails" Type="Self.AddressDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="AddressDetails">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DemoUserManagementModelStoreContainer">
           <EntitySet Name="AddressDetails" EntityType="Self.AddressDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LogException" EntityType="Self.LogException" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CountryID" Association="Self.FK_CountryID">
@@ -120,8 +125,17 @@
             <End Role="UserDetails" EntitySet="UserDetails" />
             <End Role="AddressDetails" EntitySet="AddressDetails" />
           </AssociationSet>
+          <AssociationSet Name="FKCountryID" Association="Self.FKCountryID">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="AddressDetails" EntitySet="AddressDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FKStateID" Association="Self.FKStateID">
+            <End Role="State" EntitySet="State" />
+            <End Role="AddressDetails" EntitySet="AddressDetails" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DemoUserManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -130,14 +144,16 @@
             <PropertyRef Name="AddressID" />
           </Key>
           <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="AddressType" Type="Int32" />
-          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AddressType" Type="Int32" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pincode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserDetail" Relationship="Self.FK_UserID" FromRole="AddressDetails" ToRole="UserDetails" />
+          <NavigationProperty Name="Country" Relationship="Self.FKCountryID" FromRole="AddressDetails" ToRole="Country" />
+          <NavigationProperty Name="State" Relationship="Self.FKStateID" FromRole="AddressDetails" ToRole="State" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -145,6 +161,7 @@
           </Key>
           <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AddressDetails" Relationship="Self.FKCountryID" FromRole="Country" ToRole="AddressDetails" />
           <NavigationProperty Name="States" Relationship="Self.FK_CountryID" FromRole="Country" ToRole="State" />
         </EntityType>
         <EntityType Name="State">
@@ -153,7 +170,8 @@
           </Key>
           <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressDetails" Relationship="Self.FKStateID" FromRole="State" ToRole="AddressDetails" />
           <NavigationProperty Name="Country" Relationship="Self.FK_CountryID" FromRole="State" ToRole="Country" />
         </EntityType>
         <EntityType Name="UserDetail">
@@ -165,9 +183,9 @@
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="AadharNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AadharNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Marks10th" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Board10th" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -182,10 +200,12 @@
           <Property Name="YearOfCompletionGraduation" Type="DateTime" Precision="0" />
           <Property Name="Hobbies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AddressDetails" Relationship="Self.FK_UserID" FromRole="UserDetails" ToRole="AddressDetails" />
         </EntityType>
         <Association Name="FK_UserID">
-          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="0..1">
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="AddressDetails" Type="Self.AddressDetail" Multiplicity="*" />
@@ -198,8 +218,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FKCountryID">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="AddressDetails" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="AddressDetails">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStateID">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="AddressDetails" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="AddressDetails">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CountryID">
-          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="State" Type="Self.State" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
@@ -210,7 +254,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DemoUserManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DemoUserManagementEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddressDetails" EntityType="Self.AddressDetail" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="States" EntityType="Self.State" />
@@ -219,38 +263,25 @@
             <End Role="UserDetails" EntitySet="UserDetails" />
             <End Role="AddressDetails" EntitySet="AddressDetails" />
           </AssociationSet>
+          <AssociationSet Name="FKCountryID" Association="Self.FKCountryID">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="AddressDetails" EntitySet="AddressDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FKStateID" Association="Self.FKStateID">
+            <End Role="State" EntitySet="States" />
+            <End Role="AddressDetails" EntitySet="AddressDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_CountryID" Association="Self.FK_CountryID">
             <End Role="Country" EntitySet="Countries" />
             <End Role="State" EntitySet="States" />
           </AssociationSet>
-          <EntitySet Name="LogExceptions" EntityType="DemoUserManagementModel.LogException" />
-          <EntitySet Name="Notes" EntityType="DemoUserManagementModel.Note" />
         </EntityContainer>
-        <EntityType Name="LogException">
-          <Key>
-            <PropertyRef Name="ExceptionID" />
-          </Key>
-          <Property Name="ExceptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LogTime" Type="DateTime" Precision="3" />
-          <Property Name="ExceptionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Note">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ObjectID" Type="Int32" />
-          <Property Name="ObjectType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Note1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateTime" Type="DateTime" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DemoUserManagementModelStoreContainer" CdmEntityContainer="DemoUserManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="DemoUserManagementModelStoreContainer" CdmEntityContainer="DemoUserManagementEntities1">
           <EntitySetMapping Name="AddressDetails">
             <EntityTypeMapping TypeName="DemoUserManagementModel.AddressDetail">
               <MappingFragment StoreEntitySet="AddressDetails">
@@ -260,8 +291,8 @@
                 <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
                 <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -307,27 +338,8 @@
                 <ScalarProperty Name="YearOfCompletionGraduation" ColumnName="YearOfCompletionGraduation" />
                 <ScalarProperty Name="Hobbies" ColumnName="Hobbies" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LogExceptions">
-            <EntityTypeMapping TypeName="DemoUserManagementModel.LogException">
-              <MappingFragment StoreEntitySet="LogException">
-                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
-                <ScalarProperty Name="ExceptionMessage" ColumnName="ExceptionMessage" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="ExceptionID" ColumnName="ExceptionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Notes">
-            <EntityTypeMapping TypeName="DemoUserManagementModel.Note">
-              <MappingFragment StoreEntitySet="Notes">
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="Note1" ColumnName="Note" />
-                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
-                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UniqueFileName" ColumnName="UniqueFileName" />
+                <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

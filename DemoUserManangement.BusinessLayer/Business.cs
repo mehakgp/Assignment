@@ -1,7 +1,8 @@
 ﻿using DemoUserManagement.DataAccessLayer;
-using DemoUserManagement.UtilityLayer;
+using static DemoUserManagement.UtilityLayer.Utility;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using static DemoUserManagement.ModelView.Model;
 
 namespace DemoUserManangement.BusinessLayer
@@ -28,7 +29,7 @@ namespace DemoUserManangement.BusinessLayer
             }
             catch (Exception ex)
             {
-                Utility.LogException(ex);
+                LogException(ex);
                 return false;
             }
         }
@@ -42,13 +43,18 @@ namespace DemoUserManangement.BusinessLayer
             }
             catch(Exception ex)
             {
-                Utility.LogException(ex);   
+                LogException(ex);   
                 return false;
             }
         }
-        public List<GridViewUserDetailsModel> GetUsers()
+      
+        public int GetTotalCountUsers()
         {
-            return dataAccess.GetUsers();
+            return dataAccess.GetTotalCountUsers();
+        }
+       public DataTable GetUsers(int startIndex, int endIndex, string sortExpression,string sortDirection)
+        {
+            return dataAccess.GetUsers(startIndex, endIndex, sortExpression, sortDirection);
         }
 
         public bool DeleteUser(int userId)
@@ -65,6 +71,26 @@ namespace DemoUserManangement.BusinessLayer
         {
          return dataAccess.GetAddressDetails(userID, addressType);
         }
+
+        public bool NoteExists(int objectID, int objectType)
+        {
+            return dataAccess.NoteExists(objectID, objectType);
+        }
+        public void InsertNote(int objectID, int objectType, String note)
+        {
+            dataAccess.InsertNote(objectID, objectType, note);  
+        }
+
+        public int GetTotalCount(int objectID, int objectType)
+        {
+             return dataAccess.GetTotalCount(objectID, objectType);
+        }
+
+        public DataTable GetNotes(int objectID, int objectType, int startIndex, int endIndex, String sortExpression, String sortDirection)
+        {
+            return  dataAccess.GetNotes(objectID,objectType,startIndex,endIndex, sortExpression, sortDirection);
+        }
     }
+
 
 }

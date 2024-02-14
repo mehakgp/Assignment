@@ -46,10 +46,12 @@ CREATE TABLE AddressDetails (
     AddressLine1 NVARCHAR(100),
     AddressLine2 NVARCHAR(100),
     Pincode NVARCHAR(20),
-    Country NVARCHAR(100),
-    State NVARCHAR(100),
+    CountryID INT,
+    StateID INT,
     CONSTRAINT FK_UserID FOREIGN KEY (UserID) REFERENCES UserDetails(UserID) ON DELETE CASCADE,
-    CONSTRAINT CK_AddressType CHECK (AddressType IN (1, 2))
+    CONSTRAINT CK_AddressType CHECK (AddressType IN (1, 2)),
+	CONSTRAINT FKCountryID FOREIGN KEY (CountryID) REFERENCES Country(CountryID),
+	CONSTRAINT FKStateID FOREIGN KEY (StateID) REFERENCES State(StateID)
 );
 
 -- Insert data into Country table
@@ -66,9 +68,6 @@ INSERT INTO State (StateName, CountryID)
 VALUES ('ChinaState1', (SELECT CountryID FROM Country WHERE CountryName = 'China')),
        ('ChinaState2', (SELECT CountryID FROM Country WHERE CountryName = 'China'));
 
-SELECT * FROM Country;
-SELECT * FROM State;
-
 CREATE TABLE LogException (
     ExceptionID INT IDENTITY(1,1) PRIMARY KEY,
     LogTime DATETIME,
@@ -78,7 +77,7 @@ CREATE TABLE LogException (
 CREATE TABLE Notes (
     ID INT PRIMARY KEY IDENTITY,
     ObjectID INT,
-    ObjectType VARCHAR(100),
+    ObjectType INT,
     Note NVARCHAR(MAX),
     DateTime DATETIME
 );
@@ -87,3 +86,5 @@ SELECT * FROM Country;
 SELECT * FROM State;
 SELECT * FROM UserDetails;
 SELECT * FROM AddressDetails;
+SELECT * FROM Notes;
+

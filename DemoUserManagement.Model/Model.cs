@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DemoUserManagement.ModelView
 {
     public class Model
@@ -30,7 +25,7 @@ namespace DemoUserManagement.ModelView
             public string MiddleName { get; set; }
             public string LastName { get; set; }
             public string Gender { get; set; }
-            public DateTime? DateOfBirth { get; set; }
+            public DateTime DateOfBirth { get; set; }
             public string AadharNo { get; set; }
             public string Email { get; set; }
             public string PhoneNumber { get; set; }
@@ -47,6 +42,10 @@ namespace DemoUserManagement.ModelView
             public DateTime? YearOfCompletionGraduation { get; set; }
             public string Hobbies { get; set; }
             public string Comments { get; set; }
+
+            public string UniqueFileName { get; set; }  
+
+            public string OriginalFileName {  get; set; }
         }
 
         public class AddressDetailsModel
@@ -57,29 +56,11 @@ namespace DemoUserManagement.ModelView
             public string AddressLine1 { get; set; }
             public string AddressLine2 { get; set; }
             public string Pincode { get; set; }
-            public string Country { get; set; }
-            public string State { get; set; }
+            public int CountryID { get; set; }
+            public int StateID { get; set; }
         }
 
-        public class GridViewUserDetailsModel
-        {
-            public int UserID { get; set; }
-            public string FirstName { get; set; }
-            public string Gender { get; set; }
-            public DateTime? DateOfBirth { get; set; }
-            public string AadharNo { get; set; }
-            public string Email { get; set; }
-            public string PhoneNumber { get; set; }
-       
-        }
+    
 
-        public class NotesModel
-        {
-            public int ID { get; set; }
-            public int ObjectID { get; set; }
-            public string ObjectType { get; set; }
-            public string Notes { get; set; }
-            public DateTime DateTime { get; set; }
-        }
     }
 }
