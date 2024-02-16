@@ -75,11 +75,11 @@ CREATE TABLE LogException (
     StackTrace NVARCHAR(MAX)
 );
 CREATE TABLE Notes (
-    ID INT PRIMARY KEY IDENTITY,
-    ObjectID INT,
-    ObjectType INT,
-    Note NVARCHAR(MAX),
-    DateTime DATETIME
+    ID INT PRIMARY KEY IDENTITY NOT NULL,
+    ObjectID INT NOT NULL,
+    ObjectType INT NOT NULL,
+    Note NVARCHAR(MAX) NOT NULL,
+    DateTime DATETIME NOT NULL
 );
 
 SELECT * FROM Country;
@@ -88,3 +88,13 @@ SELECT * FROM UserDetails;
 SELECT * FROM AddressDetails;
 SELECT * FROM Notes;
 
+CREATE TABLE Document
+(
+    [ID] INT PRIMARY KEY IDENTITY NOT NULL,
+    [ObjectID] INT NOT NULL,
+    [ObjectType] INT NOT NULL,
+    [DocumentType] INT NOT NULL,
+    [DocumentOriginalName] NVARCHAR(255) NOT NULL,
+    [DocumentUniqueName] NVARCHAR(255) NOT NULL,
+    [DateTime] DATETIME NOT NULL
+);

@@ -43,9 +43,10 @@ namespace DemoUserManagement.ModelView
             public string Hobbies { get; set; }
             public string Comments { get; set; }
 
-            public string UniqueFileName { get; set; }  
+            public string OriginalFileName { get; set; }    
 
-            public string OriginalFileName {  get; set; }
+            public string UniqueFileName { get; set; }
+
         }
 
         public class AddressDetailsModel
@@ -59,8 +60,22 @@ namespace DemoUserManagement.ModelView
             public int CountryID { get; set; }
             public int StateID { get; set; }
         }
+        public class DocumentModel
+        {
+            public int ID { get; set; }
+            public int ObjectID { get; set; }
+            public int ObjectType { get; set; }
+            public int DocumentType { get; set; }
+            public string DocumentOriginalName { get; set; }
+            public string DocumentUniqueName { get; set; }
+            public DateTime DateTime { get; set; }
+        }
+        public class DocumentTypeModel
+        {
+            public int DocumentId { get; set; }
+            public string DocumentTypeName { get; set; }
+        }
 
-    
 
     }
 }

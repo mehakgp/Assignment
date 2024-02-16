@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="User Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="DemoUserManagement.UserDetails" %>
 
 <%@ Register Src="~/NoteUserControl.ascx" TagPrefix="uc1" TagName="NoteUserControl" %>
+<%@ Register Src="~/DocumentUserControl.ascx" TagPrefix="uc2" TagName="DocumentUserControl" %>
 
 
 
@@ -8,7 +9,6 @@
     <script src="Scripts/DemoUserManagement.js"></script>
 
     <style>
-      
         h1 {
             text-align: center;
             color: rgba(33,37,41);
@@ -37,7 +37,7 @@
 
 
         .btn {
-            background-color:rgba(33,37,41);
+            background-color: rgba(33,37,41);
             color: #fff;
             border: none;
             border-radius: 3px;
@@ -240,10 +240,8 @@
                 <div class="col-md-3">
                     <label for="resume">Upload your Resume:</label>
                     <asp:FileUpload ID="resume" runat="server" CssClass="form-control" ClientIDMode="Static" />
-
                 </div>
             </div>
-
             <h2>Other Details</h2>
             <div class="row">
                 <div class="col-md-4">
@@ -256,8 +254,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
-                    <uc1:NoteUserControl runat="server" ID="NoteUserControl"    />
+                <div class="col-md-6">
+                    <uc1:NoteUserControl runat="server" ID="NoteUserControl" />
+                </div>
+                <div class="col-md-6">
+                    <uc2:DocumentUserControl runat="server" id="DocumentUserControl" />
                 </div>
             </div>
 

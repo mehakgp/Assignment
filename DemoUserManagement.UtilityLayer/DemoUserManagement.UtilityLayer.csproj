@@ -45,5 +45,11 @@
     <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoUserManagement.Model\DemoUserManagement.ModelView.csproj">
+      <Project>{52bdc793-0b25-4d96-b4a8-11ef6ae5eb0c}</Project>
+      <Name>DemoUserManagement.ModelView</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,8 +42,8 @@ namespace DemoUserManagement.DataAccessLayer
         public Nullable<System.DateTime> YearOfCompletionGraduation { get; set; }
         public string Hobbies { get; set; }
         public string Comments { get; set; }
-        public string UniqueFileName { get; set; }
         public string OriginalFileName { get; set; }
+        public string UniqueFileName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddressDetail> AddressDetails { get; set; }

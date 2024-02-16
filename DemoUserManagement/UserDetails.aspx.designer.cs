@@ -312,6 +312,15 @@ namespace DemoUserManagement
         protected global::DemoUserManagement.NoteUserControl NoteUserControl;
 
         /// <summary>
+        /// DocumentUserControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DemoUserManagement.DocumentUserControl DocumentUserControl;
+
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>

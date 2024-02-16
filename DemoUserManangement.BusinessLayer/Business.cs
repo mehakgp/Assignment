@@ -24,7 +24,7 @@ namespace DemoUserManangement.BusinessLayer
             try
             {
                
-                bool success = dataAccess.SaveUserDetails(userDetails, currentAddress, permanentAddress);
+                bool success= dataAccess.SaveUserDetails(userDetails, currentAddress, permanentAddress);
                 return success;
             }
             catch (Exception ex)
@@ -90,7 +90,24 @@ namespace DemoUserManangement.BusinessLayer
         {
             return  dataAccess.GetNotes(objectID,objectType,startIndex,endIndex, sortExpression, sortDirection);
         }
+
+       public void SaveDocument(DocumentModel document)
+        {
+            dataAccess.SaveDocument(document);
+        }
+
+        public List<DocumentModel> GetDocuments(int objectID,int objectType) 
+        {
+            return dataAccess.GetDocuments(objectID, objectType);
+        }
+
+        public bool DocumentExists(int objectID, int objectType)
+        {
+            return dataAccess.DocumentExists(objectID, objectType);
+        }
     }
+
+
 
 
 }

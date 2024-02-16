@@ -1,6 +1,7 @@
 ﻿
 using DemoUserManangement.BusinessLayer;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,23 +16,31 @@ namespace DemoUserManagement
         Business business = new Business();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
-
                 PopulateCountries();
                 if (Request.QueryString["UserID"] != null)
                 {
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
                     NoteUserControl.ObjectID = userID;
                     NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+
+                    DocumentUserControl.ObjectID = userID;
+                    DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                    //List<DocumentTypeModel> docType = GetDocumentTypes(DocumentUserControl.ObjectType);
+                    //DocumentUserControl.Document = docType;
+
                     UserDetailsModel userDetails = GetUserDetails(userID);
                     AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
                     AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
                     PopulateFields(userDetails, currentAddress, permanentAddress);
                     NoteUserControl.Visible = true;
+                    DocumentUserControl.Visible = true;
                 }
                 else
                 {
+                    DocumentUserControl.Visible = false;
                     NoteUserControl.Visible = false;
                 }
             }
@@ -94,7 +103,7 @@ namespace DemoUserManagement
         {
             try
             {
-                string fileName = "", fileExtension, uniqueFileName="", uploadFolderPath = "", filePath = "";
+                string fileName = "", fileExtension, uniqueFileName = "", uploadFolderPath = "", filePath = "";
                 if (resume.HasFile)
                 {
                     fileName = resume.FileName;
@@ -127,8 +136,9 @@ namespace DemoUserManagement
                     YearOfCompletionGraduation = string.IsNullOrEmpty(txtYearOfCompletionGraduation.Text) ? null : (DateTime?)DateTime.Parse(txtYearOfCompletionGraduation.Text),
                     Hobbies = txtHobbies.Text,
                     Comments = txtComments.Text,
-                    UniqueFileName = uniqueFileName,
-                    OriginalFileName = fileName
+                    OriginalFileName = fileName,
+                    UniqueFileName = uniqueFileName
+
                 };
                 AddressDetailsModel currentAddress = new AddressDetailsModel
                 {
@@ -154,13 +164,18 @@ namespace DemoUserManagement
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
                     bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
                     if (success)
+                    {
                         Response.Redirect("Users.aspx");
+                    }
+
                 }
                 else
                 {
                     bool success = business.SaveUserDetails(userDetails, currentAddress, permanentAddress);
                     if (success)
+                    {
                         Response.Redirect("Users.aspx");
+                    }
                 }
             }
             catch (Exception ex)
@@ -186,8 +201,6 @@ namespace DemoUserManagement
             txtMiddleName.Text = userDetails.MiddleName;
             ddlGender.SelectedValue = userDetails.Gender;
             txtDateOfBirth.Text = userDetails.DateOfBirth != DateTime.MinValue ? userDetails.DateOfBirth.ToString("yyyy-MM-dd") : "";
-
-            //    txtDateOfBirth.Text = userDetails.DateOfBirth.HasValue ? userDetails.DateOfBirth.Value.ToString("yyyy-MM-dd") : "";
             txtAadharNo.Text = userDetails.AadharNo;
             txtEmail.Text = userDetails.Email;
             txtPhoneNumber.Text = userDetails.PhoneNumber;

@@ -71,9 +71,8 @@ namespace DemoUserManagement.DataAccessLayer
                         YearOfCompletionGraduation = userDetails.YearOfCompletionGraduation,
                         Hobbies = userDetails.Hobbies,
                         Comments = userDetails.Comments,
-                        UniqueFileName = userDetails.UniqueFileName,
                         OriginalFileName = userDetails.OriginalFileName,
-
+                        UniqueFileName = userDetails.UniqueFileName,
 
                     };
                     context.UserDetails.Add(user);
@@ -104,8 +103,8 @@ namespace DemoUserManagement.DataAccessLayer
                     context.AddressDetails.Add(permanent);
 
                     context.SaveChanges();
+                    return true;
                 }
-                return true;
             }
             catch (Exception ex)
             {
@@ -147,8 +146,9 @@ namespace DemoUserManagement.DataAccessLayer
                         user.YearOfCompletionGraduation = userDetails.YearOfCompletionGraduation;
                         user.Hobbies = userDetails.Hobbies;
                         user.Comments = userDetails.Comments;
-                        user.UniqueFileName = userDetails.UniqueFileName;
-                        user.OriginalFileName = userDetails.OriginalFileName;
+                        user.OriginalFileName= userDetails.OriginalFileName;
+                        user.UniqueFileName= userDetails.UniqueFileName;
+
 
                         var current = context.AddressDetails.FirstOrDefault(a => a.UserID == userID && a.AddressType == currentAddress.AddressType);
                         if (current != null)
@@ -213,6 +213,32 @@ namespace DemoUserManagement.DataAccessLayer
             }
         }
 
+        public void SaveDocument(DocumentModel document)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var doc = new Document
+                    {
+                        ObjectID = document.ObjectID,
+                        ObjectType = document.ObjectType,
+                        DocumentType = document.DocumentType,
+                        DocumentOriginalName = document.DocumentOriginalName,
+                        DocumentUniqueName = document.DocumentUniqueName,
+                        DateTime = DateTime.Now,
+                    };
+                    context.Documents.Add(doc);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+            }
+
+        }
+
         public UserDetailsModel GetUserDetails(int userID)
         {
             using (var context = new DemoUserManagementEntities())
@@ -243,9 +269,8 @@ namespace DemoUserManagement.DataAccessLayer
                         YearOfCompletionGraduation = user.YearOfCompletionGraduation,
                         Hobbies = user.Hobbies,
                         Comments = user.Comments,
-                        UniqueFileName =user.UniqueFileName,
-                        OriginalFileName=user.OriginalFileName,
-    };
+
+                    };
                 }
                 return null;
             }
@@ -285,6 +310,19 @@ namespace DemoUserManagement.DataAccessLayer
                 cmd.Parameters.AddWithValue("@ObjectType", objectType);
                 int count = (int)cmd.ExecuteScalar();
                 return count > 0;
+            }
+        }
+
+        public bool DocumentExists (int objectID, int objectType)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Document WHERE ObjectID = @ObjectID AND ObjectType = @ObjectType", conn);
+                cmd.Parameters.AddWithValue("@ObjectID", objectID);
+                cmd.Parameters.AddWithValue("@ObjectType", objectType);
+                int count = (int)cmd.ExecuteScalar();
+                return count >= 0;
             }
         }
 
@@ -356,7 +394,7 @@ namespace DemoUserManagement.DataAccessLayer
                 }
                 return dtNotes;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogException(ex);
                 return dtNotes;
@@ -396,6 +434,37 @@ namespace DemoUserManagement.DataAccessLayer
                 return dtUsers;
             }
         }
+        public List<DocumentModel> GetDocuments(int objectID, int objectType)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var documents = context.Documents
+                        .Where(d => d.ObjectID == objectID && d.ObjectType == objectType)
+                        .Select(d => new DocumentModel
+                        {
+                            ID = d.ID,
+                            ObjectID = d.ObjectID,
+                            ObjectType = d.ObjectType,
+                            DocumentType = d.DocumentType,
+                            DocumentOriginalName = d.DocumentOriginalName,
+                            DocumentUniqueName = d.DocumentUniqueName,
+                            DateTime = d.DateTime
+                        })
+                        .ToList();
+
+                    return documents;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+                return null;
+            }
+        }
+
+
 
     }
 

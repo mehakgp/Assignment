@@ -5,14 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="14debcc55ebc419f804d20db04994533" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="DemoUserManagementModel.AddressDetail" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.Country" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.State" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.UserDetail" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="DemoUserManagementModel.FK_UserID" ManuallyRouted="false" />
-        <AssociationConnector Association="DemoUserManagementModel.FKCountryID" ManuallyRouted="false" />
-        <AssociationConnector Association="DemoUserManagementModel.FKStateID" ManuallyRouted="false" />
-        <AssociationConnector Association="DemoUserManagementModel.FK_CountryID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.AddressDetail" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Country" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Document" Width="1.5" PointX="5.75" PointY="1.375" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.State" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.UserDetail" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="DemoUserManagementModel.FK_UserID" />
+        <AssociationConnector Association="DemoUserManagementModel.FKCountryID" />
+        <AssociationConnector Association="DemoUserManagementModel.FKStateID" />
+        <AssociationConnector Association="DemoUserManagementModel.FK_CountryID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
