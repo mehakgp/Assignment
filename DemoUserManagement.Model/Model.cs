@@ -28,6 +28,8 @@ namespace DemoUserManagement.ModelView
             public DateTime DateOfBirth { get; set; }
             public string AadharNo { get; set; }
             public string Email { get; set; }
+
+            public string Password {  get; set; }
             public string PhoneNumber { get; set; }
             public decimal? Marks10th { get; set; }
             public string Board10th { get; set; }

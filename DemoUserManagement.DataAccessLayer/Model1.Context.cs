@@ -28,7 +28,10 @@ namespace DemoUserManagement.DataAccessLayer
         public virtual DbSet<AddressDetail> AddressDetails { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<UserDetail> UserDetails { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }

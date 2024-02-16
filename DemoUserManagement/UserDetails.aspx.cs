@@ -3,6 +3,7 @@ using DemoUserManangement.BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static DemoUserManagement.ModelView.Model;
@@ -28,9 +29,6 @@ namespace DemoUserManagement
 
                     DocumentUserControl.ObjectID = userID;
                     DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
-                    //List<DocumentTypeModel> docType = GetDocumentTypes(DocumentUserControl.ObjectType);
-                    //DocumentUserControl.Document = docType;
-
                     UserDetailsModel userDetails = GetUserDetails(userID);
                     AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
                     AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
@@ -103,6 +101,7 @@ namespace DemoUserManagement
         {
             try
             {
+
                 string fileName = "", fileExtension, uniqueFileName = "", uploadFolderPath = "", filePath = "";
                 if (resume.HasFile)
                 {
@@ -122,6 +121,7 @@ namespace DemoUserManagement
                     DateOfBirth = (DateTime)(string.IsNullOrEmpty(txtDateOfBirth.Text) ? null : (DateTime?)DateTime.Parse(txtDateOfBirth.Text)),
                     AadharNo = txtAadharNo.Text,
                     Email = txtEmail.Text,
+                    Password=txtPassword.Text,
                     PhoneNumber = txtPhoneNumber.Text,
                     Marks10th = string.IsNullOrEmpty(txtMarks10th.Text) ? null : (decimal?)decimal.Parse(txtMarks10th.Text),
                     Board10th = ddlBoard10th.SelectedItem.Text,
@@ -165,7 +165,14 @@ namespace DemoUserManagement
                     bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
                     if (success)
                     {
-                        Response.Redirect("Users.aspx");
+                        if ((bool)Session["isAdmin"]==true)
+                        {
+                            Response.Redirect("~/Users.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "editSuccess", "alert('User details updated successfully.');", true);
+                        }
                     }
 
                 }
@@ -174,7 +181,7 @@ namespace DemoUserManagement
                     bool success = business.SaveUserDetails(userDetails, currentAddress, permanentAddress);
                     if (success)
                     {
-                        Response.Redirect("Users.aspx");
+                        Response.Redirect("LogIn.aspx");
                     }
                 }
             }
@@ -189,10 +196,12 @@ namespace DemoUserManagement
         {
             return business.GetUserDetails(userID);
         }
+
         private AddressDetailsModel GetAddressDetails(int userID, int addressType)
         {
             return business.GetAddressDetails(userID, addressType);
         }
+
         private void PopulateFields(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
         {
 
@@ -203,6 +212,7 @@ namespace DemoUserManagement
             txtDateOfBirth.Text = userDetails.DateOfBirth != DateTime.MinValue ? userDetails.DateOfBirth.ToString("yyyy-MM-dd") : "";
             txtAadharNo.Text = userDetails.AadharNo;
             txtEmail.Text = userDetails.Email;
+            txtPassword.Text = userDetails.Password;
             txtPhoneNumber.Text = userDetails.PhoneNumber;
             txtMarks10th.Text = userDetails.Marks10th.HasValue ? userDetails.Marks10th.Value.ToString() : "";
             ddlBoard10th.SelectedValue = userDetails.Board10th;
@@ -237,6 +247,12 @@ namespace DemoUserManagement
 
         }
 
+        [WebMethod]
+        public static bool CheckEmailExists(string email)
+        {
+            Business business = new Business();
+            return business.CheckEmailExists(email);
+        }
 
 
     }

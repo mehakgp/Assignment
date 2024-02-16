@@ -37,6 +37,25 @@
           <Property Name="DocumentUniqueName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectID" Type="int" Nullable="false" />
+          <Property Name="ObjectType" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isDefault" Type="int" Nullable="false" />
+          <Property Name="isAdmin" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="StateID" />
@@ -57,6 +76,7 @@
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
           <Property Name="AadharNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="Marks10th" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Board10th" Type="nvarchar" MaxLength="50" />
@@ -74,6 +94,38 @@
           <Property Name="OriginalFileName" Type="varchar" MaxLength="100" />
           <Property Name="UniqueFileName" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__UserRole__RoleID__71D1E811">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__UserID__72C60C4A">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CountryID">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="State" Type="Self.State" Multiplicity="*" />
@@ -128,8 +180,19 @@
           <EntitySet Name="AddressDetails" EntityType="Self.AddressDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UserRole__RoleID__71D1E811" Association="Self.FK__UserRole__RoleID__71D1E811">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__UserID__72C60C4A" Association="Self.FK__UserRole__UserID__72C60C4A">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
           <AssociationSet Name="FK_CountryID" Association="Self.FK_CountryID">
             <End Role="Country" EntitySet="Country" />
             <End Role="State" EntitySet="State" />
@@ -155,8 +218,11 @@
           <EntitySet Name="AddressDetails" EntityType="DemoUserManagementModel.AddressDetail" />
           <EntitySet Name="Countries" EntityType="DemoUserManagementModel.Country" />
           <EntitySet Name="Documents" EntityType="DemoUserManagementModel.Document" />
+          <EntitySet Name="Notes" EntityType="DemoUserManagementModel.Note" />
+          <EntitySet Name="Roles" EntityType="DemoUserManagementModel.Role" />
           <EntitySet Name="States" EntityType="DemoUserManagementModel.State" />
           <EntitySet Name="UserDetails" EntityType="DemoUserManagementModel.UserDetail" />
+          <EntitySet Name="UserRoles" EntityType="DemoUserManagementModel.UserRole" />
           <AssociationSet Name="FK_UserID" Association="DemoUserManagementModel.FK_UserID">
             <End Role="UserDetail" EntitySet="UserDetails" />
             <End Role="AddressDetail" EntitySet="AddressDetails" />
@@ -172,6 +238,14 @@
           <AssociationSet Name="FK_CountryID" Association="DemoUserManagementModel.FK_CountryID">
             <End Role="Country" EntitySet="Countries" />
             <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__RoleID__71D1E811" Association="DemoUserManagementModel.FK__UserRole__RoleID__71D1E811">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__UserID__72C60C4A" Association="DemoUserManagementModel.FK__UserRole__UserID__72C60C4A">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="UserRole" EntitySet="UserRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AddressDetail">
@@ -211,6 +285,26 @@
           <Property Name="DocumentUniqueName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectID" Type="Int32" Nullable="false" />
+          <Property Name="ObjectType" Type="Int32" Nullable="false" />
+          <Property Name="Note1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDefault" Type="Int32" Nullable="false" />
+          <Property Name="isAdmin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRoles" Relationship="DemoUserManagementModel.FK__UserRole__RoleID__71D1E811" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="StateID" />
@@ -233,6 +327,7 @@
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="AadharNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Marks10th" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Board10th" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -250,6 +345,17 @@
           <Property Name="OriginalFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="UniqueFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AddressDetails" Relationship="DemoUserManagementModel.FK_UserID" FromRole="UserDetail" ToRole="AddressDetail" />
+          <NavigationProperty Name="UserRoles" Relationship="DemoUserManagementModel.FK__UserRole__UserID__72C60C4A" FromRole="UserDetail" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="DemoUserManagementModel.FK__UserRole__RoleID__71D1E811" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="UserDetail" Relationship="DemoUserManagementModel.FK__UserRole__UserID__72C60C4A" FromRole="UserRole" ToRole="UserDetail" />
         </EntityType>
         <Association Name="FK_UserID">
           <End Type="DemoUserManagementModel.UserDetail" Role="UserDetail" Multiplicity="1">
@@ -301,6 +407,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserRole__RoleID__71D1E811">
+          <End Type="DemoUserManagementModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DemoUserManagementModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__UserID__72C60C4A">
+          <End Type="DemoUserManagementModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+          <End Type="DemoUserManagementModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -342,6 +472,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="DemoUserManagementModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Note1" ColumnName="Note" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DemoUserManagementModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="States">
             <EntityTypeMapping TypeName="DemoUserManagementModel.State">
               <MappingFragment StoreEntitySet="State">
@@ -370,6 +521,7 @@
                 <ScalarProperty Name="Board10th" ColumnName="Board10th" />
                 <ScalarProperty Name="Marks10th" ColumnName="Marks10th" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
@@ -378,6 +530,15 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="DemoUserManagementModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

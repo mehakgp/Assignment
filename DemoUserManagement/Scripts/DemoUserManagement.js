@@ -45,6 +45,7 @@ function validateForm() {
     var dob = document.getElementById('txtDateOfBirth').value.trim();
     var aadharNo = document.getElementById('txtAadharNo').value.trim();
     var email = document.getElementById('txtEmail').value.trim();
+    var password = document.getElementById('txtPassword').value.trim();
     var phoneNumber = document.getElementById('txtPhoneNumber').value.trim();
     var currentAddressLine1 = document.getElementById('txtCurrentAddressLine1').value.trim();
     var currentPincode = document.getElementById('txtCurrentPincode').value.trim();
@@ -86,6 +87,30 @@ function validateForm() {
 
     if (email === '' || !emailPattern.test(email)) {
         displayValidationMessage('txtEmail', 'Invalid Email');
+        isValid = false;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: "UserDetails.aspx/CheckEmailExists",
+            data: JSON.stringify({ email: email }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                if (response.d) {
+                    displayValidationMessage('txtEmail', 'Email already exists. Please use a different email.');
+                    isValid = false;
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+    
+
+    if (password === '' || password.length<=8) {
+        displayValidationMessage('txtPassword', 'Password is required and must be more than 8 characters');
         isValid = false;
     }
 

@@ -14,31 +14,48 @@ namespace DemoUserManagement.DataAccessLayer
     {
         public List<CountryModel> GetCountries()
         {
-            using (var context = new DemoUserManagementEntities())
+            try
             {
-                return context.Countries
-                    .Select(c => new CountryModel
-                    {
-                        CountryID = c.CountryID,
-                        CountryName = c.CountryName
-                    })
-                    .ToList();
+                using (var context = new DemoUserManagementEntities())
+                {
+                    return context.Countries
+                        .Select(c => new CountryModel
+                        {
+                            CountryID = c.CountryID,
+                            CountryName = c.CountryName
+                        })
+                        .ToList();
+                }
             }
+            catch (Exception ex)
+            {
+                LogException(ex);
+                return new List<CountryModel>();
+            }
+           
         }
 
         public List<StateModel> GetStates(int countryId)
         {
-            using (var context = new DemoUserManagementEntities())
+            try
             {
-                return context.States
-                    .Where(s => s.CountryID == countryId)
-                    .Select(s => new StateModel
-                    {
-                        StateID = s.StateID,
-                        StateName = s.StateName,
-                        CountryID = (int)s.CountryID
-                    })
-                    .ToList();
+                using (var context = new DemoUserManagementEntities())
+                {
+                    return context.States
+                        .Where(s => s.CountryID == countryId)
+                        .Select(s => new StateModel
+                        {
+                            StateID = s.StateID,
+                            StateName = s.StateName,
+                            CountryID = (int)s.CountryID
+                        })
+                        .ToList();
+                }
+            }
+           catch(Exception ex)
+            {
+                LogException (ex);
+                return new List<StateModel>();
             }
         }
 
@@ -57,6 +74,7 @@ namespace DemoUserManagement.DataAccessLayer
                         DateOfBirth = (DateTime)userDetails.DateOfBirth,
                         AadharNo = userDetails.AadharNo,
                         Email = userDetails.Email,
+                        Password=userDetails.Password,
                         PhoneNumber = userDetails.PhoneNumber,
                         Marks10th = userDetails.Marks10th,
                         Board10th = userDetails.Board10th,
@@ -103,6 +121,7 @@ namespace DemoUserManagement.DataAccessLayer
                     context.AddressDetails.Add(permanent);
 
                     context.SaveChanges();
+                    AssignDefaultRole(user.UserID);
                     return true;
                 }
             }
@@ -111,6 +130,34 @@ namespace DemoUserManagement.DataAccessLayer
                 LogException(ex);
                 return false;
             }
+        
+        }
+
+        public void AssignDefaultRole(int userID)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var defaultRoles = context.Roles.Where(r => r.isDefault == 1).ToList();
+                    foreach (var role in defaultRoles)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserID = userID,
+                            RoleID = role.RoleID
+                        };
+                        context.UserRoles.Add(userRole);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+              catch(Exception ex)
+            {
+                LogException (ex);
+            }
+            
         }
 
         public bool EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, int userID)
@@ -132,6 +179,7 @@ namespace DemoUserManagement.DataAccessLayer
                         user.DateOfBirth = userDetails.DateOfBirth;
                         user.AadharNo = userDetails.AadharNo;
                         user.Email = userDetails.Email;
+                        user.Password = userDetails.Password;
                         user.PhoneNumber = userDetails.PhoneNumber;
                         user.Marks10th = userDetails.Marks10th;
                         user.Board10th = userDetails.Board10th;
@@ -241,131 +289,176 @@ namespace DemoUserManagement.DataAccessLayer
 
         public UserDetailsModel GetUserDetails(int userID)
         {
-            using (var context = new DemoUserManagementEntities())
+            try
             {
-                var user = context.UserDetails.FirstOrDefault(u => u.UserID == userID);
-                if (user != null)
+                using (var context = new DemoUserManagementEntities())
                 {
-                    return new UserDetailsModel
+                    var user = context.UserDetails.FirstOrDefault(u => u.UserID == userID);
+                    if (user != null)
                     {
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        MiddleName = user.MiddleName,
-                        Gender = user.Gender,
-                        DateOfBirth = user.DateOfBirth,
-                        AadharNo = user.AadharNo,
-                        Email = user.Email,
-                        PhoneNumber = user.PhoneNumber,
-                        Marks10th = user.Marks10th,
-                        Board10th = user.Board10th,
-                        School10th = user.School10th,
-                        YearOfCompletion10th = user.YearOfCompletion10th,
-                        Marks12th = user.Marks12th,
-                        Board12th = user.Board12th,
-                        School12th = user.School12th,
-                        YearOfCompletion12th = user.YearOfCompletion12th,
-                        CGPA = user.CGPA,
-                        University = user.University,
-                        YearOfCompletionGraduation = user.YearOfCompletionGraduation,
-                        Hobbies = user.Hobbies,
-                        Comments = user.Comments,
+                        return new UserDetailsModel
+                        {
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            MiddleName = user.MiddleName,
+                            Gender = user.Gender,
+                            DateOfBirth = user.DateOfBirth,
+                            AadharNo = user.AadharNo,
+                            Email = user.Email,
+                            Password = user.Password,
+                            PhoneNumber = user.PhoneNumber,
+                            Marks10th = user.Marks10th,
+                            Board10th = user.Board10th,
+                            School10th = user.School10th,
+                            YearOfCompletion10th = user.YearOfCompletion10th,
+                            Marks12th = user.Marks12th,
+                            Board12th = user.Board12th,
+                            School12th = user.School12th,
+                            YearOfCompletion12th = user.YearOfCompletion12th,
+                            CGPA = user.CGPA,
+                            University = user.University,
+                            YearOfCompletionGraduation = user.YearOfCompletionGraduation,
+                            Hobbies = user.Hobbies,
+                            Comments = user.Comments,
 
-                    };
+                        };
+                    }
+                    return null;
                 }
+            }
+            catch(Exception ex)
+            {
+                LogException(ex);
                 return null;
             }
+           
         }
 
         public AddressDetailsModel GetAddressDetails(int userID, int addressType)
         {
 
-            using (var context = new DemoUserManagementEntities())
+            try
             {
-                var address = context.AddressDetails.FirstOrDefault(a => a.UserID == userID && a.AddressType == addressType);
-                if (address != null)
+                using (var context = new DemoUserManagementEntities())
                 {
-                    return new AddressDetailsModel
+                    var address = context.AddressDetails.FirstOrDefault(a => a.UserID == userID && a.AddressType == addressType);
+                    if (address != null)
                     {
-                        UserID = (int)address.UserID,
-                        AddressType = (int)address.AddressType,
-                        AddressLine1 = address.AddressLine1,
-                        AddressLine2 = address.AddressLine2,
-                        Pincode = address.Pincode,
-                        CountryID = (int)address.CountryID,
-                        StateID = (int)address.StateID
-                    };
+                        return new AddressDetailsModel
+                        {
+                            UserID = (int)address.UserID,
+                            AddressType = (int)address.AddressType,
+                            AddressLine1 = address.AddressLine1,
+                            AddressLine2 = address.AddressLine2,
+                            Pincode = address.Pincode,
+                            CountryID = (int)address.CountryID,
+                            StateID = (int)address.StateID
+                        };
+                    }
+                    return null;
                 }
+            }
+          catch(Exception ex)
+            {
+                LogException (ex);
                 return null;
             }
 
         }
-
         public bool NoteExists(int objectID, int objectType)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Notes WHERE ObjectID = @ObjectID AND ObjectType = @ObjectType", conn);
-                cmd.Parameters.AddWithValue("@ObjectID", objectID);
-                cmd.Parameters.AddWithValue("@ObjectType", objectType);
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
+                using (var context = new DemoUserManagementEntities())
+                {
+                    return context.Notes
+                        .Any(n => n.ObjectID == objectID && n.ObjectType == objectType);
+                }
+            }
+           catch(Exception ex)
+            {
+                LogException(ex);
+                return false;
             }
         }
 
-        public bool DocumentExists (int objectID, int objectType)
+        public bool DocumentExists(int objectID, int objectType)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Document WHERE ObjectID = @ObjectID AND ObjectType = @ObjectType", conn);
-                cmd.Parameters.AddWithValue("@ObjectID", objectID);
-                cmd.Parameters.AddWithValue("@ObjectType", objectType);
-                int count = (int)cmd.ExecuteScalar();
-                return count >= 0;
+                using (var context = new DemoUserManagementEntities())
+                {
+                    return context.Documents
+                        .Any(d => d.ObjectID == objectID && d.ObjectType == objectType);
+                }
             }
+            catch(Exception ex)
+            {
+                LogException(ex);
+                return false;
+            }
+           
         }
 
-        public void InsertNote(int objectID, int objectType, String note)
+        public void InsertNote(int objectID, int objectType, string note)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Notes (ObjectID, ObjectType, Note, DateTime) VALUES (@ObjectID, @ObjectType, @Note, @DateTime)", conn);
-                cmd.Parameters.AddWithValue("@ObjectID", objectID);
-                cmd.Parameters.AddWithValue("@ObjectType", objectType);
-                cmd.Parameters.AddWithValue("@Note", note);
-                cmd.Parameters.AddWithValue("@DateTime", DateTime.Now);
-                cmd.ExecuteNonQuery();
-            }
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var newNote = new Note
+                    {
+                        ObjectID = objectID,
+                        ObjectType = objectType,
+                        Note1 = note,
+                        DateTime = DateTime.Now
+                    };
 
+                    context.Notes.Add(newNote);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException (ex);
+            }
+        
         }
 
         public int GetTotalCount(int objectID, int objectType)
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM Notes  WHERE ObjectID = @ObjectID AND ObjectType = @ObjectType", connection))
+                using (var context = new DemoUserManagementEntities())
                 {
-                    command.Parameters.AddWithValue("@ObjectID", objectID);
-                    command.Parameters.AddWithValue("@ObjectType", objectType);
-                    connection.Open();
-                    return (int)command.ExecuteScalar();
+                    return context.Notes
+                        .Where(n => n.ObjectID == objectID && n.ObjectType == objectType)
+                        .Count();
                 }
             }
+            catch(Exception ex)
+            {
+                LogException(ex);
+                return 0;
+            }
+           
         }
 
         public int GetTotalCountUsers()
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM UserDetails", connection))
+                using (var context = new DemoUserManagementEntities())
                 {
-                    connection.Open();
-                    return (int)command.ExecuteScalar();
+                    return context.UserDetails.Count();
                 }
             }
+            catch(Exception e)
+            {
+                LogException(e); return 0;
+            }
         }
+
         public DataTable GetNotes(int objectID, int objectType, int startIndex, int endIndex, String sortExpression, String sortDirection)
         {
             DataTable dtNotes = new DataTable();
@@ -400,6 +493,7 @@ namespace DemoUserManagement.DataAccessLayer
                 return dtNotes;
             }
         }
+
 
         public DataTable GetUsers(int startIndex, int endIndex, String sortExpression, String sortDirection)
         {
@@ -464,7 +558,57 @@ namespace DemoUserManagement.DataAccessLayer
             }
         }
 
+        public int GetUserByEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var user = context.UserDetails.FirstOrDefault(u => u.Email == email && u.Password == password);
+                    return user != null ? user.UserID : -1;
+                }
+            }
+           catch(Exception ex)
+            {
+                LogException (ex);
+                return -1;
+            }
+        }
 
+        public bool CheckIfUserIsAdmin(int userID)
+        {
+            try
+            {
+                using (var context = new DemoUserManagementEntities())
+                {
+                    var userRoles = context.UserRoles.Where(ur => ur.UserID == userID);
+                    foreach (var userRole in userRoles)
+                    {
+                        var role = context.Roles.FirstOrDefault(r => r.RoleID == userRole.RoleID);
+                        if (role != null && role.isAdmin == 1)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+
+            }
+            catch(Exception ex)
+            {
+                LogException(ex);
+                return false;
+            }
+            
+        }
+
+        public bool CheckEmailExists(string email)
+        {
+            using (var context = new DemoUserManagementEntities())
+            {
+                return context.UserDetails.Any(u => u.Email == email);
+            }
+        }
 
     }
 

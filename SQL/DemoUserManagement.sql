@@ -68,12 +68,6 @@ INSERT INTO State (StateName, CountryID)
 VALUES ('ChinaState1', (SELECT CountryID FROM Country WHERE CountryName = 'China')),
        ('ChinaState2', (SELECT CountryID FROM Country WHERE CountryName = 'China'));
 
-CREATE TABLE LogException (
-    ExceptionID INT IDENTITY(1,1) PRIMARY KEY,
-    LogTime DATETIME,
-    ExceptionMessage NVARCHAR(MAX),
-    StackTrace NVARCHAR(MAX)
-);
 CREATE TABLE Notes (
     ID INT PRIMARY KEY IDENTITY NOT NULL,
     ObjectID INT NOT NULL,
@@ -97,4 +91,22 @@ CREATE TABLE Document
     [DocumentOriginalName] NVARCHAR(255) NOT NULL,
     [DocumentUniqueName] NVARCHAR(255) NOT NULL,
     [DateTime] DATETIME NOT NULL
+);
+
+CREATE TABLE Role (
+    RoleID INT PRIMARY KEY,
+    RoleName NVARCHAR(50) NOT NULL,
+    isDefault INT NOT NULL,
+    isAdmin INT NOT NULL
+);
+
+INSERT INTO Role (RoleID, RoleName, isDefault, isAdmin) VALUES (1, 'StandardUser', 1, 0);
+INSERT INTO Role (RoleID, RoleName, isDefault, isAdmin) VALUES (2, 'Admin', 0, 1);
+
+CREATE TABLE UserRole (
+    ID int  IDENTITY(1,1) PRIMARY KEY,
+    RoleID int NOT NULL,
+    UserID int NOT NULL,
+    FOREIGN KEY (RoleID) REFERENCES Role(RoleID),
+    FOREIGN KEY (UserID) REFERENCES UserDetails(UserID)
 );

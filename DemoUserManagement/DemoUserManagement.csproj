@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DocumentUserControl.ascx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="LogOut.aspx" />
     <Content Include="Scripts\DemoUserManagement.js" />
     <Content Include="Users.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -200,6 +202,20 @@
     </Compile>
     <Compile Include="DownloadFile.ashx.cs">
       <DependentUpon>DownloadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>

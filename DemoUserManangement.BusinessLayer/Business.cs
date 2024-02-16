@@ -105,6 +105,22 @@ namespace DemoUserManangement.BusinessLayer
         {
             return dataAccess.DocumentExists(objectID, objectType);
         }
+
+        public int GetUserByEmailAndPassword(string email, string password)
+        {
+           return dataAccess.GetUserByEmailAndPassword(email, password);
+        }
+
+       public bool CheckIfUserIsAdmin(int userID)
+        {
+            return dataAccess.CheckIfUserIsAdmin(userID);
+        }
+
+        public bool CheckEmailExists(string email)
+        {
+
+            return dataAccess.CheckEmailExists(email);
+        }
     }
 
 

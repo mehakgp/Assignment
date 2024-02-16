@@ -24,6 +24,15 @@ namespace DemoUserManagement
             {
                 UsersListLink.Attributes["class"] += " selected";
             }
+
+            //if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
+            //{
+            //    navigation.Visible = true;
+            //}
+            //else
+            //{
+            //    navigation.Visible = false;
+            //}
         }
     }
 }

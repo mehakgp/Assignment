@@ -33,8 +33,6 @@ namespace DemoUserManagement
         protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int userID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-
-            Business business = new Business();
             bool success = business.DeleteUser(userID);
 
             if (success)
@@ -88,7 +86,6 @@ namespace DemoUserManagement
 
             BindGridView();
         }
-
 
     }
 

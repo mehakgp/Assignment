@@ -5,15 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="14debcc55ebc419f804d20db04994533" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="DemoUserManagementModel.AddressDetail" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.Country" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.Document" Width="1.5" PointX="5.75" PointY="1.375" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.State" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="DemoUserManagementModel.UserDetail" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.AddressDetail" Width="1.5" PointX="6" PointY="3.5" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Country" Width="1.5" PointX="3.75" PointY="7.5" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Document" Width="1.5" PointX="5.75" PointY="7.5" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Note" Width="1.5" PointX="7.75" PointY="7.5" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.Role" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.State" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.UserDetail" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DemoUserManagementModel.UserRole" Width="1.5" PointX="3" PointY="4" />
         <AssociationConnector Association="DemoUserManagementModel.FK_UserID" />
         <AssociationConnector Association="DemoUserManagementModel.FKCountryID" />
         <AssociationConnector Association="DemoUserManagementModel.FKStateID" />
         <AssociationConnector Association="DemoUserManagementModel.FK_CountryID" />
+        <AssociationConnector Association="DemoUserManagementModel.FK__UserRole__RoleID__71D1E811" />
+        <AssociationConnector Association="DemoUserManagementModel.FK__UserRole__UserID__72C60C4A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

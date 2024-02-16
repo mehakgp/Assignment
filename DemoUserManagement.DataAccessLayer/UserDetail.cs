@@ -18,6 +18,7 @@ namespace DemoUserManagement.DataAccessLayer
         public UserDetail()
         {
             this.AddressDetails = new HashSet<AddressDetail>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
         public int UserID { get; set; }
@@ -28,6 +29,7 @@ namespace DemoUserManagement.DataAccessLayer
         public System.DateTime DateOfBirth { get; set; }
         public string AadharNo { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public Nullable<decimal> Marks10th { get; set; }
         public string Board10th { get; set; }
@@ -47,5 +49,7 @@ namespace DemoUserManagement.DataAccessLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddressDetail> AddressDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

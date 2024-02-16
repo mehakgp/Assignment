@@ -20,7 +20,6 @@ namespace DemoUserManagement.UtilityLayer
                 writer.WriteLine("--------------------------------------------------");
             }
 
-
         }
 
         public enum AddressTypeEnum

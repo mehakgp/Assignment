@@ -821,3 +821,84 @@ StackTrace:    at System.Threading.Thread.AbortInternal()
    at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 168
 --------------------------------------------------
+16-02-2024 16:21:46 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+16-02-2024 18:08:29 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 184
+--------------------------------------------------
+16-02-2024 18:26:06 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:26:10 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:28:49 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+16-02-2024 18:32:04 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+16-02-2024 18:33:15 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+16-02-2024 18:36:38 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:37:25 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+16-02-2024 18:39:53 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:39:58 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:40:03 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:40:20 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:40:26 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+16-02-2024 18:41:04 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------

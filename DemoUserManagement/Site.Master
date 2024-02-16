@@ -16,8 +16,8 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <style>
-        .selected{
-            color:white;
+        .selected {
+            color: white;
         }
     </style>
 </head>
@@ -42,23 +42,23 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" runat="server">
             <div class="container">
-                <img src="samplelogo.png" height="50" style="padding-right:6px"/>
+                <img src="samplelogo.png" height="50" style="padding-right: 6px" />
                 <a class="navbar-brand" runat="server" href="~/">USER MANAGEMENT</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+               <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" id="UserDetailsLink" runat="server" href="~/">User Details</a></li>
+                        <li class="nav-item"><a class="nav-link" id="UserDetailsLink" runat="server" href="~/UserDetails">User Details</a></li>
                         <li class="nav-item"><a class="nav-link" id="UsersListLink" runat="server" href="~/Users">Users List</a></li>
                     </ul>
-                    <span class="navbar-brand">
-                        <asp:Literal runat="server" ID="PageTitleLiteral"></asp:Literal>
-                    </span>
                 </div>
+                <span class="navbar-brand">
+                    <asp:Literal runat="server" ID="PageTitleLiteral"></asp:Literal>
+                </span>
             </div>
         </nav>
 

@@ -6,7 +6,8 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="Scripts/DemoUserManagement.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="Scripts/DemoUserManagement.js"></script>
 
     <style>
         h1 {
@@ -98,6 +99,10 @@
                 <div class="col-md-4">
                     <label for="txtEmail">Email: *</label>
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+                </div>
+                <div class="col-md-4">
+                    <label for="txtPassword">Password: *</label>
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
                     <label for="txtPhoneNumber">Phone Number: *</label>
@@ -258,7 +263,7 @@
                     <uc1:NoteUserControl runat="server" ID="NoteUserControl" />
                 </div>
                 <div class="col-md-6">
-                    <uc2:DocumentUserControl runat="server" id="DocumentUserControl" />
+                    <uc2:DocumentUserControl runat="server" ID="DocumentUserControl" />
                 </div>
             </div>
 
