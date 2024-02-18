@@ -50,10 +50,17 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" >
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">    
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" id="UserDetailsLink" runat="server" href="~/UserDetails">User Details</a></li>
-                        <li class="nav-item"><a class="nav-link" id="UsersListLink" runat="server" href="~/Users">Users List</a></li>
+                        <li class="nav-item" id="UserDetailsLink" runat="server" visible="false">
+                            <a class="nav-link" runat="server" href="~/UserDetails.aspx">User Details</a>
+                        </li>
+                        <li class="nav-item" id="UsersListLink" runat="server" visible="false">
+                            <a class="nav-link" runat="server" href="~/Users.aspx">Users List</a>
+                        </li>
+                        <li class="nav-item" id="LogoutLink" runat="server" visible="false">
+                            <a class="nav-link" runat="server" href="~/LogOut.aspx">LogOut</a>
+                        </li>
                     </ul>
                 </div>
                 <span class="navbar-brand">

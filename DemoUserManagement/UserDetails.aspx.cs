@@ -23,18 +23,27 @@ namespace DemoUserManagement
                 PopulateCountries();
                 if (Request.QueryString["UserID"] != null)
                 {
-                    int userID = Convert.ToInt32(Request.QueryString["UserID"]);
-                    NoteUserControl.ObjectID = userID;
-                    NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                    UserSessionInfo userSessionInfo = (UserSessionInfo)Session["UserSessionInfo"];
+                    int SessionUserID = userSessionInfo.UserID;
+                    bool SessionIsAdmin = userSessionInfo.IsAdmin;
 
-                    DocumentUserControl.ObjectID = userID;
-                    DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
-                    UserDetailsModel userDetails = GetUserDetails(userID);
-                    AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
-                    AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
-                    PopulateFields(userDetails, currentAddress, permanentAddress);
-                    NoteUserControl.Visible = true;
-                    DocumentUserControl.Visible = true;
+                    int userID = Convert.ToInt32(Request.QueryString["UserID"]);
+
+                    if(userID == SessionUserID || SessionIsAdmin)
+                    {
+                        NoteUserControl.ObjectID = userID;
+                        NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+
+                        DocumentUserControl.ObjectID = userID;
+                        DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                        UserDetailsModel userDetails = GetUserDetails(userID);
+                        AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
+                        AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
+                        PopulateFields(userDetails, currentAddress, permanentAddress);
+                        NoteUserControl.Visible = true;
+                        DocumentUserControl.Visible = true;
+                  }
+                  
                 }
                 else
                 {
@@ -45,13 +54,17 @@ namespace DemoUserManagement
         }
 
 
-        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        protected void CurrentCountrySelectedIndexChanged(object sender, EventArgs e)
         {
             int countryId;
             if (int.TryParse(ddlCurrentCountry.SelectedValue, out countryId))
             {
                 PopulateCurrentStates(countryId);
             }
+        }
+        protected void PermanentCountrySelectedIndexChanged(object sender, EventArgs e)
+        {
+            int countryId;
             if (int.TryParse(ddlPermanentCountry.SelectedValue, out countryId))
             {
                 PopulatePermanentStates(countryId);

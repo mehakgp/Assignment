@@ -78,6 +78,12 @@ namespace DemoUserManagement.ModelView
             public string DocumentTypeName { get; set; }
         }
 
+        public class UserSessionInfo
+        {
+            public int UserID { get; set; }
+            public bool IsAdmin { get; set; }
+        }
+
 
     }
 }

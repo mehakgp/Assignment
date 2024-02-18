@@ -45,6 +45,11 @@ namespace DemoUserManagement
 
         protected void ButtonClick(object sender, EventArgs e)
         {
+            //int objectID = (int)ViewState["ObjectID"];
+            //int objectType = (int)ViewState["ObjectType"];
+            //int documentType = (int)ViewState["DocumentType"];
+
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "UploadFile", $"uploadFile({objectID}, {objectType}, {documentType});", true);
             InsertDocument();
             LoadDocuments();
         }

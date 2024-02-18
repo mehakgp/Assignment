@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static DemoUserManagement.ModelView.Model;
 
 namespace DemoUserManagement
 {
@@ -12,7 +13,6 @@ namespace DemoUserManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -39,15 +39,20 @@ namespace DemoUserManagement
             {
 
                 bool isAdmin = business.CheckIfUserIsAdmin(userID);
-                Session["isAdmin"] = isAdmin;
-                Session["UserID"] = userID;
+                UserSessionInfo userSessionInfo = new UserSessionInfo
+                {
+                    UserID = userID,
+                    IsAdmin = isAdmin
+                };
+
+                Session["UserSessionInfo"] = userSessionInfo;
                 if (isAdmin)
                 {
                     Response.Redirect("~/Users.aspx");
                 }
                 else
                 {
-                    Response.Redirect($"~/UserDetails.aspx?UserID={Session["UserID"]}");
+                    Response.Redirect($"~/UserDetails.aspx?UserID={userID}");
                 }
             }
         }

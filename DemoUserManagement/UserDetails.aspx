@@ -126,7 +126,7 @@
                 <div class="col-md-4">
                     <label for="ddlCurrentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlCurrentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
-                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="CurrentCountrySelectedIndexChanged">
                     </asp:DropDownList>
 
 
@@ -163,7 +163,7 @@
                 <div class="col-md-4">
                     <label for="ddlPermanentCountry">Country: *</label>
                     <asp:DropDownList ID="ddlPermanentCountry" runat="server" CssClass="form-control" ClientIDMode="Static"
-                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                        AutoPostBack="true" AppendDataBoundItems="true" OnSelectedIndexChanged="PermanentCountrySelectedIndexChanged">
                     </asp:DropDownList>
 
                 </div>

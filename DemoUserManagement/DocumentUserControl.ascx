@@ -1,4 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DocumentUserControl.ascx.cs" Inherits="DemoUserManagement.DocumentUserControl" %>
+<%--<script>
+    function uploadFile(objectID, objectType, documentType) {
+        var fileInput = document.getElementById('document');
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'UploadFileHandler.ashx?ObjectID=' + objectID + '&ObjectType=' + objectType + '&DocumentType=' + documentType, true);
+        xhr.send(formData);
+    }
+
+</script>--%>
+
 <label class="form-label" for="document">Upload your Document:</label>
 <div class="input-group mb-3">
     <asp:DropDownList ID="ddlDocumentType" style="margin-right:8px" runat="server" OnSelectedIndexChanged="ddlDocumentType_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>

@@ -12,6 +12,9 @@ namespace DemoUserManagement
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            Session.Remove("UserSessionInfo");
+            Session.Abandon();
+            Response.Redirect("~/LogIn.aspx");
         }
     }
 }

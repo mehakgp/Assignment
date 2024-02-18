@@ -902,3 +902,31 @@ StackTrace:    at System.Threading.Thread.AbortInternal()
    at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
 --------------------------------------------------
+17-02-2024 17:58:06 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 170
+--------------------------------------------------
+18-02-2024 19:49:08 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 181
+--------------------------------------------------
+18-02-2024 20:13:49 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+18-02-2024 20:15:14 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+18-02-2024 20:15:40 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+18-02-2024 20:15:54 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 181
+--------------------------------------------------
+18-02-2024 20:16:03 - Exception: Object reference not set to an instance of an object.
+StackTrace:    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 181
+--------------------------------------------------

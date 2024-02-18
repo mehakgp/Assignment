@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DemoUserManagement {
-    
-    
-    public partial class NoteUserControl {
-        
+namespace DemoUserManagement
+{
+
+
+    public partial class NoteUserControl
+    {
+
         /// <summary>
         /// noteTextBox control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace DemoUserManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox noteTextBox;
-        
+
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace DemoUserManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// GridView1 control.
         /// </summary>

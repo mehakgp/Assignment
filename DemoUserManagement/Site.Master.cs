@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using static DemoUserManagement.ModelView.Model;
 
 namespace DemoUserManagement
 {
@@ -25,14 +27,36 @@ namespace DemoUserManagement
                 UsersListLink.Attributes["class"] += " selected";
             }
 
-            //if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
-            //{
-            //    navigation.Visible = true;
-            //}
-            //else
-            //{
-            //    navigation.Visible = false;
-            //}
+
+            if (!IsPostBack)
+            {
+                CheckUserRole();
+                HideLogoutLink();
+
+            }
+        }
+        private void CheckUserRole()
+        {
+            if (Session["UserSessionInfo"] != null)
+            {
+                var userSessionInfo = (UserSessionInfo)Session["UserSessionInfo"];
+                UserDetailsLink.Visible = userSessionInfo.IsAdmin;
+                UsersListLink.Visible = userSessionInfo.IsAdmin;
+            }
+            else
+            {
+                UserDetailsLink.Visible = false;
+                UsersListLink.Visible = false;
+            }
+        }
+
+        private void HideLogoutLink()
+        {
+            if (Session["UserSessionInfo"] == null)
+                LogoutLink.Visible = false;
+            else 
+                LogoutLink.Visible=true;
+
         }
     }
 }
