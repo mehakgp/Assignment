@@ -106,6 +106,8 @@
     <Content Include="LogIn.aspx" />
     <Content Include="LogOut.aspx" />
     <Content Include="Scripts\DemoUserManagement.js" />
+    <Content Include="Scripts\DemoUserManagement2.js" />
+    <Content Include="UserDetails2.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -219,6 +221,13 @@
     </Compile>
     <Compile Include="UploadFileHandler.ashx.cs">
       <DependentUpon>UploadFileHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetails2.aspx.cs">
+      <DependentUpon>UserDetails2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserDetails2.aspx.designer.cs">
+      <DependentUpon>UserDetails2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
