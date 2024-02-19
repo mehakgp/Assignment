@@ -47,6 +47,31 @@ namespace DemoUserManagement.UtilityLayer
             return doc;
         }
 
+
+        public static SessionModel GetUserSessionInfo()
+        {
+            return System.Web.HttpContext.Current.Session["UserSessionInfo"] as SessionModel;
+
+        }
+
+        public static void SetUserSessionInfo(SessionModel userSessionInfo)
+        {
+            System.Web.HttpContext.Current.Session["UserSessionInfo"] = userSessionInfo;
+        }
+
+        public static bool IsAdmin()
+        {
+            SessionModel userSessionInfo = GetUserSessionInfo();
+            return userSessionInfo.IsAdmin;
+        }
+
+        public static int GetSessionUserId()
+        {
+            SessionModel sessionInfo = GetUserSessionInfo();
+           return sessionInfo.UserID;
+        }
+
+
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoUserManagement.UtilityLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -37,11 +38,10 @@ namespace DemoUserManagement
         }
         private void CheckUserRole()
         {
-            if (Session["UserSessionInfo"] != null)
+            if (Utility.GetUserSessionInfo() != null)
             {
-                var userSessionInfo = (UserSessionInfo)Session["UserSessionInfo"];
-                UserDetailsLink.Visible = userSessionInfo.IsAdmin;
-                UsersListLink.Visible = userSessionInfo.IsAdmin;
+                UserDetailsLink.Visible = Utility.IsAdmin();
+                UsersListLink.Visible = Utility.IsAdmin();
             }
             else
             {
@@ -52,7 +52,7 @@ namespace DemoUserManagement
 
         private void HideLogoutLink()
         {
-            if (Session["UserSessionInfo"] == null)
+            if (Utility.GetUserSessionInfo() == null)
                 LogoutLink.Visible = false;
             else 
                 LogoutLink.Visible=true;

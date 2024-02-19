@@ -319,27 +319,17 @@ function submitFormData() {
         StateID: $("#ddlPermanentState").val()
     };
 
-    var isAdmin = '<%= ((UserSessionInfo)Session["UserSessionInfo"]).IsAdmin %>';
-
     $.ajax({
         type: "POST",
         url: "UserDetails2.aspx/SubmitFormData",
-        data: JSON.stringify({ userDetails: userDetails, currentAddress: currentAddress, permanentAddress: permanentAddress, isAdmin: isAdmin }),
+        data: JSON.stringify({ userDetails: userDetails, currentAddress: currentAddress, permanentAddress: permanentAddress }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            if (response.d.success) {
-                if (isAdmin) {
-                    window.location.href = "Users.aspx";
-                } else {
-                    alert("User details saved successfully.");
-                }
-            } else {
-                alert("Failed to save user details: " + response.d.message);
-            }
+            console.log("Success:", response);
         },
         error: function (xhr, status, error) {
-            alert("An error occurred while saving user details: " + error);
+            console.log("Error:", error);
         }
     });
 }

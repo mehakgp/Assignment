@@ -1,4 +1,5 @@
 ﻿
+using DemoUserManagement.UtilityLayer;
 using DemoUserManangement.BusinessLayer;
 using Newtonsoft.Json;
 using System;
@@ -24,16 +25,16 @@ namespace DemoUserManagement
             {
                 if (Request.QueryString["UserID"] != null)
                 {
-                    UserSessionInfo userSessionInfo = (UserSessionInfo)Session["UserSessionInfo"];
-                    int SessionUserID = userSessionInfo.UserID;
-                    bool SessionIsAdmin = userSessionInfo.IsAdmin;
+                    SessionModel userSessionInfo =GetUserSessionInfo();
+                    int sessionUserID = userSessionInfo.UserID;
+                    bool sessionIsAdmin = userSessionInfo.IsAdmin;
 
-                    string userSessionJson = JsonConvert.SerializeObject(userSessionInfo);
-                    hdnUserSessionInfo.Value = userSessionJson;
+                    //string userSessionJson = JsonConvert.SerializeObject(userSessionInfo);
+                    //hdnUserSessionInfo.Value = userSessionJson;
 
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
 
-                    if (userID == SessionUserID || SessionIsAdmin)
+                    if (userID == sessionUserID || sessionIsAdmin)
                     {
                         NoteUserControl.ObjectID = userID;
                         NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
@@ -57,7 +58,8 @@ namespace DemoUserManagement
         [WebMethod]
         public static List<CountryModel> GetCountries()
         {
-            Business business=new Business();
+
+            Business business = new Business();
             List<CountryModel> countries = business.GetCountries();
             return countries;
         }
@@ -71,7 +73,7 @@ namespace DemoUserManagement
         }
        
         [WebMethod]
-        public static string SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, bool isAdmin)
+        public static string SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
         {
             try
             {
@@ -82,7 +84,7 @@ namespace DemoUserManagement
                     bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
                     if (success)
                     {
-                        if (isAdmin)
+                        if (Utility.IsAdmin())
                         {
                             HttpContext.Current.Response.Redirect("~/Users.aspx");
                         }
@@ -120,6 +122,7 @@ namespace DemoUserManagement
             string userDetailsJson = serializer.Serialize(userDetails);
             return userDetailsJson;
         }
+
         [WebMethod]
         public static string GetAddressDetails(int userId,int addresssType)
         {

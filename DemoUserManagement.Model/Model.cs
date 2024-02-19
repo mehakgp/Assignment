@@ -78,7 +78,7 @@ namespace DemoUserManagement.ModelView
             public string DocumentTypeName { get; set; }
         }
 
-        public class UserSessionInfo
+        public class SessionModel
         {
             public int UserID { get; set; }
             public bool IsAdmin { get; set; }

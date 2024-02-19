@@ -1,4 +1,5 @@
 ﻿
+using DemoUserManagement.UtilityLayer;
 using DemoUserManangement.BusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,9 @@ namespace DemoUserManagement
                 PopulateCountries();
                 if (Request.QueryString["UserID"] != null)
                 {
-                    UserSessionInfo userSessionInfo = (UserSessionInfo)Session["UserSessionInfo"];
-                    int SessionUserID = userSessionInfo.UserID;
-                    bool SessionIsAdmin = userSessionInfo.IsAdmin;
-
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
 
-                    if(userID == SessionUserID || SessionIsAdmin)
+                    if(userID == Utility.GetSessionUserId()|| Utility.IsAdmin() )
                     {
                         NoteUserControl.ObjectID = userID;
                         NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
@@ -178,7 +175,7 @@ namespace DemoUserManagement
                     bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
                     if (success)
                     {
-                        if ((bool)Session["isAdmin"]==true)
+                        if (Utility.IsAdmin())
                         {
                             Response.Redirect("~/Users.aspx");
                         }

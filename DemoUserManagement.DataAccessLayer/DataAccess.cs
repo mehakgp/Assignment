@@ -564,8 +564,12 @@ namespace DemoUserManagement.DataAccessLayer
             {
                 using (var context = new DemoUserManagementEntities())
                 {
-                    var user = context.UserDetails.FirstOrDefault(u => u.Email == email && u.Password == password);
-                    return user != null ? user.UserID : -1;
+                    var user = context.UserDetails.FirstOrDefault(u => u.Email == email);
+                    if (user != null && user.Password == password)
+                    {
+                        return user.UserID;
+                    }
+                    return -1;
                 }
             }
            catch(Exception ex)

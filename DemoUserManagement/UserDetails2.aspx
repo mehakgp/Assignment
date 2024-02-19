@@ -7,7 +7,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="Scripts/DemoUserManagement2.js"></script>
+    <script src="Scripts/DemoUserManagement_UserDetails2.js"></script>
     <asp:HiddenField ID="hdnUserSessionInfo" runat="server" ClientIDMode="Static" />
     <style>
         h1 {

@@ -105,8 +105,8 @@
     <Content Include="DocumentUserControl.ascx" />
     <Content Include="LogIn.aspx" />
     <Content Include="LogOut.aspx" />
-    <Content Include="Scripts\DemoUserManagement.js" />
-    <Content Include="Scripts\DemoUserManagement2.js" />
+    <Content Include="Scripts\DemoUserManagement_UserDetails.js" />
+    <Content Include="Scripts\DemoUserManagement_UserDetails2.js" />
     <Content Include="UserDetails2.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Content\bootstrap-grid.css" />

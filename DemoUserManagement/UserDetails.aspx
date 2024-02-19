@@ -7,7 +7,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="Scripts/DemoUserManagement.js"></script>
+        <script src="Scripts/DemoUserManagement_UserDetails.js"></script>
 
     <style>
         h1 {

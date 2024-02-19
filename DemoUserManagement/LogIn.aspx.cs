@@ -1,4 +1,5 @@
-﻿using DemoUserManangement.BusinessLayer;
+﻿using DemoUserManagement.UtilityLayer;
+using DemoUserManangement.BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,14 @@ namespace DemoUserManagement
             {
 
                 bool isAdmin = business.CheckIfUserIsAdmin(userID);
-                UserSessionInfo userSessionInfo = new UserSessionInfo
+                SessionModel userSessionInfo = new SessionModel
                 {
                     UserID = userID,
                     IsAdmin = isAdmin
                 };
 
-                Session["UserSessionInfo"] = userSessionInfo;
+                Utility.SetUserSessionInfo(userSessionInfo);
+
                 if (isAdmin)
                 {
                     Response.Redirect("~/Users.aspx");
