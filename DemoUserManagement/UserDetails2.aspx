@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtAadharNo">Aadhar No: *</label>
-                    <input type="number" id="txtAadharNo" class="form-control"  data-field="AadharNo" />
+                    <input type="text" id="txtAadharNo" class="form-control"  data-field="AadharNo" />
                 </div>
             </div>
 
@@ -134,13 +134,13 @@
                 </div>
                 <div class="col-md-4">
                     <label for="ddlCurrentState">State: *</label>
-                    <select id="ddlCurrentState" class="form-control" data-field="CurrentState" data-field="CurrentPincode">
+                    <select id="ddlCurrentState" class="form-control" data-field="CurrentState" >
                         <option value="">Select State</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentPincode">Pincode: *</label>
-                    <input type="number" id="txtCurrentPincode" class="form-control" />
+                    <input type="number" id="txtCurrentPincode" class="form-control" data-field="CurrentPincode"> />
                 </div>
             </div>
 
