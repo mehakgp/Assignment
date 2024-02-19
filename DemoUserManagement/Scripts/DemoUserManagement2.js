@@ -193,7 +193,8 @@ function validateEmailAndSubmitForm() {
         isValid = false;
         return;
     }
-
+    //const urlParams = new URLSearchParams(window.location.search);
+    //const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
     $.ajax({
         type: "POST",
         url: "UserDetails2.aspx/CheckEmailExists",
@@ -342,7 +343,62 @@ function submitFormData() {
         }
     });
 }
+function populateFields(userDetails) {
+    $('[data-field]').each(function () {
+        var fieldName = $(this).data('field');
+        var value = userDetails[fieldName];
+        if (value !== null && value !== undefined) {
+            if ($(this).is('select')) {
+                $(this).val(value);
+            } else {
+                $(this).val(value.toString());
+            }
+        } else {
+            $(this).val('');
+        }
+    });
+}
 
+function populateAddressFields(addressDetails, addressType) {
+    $('[data-field^="' + addressType + '"]').each(function () {
+        var fieldName = $(this).data('field').replace(addressType, '');
+        var value = addressDetails[addressType + fieldName];
+        if (value !== null && value !== undefined) {
+            if ($(this).is('select')) {
+  
+                if ($(this).is('[id^="ddl' + addressType + 'Country"]')) {
+                    var countryDropdown = $(this);
+                  
+                    countryDropdown.find('option').filter(function () {
+                        return $(this).val() == value;
+                    }).prop('selected', true);
+                } else {
+                    $(this).val(value.toString());
+                }
+            } else {
+                $(this).val(value.toString());
+            }
+        } else {
+            $(this).val('');
+        }
+    });
+}
+
+
+
+function getAddressDetails(userID, addressType, successCallback) {
+    $.ajax({
+        type: "POST",
+        url: "UserDetails2.aspx/GetAddressDetails",
+        data: JSON.stringify({ userId: userID, addressType: addressType }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: successCallback,
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
 $(document).ready(function () {
     populateCountries("ddlCurrentCountry");
     populateCountries("ddlPermanentCountry");
@@ -362,10 +418,8 @@ $(document).ready(function () {
         var userSessionInfo = JSON.parse(userSessionJson);
         var SessionUserID = userSessionInfo.UserID;
         var SessionIsAdmin = userSessionInfo.IsAdmin;
-        // Get the query string parameters
         const urlParams = new URLSearchParams(window.location.search);
         const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
-
 
         if (userID === SessionUserID || SessionIsAdmin) {
             $.ajax({
@@ -376,75 +430,20 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (response) {
                     var userDetails = JSON.parse(response.d);
-                    // Populate fields with userDetails
-                    txtFirstName.val(userDetails.FirstName);
-                    txtLastName.val(userDetails.LastName);
-                    txtMiddleName.val(userDetails.MiddleName);
-                    ddlGender.val(userDetails.Gender);
-                    txtDateOfBirth.val(userDetails.DateOfBirth !== null ? userDetails.DateOfBirth.split('T')[0] : '');
-                    txtAadharNo.val(userDetails.AadharNo);
-                    txtEmail.val(userDetails.Email);
-                    txtPassword.val(userDetails.Password);
-                    txtPhoneNumber.val(userDetails.PhoneNumber);
-                    txtMarks10th.val(userDetails.Marks10th !== null ? userDetails.Marks10th.toFixed(2) : '');
-                    ddlBoard10th.val(userDetails.Board10th);
-                    txtSchool10th.val(userDetails.School10th);
-                    txtYearOfCompletion10th.val(userDetails.YearOfCompletion10th !== null ? userDetails.YearOfCompletion10th.split('T')[0] : '');
-                    txtMarks12th.val(userDetails.Marks12th !== null ? userDetails.Marks12th.toFixed(2) : '');
-                    ddlBoard12th.val(userDetails.Board12th);
-                    txtSchool12th.val(userDetails.School12th);
-                    txtYearOfCompletion12th.val(userDetails.YearOfCompletion12th !== null ? userDetails.YearOfCompletion12th.split('T')[0] : '');
-                    txtCGPA.val(userDetails.CGPA !== null ? userDetails.CGPA.toFixed(2) : '');
-                    txtUniversity.val(userDetails.University);
-                    txtYearOfCompletionGraduation.val(userDetails.YearOfCompletionGraduation !== null ? userDetails.YearOfCompletionGraduation.split('T')[0] : '');
-                    txtHobbies.val(userDetails.Hobbies);
-                    txtComments.val(userDetails.Comments);
+                    populateFields(userDetails);
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
                 }
             });
-
-            $.ajax({
-                type: "POST",
-                url: "UserDetails.aspx/GetAddressDetails",
-                data: JSON.stringify({ userID: userID, addresssType: 1 }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    var currentAddress = JSON.parse(response.d);
-                    // Populate fields with currentAddress
-                    txtCurrentAddressLine1.val(currentAddress.AddressLine1);
-                    txtCurrentAddressLine2.val(currentAddress.AddressLine2);
-                    txtCurrentPincode.val(currentAddress.Pincode);
-                    ddlCurrentCountry.val(currentAddress.CountryID.toString());
-                    populateStates(currentAddress.CountryID.toString(), "ddlCurrentState");
-                    ddlCurrentState.val(currentAddress.StateID.toString());
-                },
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
+            getAddressDetails(userID, 1, function (response) {
+                var addressDetails = JSON.parse(response.d);
+                populateAddressFields(addressDetails, "Current");
             });
 
-            $.ajax({
-                type: "POST",
-                url: "UserDetails2.aspx/GetAddressDetails",
-                data: JSON.stringify({ userID: userID, addresssType: 2 }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    var permanentAddress = JSON.parse(response.d);
-                    // Populate fields with permanentAddress
-                    txtPermanentAddressLine1.val(permanentAddress.AddressLine1);
-                    txtPermanentAddressLine2.val(permanentAddress.AddressLine2);
-                    txtPermanentPincode.val(permanentAddress.Pincode);
-                    ddlPermanentCountry.val(permanentAddress.CountryID.toString());
-                    populateStates(permanentAddress.CountryID.toString(), "ddlPermanentState");
-                    ddlPermanentState.val(permanentAddress.StateID.toString());
-                },
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
+            getAddressDetails(userID, 2, function (response) {
+                var addressDetails = JSON.parse(response.d);
+                populateAddressFields(addressDetails, "Permanent");
             });
         }
     }
