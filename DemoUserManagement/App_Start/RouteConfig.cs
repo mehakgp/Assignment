@@ -11,7 +11,8 @@ namespace DemoUserManagement
         public static void RegisterRoutes(RouteCollection routes)
         {
             var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Permanent;
+            settings.AutoRedirectMode = RedirectMode.Temporary;
+            
 //       routes.EnableFriendlyUrls(settings);
         }
     }

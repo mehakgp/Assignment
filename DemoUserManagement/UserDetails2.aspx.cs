@@ -15,7 +15,7 @@ using static DemoUserManagement.UtilityLayer.Utility;
 
 namespace DemoUserManagement
 {
-    public partial class UserDetails2 : Page
+    public partial class UserDetails2 : BasePage
     {
         Business business = new Business();
         protected void Page_Load(object sender, EventArgs e)
@@ -25,26 +25,18 @@ namespace DemoUserManagement
             {
                 if (Request.QueryString["UserID"] != null)
                 {
-                    SessionModel userSessionInfo =GetUserSessionInfo();
-                    int sessionUserID = userSessionInfo.UserID;
-                    bool sessionIsAdmin = userSessionInfo.IsAdmin;
-
-                    //string userSessionJson = JsonConvert.SerializeObject(userSessionInfo);
-                    //hdnUserSessionInfo.Value = userSessionJson;
 
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
 
-                    if (userID == sessionUserID || sessionIsAdmin)
-                    {
-                        NoteUserControl.ObjectID = userID;
-                        NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                    NoteUserControl.ObjectID = userID;
+                    NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
 
-                        DocumentUserControl.ObjectID = userID;
-                        DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
-                      
-                        NoteUserControl.Visible = true;
-                        DocumentUserControl.Visible = true;
-                    }
+                    DocumentUserControl.ObjectID = userID;
+                    DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+
+                    NoteUserControl.Visible = true;
+                    DocumentUserControl.Visible = true;
+
 
                 }
                 else
@@ -58,39 +50,32 @@ namespace DemoUserManagement
         [WebMethod]
         public static List<CountryModel> GetCountries()
         {
-
-            Business business = new Business();
-            List<CountryModel> countries = business.GetCountries();
-            return countries;
+            return new Business().GetCountries();
         }
 
         [WebMethod]
         public static List<StateModel> GetStates(int CountryID)
         {
-            Business business = new Business();
-            List<StateModel> states = business.GetStates(CountryID);
-            return states;
+            return new Business().GetStates(CountryID);
         }
-       
+
+
         [WebMethod]
-        public static string SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress)
+        public static SubmitFormDataResponse SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, int userID)
         {
+            SubmitFormDataResponse response = new SubmitFormDataResponse();
             try
             {
                 Business business = new Business();
-                if (!string.IsNullOrEmpty(HttpContext.Current.Request.QueryString["UserID"]))
+                if (userID != 0)
                 {
-                    int userID = Convert.ToInt32(HttpContext.Current.Request.QueryString["UserID"]);
-                    bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
-                    if (success)
+                    if (userID == GetSessionUserId() || IsAdmin())
                     {
-                        if (Utility.IsAdmin())
+                        bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
+                        if (success)
                         {
-                            HttpContext.Current.Response.Redirect("~/Users.aspx");
-                        }
-                        else
-                        {
-                            return "{\"success\":true}";
+                            response.EditSuccess = true;
+                            response.IsAdmin = IsAdmin();
                         }
                     }
                 }
@@ -99,49 +84,43 @@ namespace DemoUserManagement
                     bool success = business.SaveUserDetails(userDetails, currentAddress, permanentAddress);
                     if (success)
                     {
-                        HttpContext.Current.Response.Redirect("LogIn.aspx");
+                        response.NewUserSuccess = true;
                     }
                 }
-
-                return "{\"success\":true}";
             }
             catch (Exception ex)
             {
-                return "{\"success\":false,\"message\":\"" + ex.Message + "\"}";
+                LogException(ex);
             }
+            return response;
         }
 
 
 
         [WebMethod]
-        public static string GetUserDetails(int userId)
+        public static UserDetailsModel GetUserDetails(int userId)
         {
-            Business business = new Business();
-            UserDetailsModel userDetails = business.GetUserDetails(userId);
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string userDetailsJson = serializer.Serialize(userDetails);
-            return userDetailsJson;
+            if (userId == GetSessionUserId() || IsAdmin())
+                return new Business().GetUserDetails(userId);
+            else
+                return new UserDetailsModel();
         }
 
         [WebMethod]
-        public static string GetAddressDetails(int userId,int addresssType)
+        public static AddressDetailsModel GetAddressDetails(int userId, int addressType)
         {
-            Business business = new Business();
-            AddressDetailsModel addressDetails=business.GetAddressDetails(userId,addresssType);
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string addressDetailsJson = serializer.Serialize(addressDetails);
-            return addressDetailsJson;
-
-
+            if (userId == GetSessionUserId() || IsAdmin())
+                return new Business().GetAddressDetails(userId, addressType);
+            else
+                return new AddressDetailsModel();
         }
 
-   
-
         [WebMethod]
-        public static bool CheckEmailExists(string email)
+        public static bool CheckEmailExists(string email, int userID)
         {
-            Business business = new Business();
-            return business.CheckEmailExists(email);
+
+            return new Business().CheckEmailExists(email, userID);
+
         }
 
 

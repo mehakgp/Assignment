@@ -116,12 +116,23 @@ namespace DemoUserManangement.BusinessLayer
             return dataAccess.CheckIfUserIsAdmin(userID);
         }
 
-        public bool CheckEmailExists(string email)
+        public bool CheckEmailExists(string email,int userID)
         {
 
-            return dataAccess.CheckEmailExists(email);
+            return dataAccess.CheckEmailExists(email,userID);
+        }
+
+        public string GetDocumentUniqueNameById(int documentId)
+        {
+           return dataAccess.GetDocumentUniqueNameById(documentId);
+        }
+
+        public string GetUniqueFileNameInUserDetails(int userId)
+        {
+            return dataAccess.GetUniqueFileNameInUserDetails(userId);
         }
     }
+
 
 
 

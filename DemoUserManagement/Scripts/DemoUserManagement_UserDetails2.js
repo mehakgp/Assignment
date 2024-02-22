@@ -37,144 +37,128 @@ function resetForm() {
 }
 
 function validateForm() {
-
     resetValidation();
-
-
-    var firstName = document.getElementById('txtFirstName').value.trim();
-    var dob = document.getElementById('txtDateOfBirth').value.trim();
-    var aadharNo = document.getElementById('txtAadharNo').value.trim();
-    var email = document.getElementById('txtEmail').value.trim();
-    var password = document.getElementById('txtPassword').value.trim();
-    var phoneNumber = document.getElementById('txtPhoneNumber').value.trim();
-    var currentAddressLine1 = document.getElementById('txtCurrentAddressLine1').value.trim();
-    var currentPincode = document.getElementById('txtCurrentPincode').value.trim();
-    var currentState = document.getElementById('ddlCurrentState').value.trim();
-    var currentCountry = document.getElementById('ddlCurrentCountry').value.trim();
-    var permanentAddressLine1 = document.getElementById('txtPermanentAddressLine1').value.trim();
-    var permanentPincode = document.getElementById('txtPermanentPincode').value.trim();
-    var permanentState = document.getElementById('ddlPermanentState').value.trim();
-    var permanentCountry = document.getElementById('ddlPermanentCountry').value.trim();
-
-    var marks10th = document.getElementById('txtMarks10th').value.trim();
-    var marks12th = document.getElementById('txtMarks12th').value.trim();
-    var cgpa = document.getElementById('txtCGPA').value.trim();
-
-
-    //  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-    var phonePattern = /^\d{10}$/;
-
+    
+    var elements = document.querySelectorAll('.validate-input');
     var isValid = true;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    elements.forEach(function (element) {
+        var value = element.value.trim();
+        switch (element.id) {
+            case 'txtFirstName':
+                if (value === '') {
+                    displayValidationMessage('txtFirstName', 'First Name is required');
+                    isValid = false;
+                }
+                break;
 
-    if (firstName === '') {
-        displayValidationMessage('txtFirstName', 'First Name is required');
-        isValid = false;
-    }
-
-    if (dob === '') {
-        displayValidationMessage('txtDateOfBirth', 'Date of Birth is required');
-        isValid = false;
-    }
-
-    if (aadharNo === '' || isNaN(aadharNo) || aadharNo.length !== 12) {
-        displayValidationMessage('txtAadharNo', 'Aadhar No is required and must be a 12 digit number');
-        isValid = false;
-    }
-
-
-
-    //if (email === '' || !emailPattern.test(email)) {
-    //    displayValidationMessage('txtEmail', 'Invalid Email');
-    //    isValid = false;
-    //}
-    //else {
-    //    $.ajax({
-    //        type: "POST",
-    //        url: "UserDetails.aspx/CheckEmailExists",
-    //        data: JSON.stringify({ email: email }),
-    //        contentType: "application/json; charset=utf-8",
-    //        dataType: "json",
-    //        success: function (response) {
-    //            if (response.d) {
-    //                displayValidationMessage('txtEmail', 'Email already exists. Please use a different email.');
-    //                isValid = false;
-    //            }
-    //        },
-    //        error: function (xhr, status, error) {
-    //            console.log(error);
-    //        }
-    //    });
-    //}
-
-
-    if (password === '' || password.length <= 8) {
-        displayValidationMessage('txtPassword', 'Password is required and must be more than 8 characters');
-        isValid = false;
-    }
-
-    if (phoneNumber === '' || !phonePattern.test(phoneNumber)) {
-        displayValidationMessage('txtPhoneNumber', 'Phone Number is required and must be a 10 digit number');
-        isValid = false;
-    }
-
-    if (currentAddressLine1 === '') {
-        displayValidationMessage('txtCurrentAddressLine1', 'Address Line1 is mandatory');
-        isValid = false;
-    }
-
-    if (currentPincode === '') {
-        displayValidationMessage('txtCurrentPincode', 'Pincode is mandatory');
-        isValid = false;
-    }
-
-    if (currentState === '') {
-        displayValidationMessage('ddlCurrentState', 'State is mandatory');
-        isValid = false;
-    }
-
-    if (currentCountry === '') {
-        displayValidationMessage('ddlCurrentCountry', 'Country is mandatory');
-        isValid = false;
-    }
-
-    if (permanentAddressLine1 === '') {
-        displayValidationMessage('txtPermanentAddressLine1', 'Address Line1 is mandatory');
-        isValid = false;
-    }
-
-    if (permanentPincode === '') {
-        displayValidationMessage('txtPermanentPincode', 'Pincode is mandatory');
-        isValid = false;
-    }
-
-    if (permanentState === '') {
-        displayValidationMessage('ddlPermanentState', 'State is mandatory');
-        isValid = false;
-    }
-
-    if (permanentCountry === '') {
-        displayValidationMessage('ddlPermanentCountry', 'Country is mandatory');
-        isValid = false;
-    }
-
-
-    if (marks10th === '' || isNaN(marks10th) || marks10th < 1 || marks10th > 100) {
-        displayValidationMessage('txtMarks10th', 'Percentage is required and must be a number between 1 and 100');
-        isValid = false;
-    }
-
-
-    if (marks12th === '' || isNaN(marks12th) || marks12th < 1 || marks12th > 100) {
-        displayValidationMessage('txtMarks12th', 'Percentage is required and must be a number between 1 and 100');
-        isValid = false;
-    }
-
-    if (cgpa === '' || isNaN(cgpa) || cgpa < 1 || cgpa > 10) {
-        displayValidationMessage('txtCGPA', 'CGPA is required and must be a number between 1 and 10');
-        isValid = false;
-    }
+            case 'ddlGender':
+                if (value === '') {
+                    displayValidationMessage('ddlGender', 'Gender is required');
+                    isValid = false;
+                }
+                break;
+            case 'txtDateOfBirth':
+                if (value === '') {
+                    displayValidationMessage('txtDateOfBirth', 'Date of Birth is required');
+                    isValid = false;
+                }
+                break;
+            case 'txtAadharNo':
+                if (value === '' || isNaN(value) || value.length !== 12) {
+                    displayValidationMessage('txtAadharNo', 'Aadhar No is required and must be a 12 digit number');
+                    isValid = false;
+                }
+                break;
+            case 'txtPassword':
+                if (value === '' || value.length <= 8) {
+                    displayValidationMessage('txtPassword', 'Password is required and must be more than 8 characters');
+                    isValid = false;
+                }
+                break;
+            case 'txtPhoneNumber':
+                var phonePattern = /^\d{10}$/;
+                if (value === '' || !phonePattern.test(value)) {
+                    displayValidationMessage('txtPhoneNumber', 'Phone Number is required and must be a 10 digit number');
+                    isValid = false;
+                }
+                break;
+            case 'txtCurrentAddressLine1':
+                if (value === '') {
+                    displayValidationMessage('txtCurrentAddressLine1', 'Address Line1 is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'txtCurrentPincode':
+                if (value === '') {
+                    displayValidationMessage('txtCurrentPincode', 'Pincode is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'ddlCurrentState':
+                if (value === '') {
+                    displayValidationMessage('ddlCurrentState', 'State is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'ddlCurrentCountry':
+                if (value === '') {
+                    displayValidationMessage('ddlCurrentCountry', 'Country is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'txtPermanentAddressLine1':
+                if (value === '') {
+                    displayValidationMessage('txtPermanentAddressLine1', 'Address Line1 is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'txtPermanentPincode':
+                if (value === '') {
+                    displayValidationMessage('txtPermanentPincode', 'Pincode is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'ddlPermanentState':
+                if (value === '') {
+                    displayValidationMessage('ddlPermanentState', 'State is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'ddlPermanentCountry':
+                if (value === '') {
+                    displayValidationMessage('ddlPermanentCountry', 'Country is mandatory');
+                    isValid = false;
+                }
+                break;
+            case 'txtMarks10th':
+                if (value === '' || isNaN(value) || value < 1 || value > 100) {
+                    displayValidationMessage('txtMarks10th', 'Percentage is required and must be a number between 1 and 100');
+                    isValid = false;
+                }
+                break;
+            case 'txtMarks12th':
+                if (value === '' || isNaN(value) || value < 1 || value > 100) {
+                    displayValidationMessage('txtMarks12th', 'Percentage is required and must be a number between 1 and 100');
+                    isValid = false;
+                }
+                break;
+            case 'txtCGPA':
+                if (value === '' || isNaN(value) || value < 1 || value > 10) {
+                    displayValidationMessage('txtCGPA', 'CGPA is required and must be a number between 1 and 10');
+                    isValid = false;
+                }
+                break;
+            case 'txtEmail':
+                if (value === '' || !emailPattern.test(value)) {
+                    displayValidationMessage('txtEmail', 'Invalid Email');
+                    isValid = false;
+                }
+                break;
+            default:
+                break;
+        }
+    });
 
     if (isValid) {
         validateEmailAndSubmitForm();
@@ -183,25 +167,19 @@ function validateForm() {
     return false;
 }
 
-
 function validateEmailAndSubmitForm() {
     var email = document.getElementById('txtEmail').value.trim();
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const urlParams = new URLSearchParams(window.location.search);
+    const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
 
-    if (email === '' || !emailPattern.test(email)) {
-        displayValidationMessage('txtEmail', 'Invalid Email');
-        isValid = false;
-        return;
-    }
-    //const urlParams = new URLSearchParams(window.location.search);
-    //const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
     $.ajax({
         type: "POST",
         url: "UserDetails2.aspx/CheckEmailExists",
-        data: JSON.stringify({ email: email }),
+        data: JSON.stringify({ email: email, userID: userID }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
+            console.log(response);
             if (response.d) {
                 displayValidationMessage('txtEmail', 'Email already exists. Please use a different email.');
                 isValid = false;
@@ -235,6 +213,106 @@ function resetValidation() {
 }
 
 
+function submitFormData() {
+    var fileInput = document.getElementById('resume');
+    var file = fileInput.files[0];
+    if (!file) {
+        alert("Please select a file.");
+        return;
+    }
+    var formData = new FormData();
+    formData.append("file", file);
+    $.ajax({
+        type: "POST",
+        url: "UploadFileHandler.ashx",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            var uniqueFileName = response;
+
+            var userDetails = {
+                FirstName: $("#txtFirstName").val(),
+                LastName: $("#txtLastName").val(),
+                MiddleName: $("#txtMiddleName").val(),
+                Gender: $("#ddlGender option:selected").text(),
+                DateOfBirth: $("#txtDateOfBirth").val(),
+                AadharNo: $("#txtAadharNo").val(),
+                Email: $("#txtEmail").val(),
+                Password: $("#txtPassword").val(),
+                PhoneNumber: $("#txtPhoneNumber").val(),
+                Marks10th: $("#txtMarks10th").val(),
+                Board10th: $("#ddlBoard10th option:selected").text(),
+                School10th: $("#txtSchool10th").val(),
+                YearOfCompletion10th: $("#txtYearOfCompletion10th").val(),
+                Marks12th: $("#txtMarks12th").val(),
+                Board12th: $("#ddlBoard12th option:selected").text(),
+                School12th: $("#txtSchool12th").val(),
+                YearOfCompletion12th: $("#txtYearOfCompletion12th").val(),
+                CGPA: $("#txtCGPA").val(),
+                University: $("#txtUniversity").val(),
+                YearOfCompletionGraduation: $("#txtYearOfCompletionGraduation").val(),
+                Hobbies: $("#txtHobbies").val(),
+                Comments: $("#txtComments").val(),
+                OriginalFileName: file.name,
+                UniqueFileName: uniqueFileName
+            };
+
+            var currentAddress = {
+                AddressType: 1,
+                AddressLine1: $("#txtCurrentAddressLine1").val(),
+                AddressLine2: $("#txtCurrentAddressLine2").val(),
+                Pincode: $("#txtCurrentPincode").val(),
+                CountryID: $("#ddlCurrentCountry").val(),
+                StateID: $("#ddlCurrentState").val()
+            };
+
+            var permanentAddress = {
+                AddressType: 2,
+                AddressLine1: $("#txtPermanentAddressLine1").val(),
+                AddressLine2: $("#txtPermanentAddressLine2").val(),
+                Pincode: $("#txtPermanentPincode").val(),
+                CountryID: $("#ddlPermanentCountry").val(),
+                StateID: $("#ddlPermanentState").val()
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
+
+            $.ajax({
+                type: "POST",
+                url: "UserDetails2.aspx/SubmitFormData",
+                data: JSON.stringify({ userDetails: userDetails, currentAddress: currentAddress, permanentAddress: permanentAddress, userID: userID }),
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.d.EditSuccess) {
+                        if (response.d.IsAdmin) {
+                            window.location.href = "Users.aspx";
+                        } else {
+                            alert('Form edited successfully.');
+                        }
+                    }
+                    else
+                    {
+                        if (response.d.NewUserSuccess) {
+                            window.location.href = "LogIn.aspx";
+                        }
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error:", error);
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.log("Error:", error);
+        }
+    });
+}
+
+
+
 function populateCountries(dropdownId) {
     $.ajax({
         type: "POST",
@@ -255,7 +333,7 @@ function populateCountries(dropdownId) {
     });
 }
 
-function populateStates(countryId, dropdownId) {
+function PopulateCurrentStates(countryId) {
     $.ajax({
         type: "POST",
         url: "UserDetails2.aspx/GetStates",
@@ -263,7 +341,7 @@ function populateStates(countryId, dropdownId) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            var dropdown = $("#" + dropdownId);
+            var dropdown = $("#ddlCurrentState");
             dropdown.empty();
             dropdown.append($("<option></option>").val("").text("Select State"));
             $.each(response.d, function (key, value) {
@@ -275,61 +353,23 @@ function populateStates(countryId, dropdownId) {
         }
     });
 }
-function submitFormData() {
-    var userDetails = {
-        FirstName: $("#txtFirstName").val(),
-        LastName: $("#txtLastName").val(),
-        MiddleName: $("#txtMiddleName").val(),
-        Gender: $("#ddlGender option:selected").text(),
-        DateOfBirth: $("#txtDateOfBirth").val(),
-        AadharNo: $("#txtAadharNo").val(),
-        Email: $("#txtEmail").val(),
-        Password: $("#txtPassword").val(),
-        PhoneNumber: $("#txtPhoneNumber").val(),
-        Marks10th: $("#txtMarks10th").val(),
-        Board10th: $("#ddlBoard10th option:selected").text(),
-        School10th: $("#txtSchool10th").val(),
-        YearOfCompletion10th: $("#txtYearOfCompletion10th").val(),
-        Marks12th: $("#txtMarks12th").val(),
-        Board12th: $("#ddlBoard12th option:selected").text(),
-        School12th: $("#txtSchool12th").val(),
-        YearOfCompletion12th: $("#txtYearOfCompletion12th").val(),
-        CGPA: $("#txtCGPA").val(),
-        University: $("#txtUniversity").val(),
-        YearOfCompletionGraduation: $("#txtYearOfCompletionGraduation").val(),
-        Hobbies: $("#txtHobbies").val(),
-        Comments: $("#txtComments").val()
-    };
-
-    var currentAddress = {
-        AddressType: 1,
-        AddressLine1: $("#txtCurrentAddressLine1").val(),
-        AddressLine2: $("#txtCurrentAddressLine2").val(),
-        Pincode: $("#txtCurrentPincode").val(),
-        CountryID: $("#ddlCurrentCountry").val(),
-        StateID: $("#ddlCurrentState").val()
-    };
-
-    var permanentAddress = {
-        AddressType: 2,
-        AddressLine1: $("#txtPermanentAddressLine1").val(),
-        AddressLine2: $("#txtPermanentAddressLine2").val(),
-        Pincode: $("#txtPermanentPincode").val(),
-        CountryID: $("#ddlPermanentCountry").val(),
-        StateID: $("#ddlPermanentState").val()
-    };
-
+function PopulatePermanentStates(countryId) {
     $.ajax({
         type: "POST",
-        url: "UserDetails2.aspx/SubmitFormData",
-        data: JSON.stringify({ userDetails: userDetails, currentAddress: currentAddress, permanentAddress: permanentAddress }),
+        url: "UserDetails2.aspx/GetStates",
+        data: JSON.stringify({ CountryID: countryId }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            console.log("Success:", response);
+            var dropdown = $("#ddlPermanentState");
+            dropdown.empty();
+            dropdown.append($("<option></option>").val("").text("Select State"));
+            $.each(response.d, function (key, value) {
+                dropdown.append($("<option></option>").val(value.StateID).text(value.StateName));
+            });
         },
         error: function (xhr, status, error) {
-            console.log("Error:", error);
+            console.log(error);
         }
     });
 }
@@ -340,31 +380,10 @@ function populateFields(userDetails) {
         if (value !== null && value !== undefined) {
             if ($(this).is('select')) {
                 $(this).val(value);
-            } else {
-                $(this).val(value.toString());
-            }
-        } else {
-            $(this).val('');
-        }
-    });
-}
-
-function populateAddressFields(addressDetails, addressType) {
-    $('[data-field^="' + addressType + '"]').each(function () {
-        var fieldName = $(this).data('field').replace(addressType, '');
-        var value = addressDetails[addressType + fieldName];
-        if (value !== null && value !== undefined) {
-            if ($(this).is('select')) {
-  
-                if ($(this).is('[id^="ddl' + addressType + 'Country"]')) {
-                    var countryDropdown = $(this);
-                  
-                    countryDropdown.find('option').filter(function () {
-                        return $(this).val() == value;
-                    }).prop('selected', true);
-                } else {
-                    $(this).val(value.toString());
-                }
+            } else if ($(this).is('input[type="date"]')) {
+                var date = new Date(parseInt(value.substr(6)));
+                var formattedDate = date.toISOString().split('T')[0];
+                $(this).val(formattedDate);
             } else {
                 $(this).val(value.toString());
             }
@@ -375,66 +394,99 @@ function populateAddressFields(addressDetails, addressType) {
 }
 
 
+function populateCurrentAddressFields(addressDetails) {
+    if (addressDetails) {
 
-function getAddressDetails(userID, addressType, successCallback) {
-    $.ajax({
-        type: "POST",
-        url: "UserDetails2.aspx/GetAddressDetails",
-        data: JSON.stringify({ userId: userID, addressType: addressType }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: successCallback,
-        error: function (xhr, status, error) {
-            console.log(error);
-        }
-    });
+        document.getElementById("txtCurrentAddressLine1").value = addressDetails.AddressLine1;
+        document.getElementById("txtCurrentAddressLine2").value = addressDetails.AddressLine2;
+        document.getElementById("ddlCurrentCountry").value = addressDetails.CountryID.toString();
+        PopulateCurrentStates(addressDetails.CountryID);
+        document.getElementById("ddlCurrentState").value = addressDetails.StateID.toString();
+        document.getElementById("txtCurrentPincode").value = addressDetails.Pincode;
+    }
 }
+
+
+function populatePermanentAddressFields(addressDetails) {
+    if (addressDetails) {
+
+        document.getElementById("txtPermanentAddressLine1").value = addressDetails.AddressLine1;
+        document.getElementById("txtPermanentAddressLine2").value = addressDetails.AddressLine2;
+        document.getElementById("ddlPermanentCountry").value = addressDetails.CountryID.toString();
+        PopulatePermanentStates(addressDetails.CountryID);
+        document.getElementById("ddlPermanentState").value = addressDetails.StateID.toString();
+        document.getElementById("txtPermanentPincode").value = addressDetails.Pincode;
+    }
+}
+
+
+
 $(document).ready(function () {
     populateCountries("ddlCurrentCountry");
     populateCountries("ddlPermanentCountry");
 
     $("#ddlCurrentCountry").change(function () {
         var countryId = $(this).val();
-        populateStates(countryId, "ddlCurrentState");
+        PopulateCurrentStates(countryId);
     });
 
     $("#ddlPermanentCountry").change(function () {
         var countryId = $(this).val();
-        populateStates(countryId, "ddlPermanentState");
+        PopulatePermanentStates(countryId);
     });
 
-    var userSessionJson = $("#hdnUserSessionInfo").val();
-    if (userSessionJson) {
-        var userSessionInfo = JSON.parse(userSessionJson);
-        var SessionUserID = userSessionInfo.UserID;
-        var SessionIsAdmin = userSessionInfo.IsAdmin;
-        const urlParams = new URLSearchParams(window.location.search);
-        const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
 
-        if (userID === SessionUserID || SessionIsAdmin) {
-            $.ajax({
-                type: "POST",
-                url: "UserDetails2.aspx/GetUserDetails",
-                data: JSON.stringify({ userId: userID }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    var userDetails = JSON.parse(response.d);
-                    populateFields(userDetails);
-                },
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
-            });
-            getAddressDetails(userID, 1, function (response) {
-                var addressDetails = JSON.parse(response.d);
-                populateAddressFields(addressDetails, "Current");
-            });
+    const urlParams = new URLSearchParams(window.location.search);
+    const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
 
-            getAddressDetails(userID, 2, function (response) {
-                var addressDetails = JSON.parse(response.d);
-                populateAddressFields(addressDetails, "Permanent");
-            });
-        }
+    if (userID != 0) {
+        $.ajax({
+            type: "POST",
+            url: "UserDetails2.aspx/GetUserDetails",
+            data: JSON.stringify({ userId: userID }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                console.log(response.d);
+                var userDetails = response.d;
+                populateFields(userDetails);
+
+                $.ajax({
+                    type: "POST",
+                    url: "UserDetails2.aspx/GetAddressDetails",
+                    data: JSON.stringify({ userId: userID, addressType: 1 }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response.d);
+                        var addressDetails = response.d;
+                        populateCurrentAddressFields(addressDetails);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "UserDetails2.aspx/GetAddressDetails",
+                            data: JSON.stringify({ userId: userID, addressType: 2 }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                console.log(response.d);
+                                var addressDetails = response.d;
+                                populatePermanentAddressFields(addressDetails);
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(error);
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
     }
+
 });

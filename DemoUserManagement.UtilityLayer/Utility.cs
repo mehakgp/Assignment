@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Web.ModelBinding;
 using static DemoUserManagement.ModelView.Model;
 
 namespace DemoUserManagement.UtilityLayer
@@ -47,30 +48,30 @@ namespace DemoUserManagement.UtilityLayer
             return doc;
         }
 
-
-        public static SessionModel GetUserSessionInfo()
+        public class SubmitFormDataResponse
         {
-            return System.Web.HttpContext.Current.Session["UserSessionInfo"] as SessionModel;
-
+            public bool EditSuccess { get; set; }
+            public bool IsAdmin { get; set; }
+            public bool NewUserSuccess { get; set; }
         }
+
+        public class LogInResponse
+        {
+          public  int userID { get; set; }
+            public bool IsAdmin {  set; get; }
+        }
+
 
         public static void SetUserSessionInfo(SessionModel userSessionInfo)
         {
             System.Web.HttpContext.Current.Session["UserSessionInfo"] = userSessionInfo;
         }
 
-        public static bool IsAdmin()
+        public static SessionModel GetUserSessionInfo()
         {
-            SessionModel userSessionInfo = GetUserSessionInfo();
-            return userSessionInfo.IsAdmin;
-        }
+            return System.Web.HttpContext.Current.Session["UserSessionInfo"] as SessionModel;
 
-        public static int GetSessionUserId()
-        {
-            SessionModel sessionInfo = GetUserSessionInfo();
-           return sessionInfo.UserID;
         }
-
 
     }
 }

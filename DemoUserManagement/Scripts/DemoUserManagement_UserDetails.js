@@ -90,10 +90,12 @@ function validateForm() {
         isValid = false;
     }
     else {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userID = urlParams.has("UserID") ? parseInt(urlParams.get("UserID")) : 0;
         $.ajax({
             type: "POST",
             url: "UserDetails.aspx/CheckEmailExists",
-            data: JSON.stringify({ email: email }),
+            data: JSON.stringify({ email: email, userID: userID }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {

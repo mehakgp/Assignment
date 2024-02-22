@@ -503,7 +503,7 @@ namespace DemoUserManagement.DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString))
                 {
                     connection.Open();
-                    string query = string.Format(@"SELECT UserID,FirstName,DateOfBirth,AadharNo,Email,PhoneNumber,UniqueFileName FROM (
+                    string query = string.Format(@"SELECT UserID,FirstName,DateOfBirth,AadharNo,Email,PhoneNumber FROM (
                                             SELECT ROW_NUMBER() OVER (ORDER BY {0} {1}) AS RowNum, * 
                                             FROM UserDetails
                                         ) AS USerDetails 
@@ -605,15 +605,38 @@ namespace DemoUserManagement.DataAccessLayer
             }
             
         }
-
-        public bool CheckEmailExists(string email)
+        public bool CheckEmailExists(string email, int userID)
         {
             using (var context = new DemoUserManagementEntities())
             {
-                return context.UserDetails.Any(u => u.Email == email);
+                if (userID == 0)
+                {
+                    return context.UserDetails.Any(u => u.Email == email);
+                }
+                else
+                {
+                    return context.UserDetails.Any(u => u.Email == email && u.UserID != userID);
+                }
             }
         }
 
+        public string GetDocumentUniqueNameById(int documentId)
+        {
+            using (var context = new DemoUserManagementEntities())
+            {
+                var document = context.Documents.FirstOrDefault(d => d.ID == documentId);
+                return document?.DocumentUniqueName;
+            }
+        }
+
+        public string GetUniqueFileNameInUserDetails(int userId)
+        {
+            using (var context = new DemoUserManagementEntities())
+            {
+                var user = context.UserDetails.FirstOrDefault(u => u.UserID == userId);
+                return user?.UniqueFileName;
+            }
+        }
     }
 
 }

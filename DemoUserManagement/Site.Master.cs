@@ -40,8 +40,8 @@ namespace DemoUserManagement
         {
             if (Utility.GetUserSessionInfo() != null)
             {
-                UserDetailsLink.Visible = Utility.IsAdmin();
-                UsersListLink.Visible = Utility.IsAdmin();
+                UserDetailsLink.Visible = BasePage.IsAdmin();
+                UsersListLink.Visible = BasePage.IsAdmin();
             }
             else
             {

@@ -1,6 +1,7 @@
 ﻿
 using DemoUserManagement.UtilityLayer;
 using DemoUserManangement.BusinessLayer;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,13 +10,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using static DemoUserManagement.ModelView.Model;
 using static DemoUserManagement.UtilityLayer.Utility;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace DemoUserManagement
 {
-    public partial class UserDetails : Page
+    public partial class UserDetails : BasePage
     {
         Business business = new Business();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,21 +29,17 @@ namespace DemoUserManagement
                 {
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
 
-                    if(userID == Utility.GetSessionUserId()|| Utility.IsAdmin() )
-                    {
-                        NoteUserControl.ObjectID = userID;
-                        NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                    NoteUserControl.ObjectID = userID;
+                    NoteUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
 
-                        DocumentUserControl.ObjectID = userID;
-                        DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
-                        UserDetailsModel userDetails = GetUserDetails(userID);
-                        AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
-                        AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
-                        PopulateFields(userDetails, currentAddress, permanentAddress);
-                        NoteUserControl.Visible = true;
-                        DocumentUserControl.Visible = true;
-                  }
-                  
+                    DocumentUserControl.ObjectID = userID;
+                    DocumentUserControl.ObjectType = (int)ObjectTypeEnum.UserDetails;
+                    UserDetailsModel userDetails = GetUserDetails(userID);
+                    AddressDetailsModel currentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Current);
+                    AddressDetailsModel permanentAddress = GetAddressDetails(userID, (int)AddressTypeEnum.Permanent);
+                    PopulateFields(userDetails, currentAddress, permanentAddress);
+                    NoteUserControl.Visible = true;
+                    DocumentUserControl.Visible = true;
                 }
                 else
                 {
@@ -48,6 +47,8 @@ namespace DemoUserManagement
                     NoteUserControl.Visible = false;
                 }
             }
+
+
         }
 
 
@@ -112,15 +113,13 @@ namespace DemoUserManagement
             try
             {
 
-                string fileName = "", fileExtension, uniqueFileName = "", uploadFolderPath = "", filePath = "";
+                string fileName = "", uniqueFileName = "", uploadFolderPath = "";
                 if (resume.HasFile)
                 {
                     fileName = resume.FileName;
-                    fileExtension = Path.GetExtension(fileName);
-                    uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
                     uploadFolderPath = Server.MapPath("~/Upload/");
-                    filePath = Path.Combine(uploadFolderPath, uniqueFileName);
-                    resume.SaveAs(filePath);
+                    UploadFileHandler fileHandler = new UploadFileHandler();
+                    uniqueFileName = fileHandler.UploadFile(resume.PostedFile, uploadFolderPath);
                 }
                 UserDetailsModel userDetails = new UserDetailsModel
                 {
@@ -131,7 +130,7 @@ namespace DemoUserManagement
                     DateOfBirth = (DateTime)(string.IsNullOrEmpty(txtDateOfBirth.Text) ? null : (DateTime?)DateTime.Parse(txtDateOfBirth.Text)),
                     AadharNo = txtAadharNo.Text,
                     Email = txtEmail.Text,
-                    Password=txtPassword.Text,
+                    Password = txtPassword.Text,
                     PhoneNumber = txtPhoneNumber.Text,
                     Marks10th = string.IsNullOrEmpty(txtMarks10th.Text) ? null : (decimal?)decimal.Parse(txtMarks10th.Text),
                     Board10th = ddlBoard10th.SelectedItem.Text,
@@ -172,16 +171,19 @@ namespace DemoUserManagement
                 if (!string.IsNullOrEmpty(Request.QueryString["UserID"]))
                 {
                     int userID = Convert.ToInt32(Request.QueryString["UserID"]);
-                    bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
-                    if (success)
+                    if (userID == GetSessionUserId() || IsAdmin())
                     {
-                        if (Utility.IsAdmin())
+                        bool success = business.EditUserDetails(userDetails, currentAddress, permanentAddress, userID);
+                        if (success)
                         {
-                            Response.Redirect("~/Users.aspx");
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "editSuccess", "alert('User details updated successfully.');", true);
+                            if (IsAdmin())
+                            {
+                                Response.Redirect("~/Users.aspx");
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "editSuccess", "alert('User details updated successfully.');", true);
+                            }
                         }
                     }
 
@@ -258,10 +260,11 @@ namespace DemoUserManagement
         }
 
         [WebMethod]
-        public static bool CheckEmailExists(string email)
+        public static bool CheckEmailExists(string email, int userID)
         {
+
             Business business = new Business();
-            return business.CheckEmailExists(email);
+            return business.CheckEmailExists(email, userID);
         }
 
 

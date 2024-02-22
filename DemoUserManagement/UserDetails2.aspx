@@ -8,7 +8,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="Scripts/DemoUserManagement_UserDetails2.js"></script>
-    <asp:HiddenField ID="hdnUserSessionInfo" runat="server" ClientIDMode="Static" />
     <style>
         h1 {
             text-align: center;
@@ -63,7 +62,7 @@
             <div class="row">
                 <div class="col-md-4" >
                     <label for="txtFirstName">First Name: *</label>
-                    <input type="text" id="txtFirstName" class="form-control"  data-field="FirstName" />
+                    <input type="text" id="txtFirstName" class="form-control validate-input"  data-field="FirstName" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtMiddleName">Middle Name:</label>
@@ -77,8 +76,8 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="ddlGender">Gender:</label>
-                    <select id="ddlGender" class="form-control"  data-field="Gender">
+                    <label for="ddlGender">Gender: *</label>
+                    <select id="ddlGender" class="form-control validate-input"  data-field="Gender">
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -88,11 +87,11 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtDateOfBirth">Date of Birth: *</label>
-                    <input id="txtDateOfBirth" class="form-control" type="date" data-field="DateOfBirth" />
+                    <input id="txtDateOfBirth" class="form-control validate-input" type="date" data-field="DateOfBirth" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtAadharNo">Aadhar No: *</label>
-                    <input type="text" id="txtAadharNo" class="form-control"  data-field="AadharNo" />
+                    <input type="text" id="txtAadharNo" class="form-control validate-input"  data-field="AadharNo" />
                 </div>
             </div>
 
@@ -100,15 +99,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtEmail">Email: *</label>
-                    <input type="email" id="txtEmail" class="form-control"  data-field="Email"/>
+                    <input type="text" id="txtEmail" class="form-control validate-input"  data-field="Email"/>
                 </div>
                 <div class="col-md-4">
                     <label for="txtPassword">Password: *</label>
-                    <input type="text" id="txtPassword" class="form-control" data-field="Password" />
+                    <input type="text" id="txtPassword" class="form-control validate-input" data-field="Password" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtPhoneNumber">Phone Number: *</label>
-                    <input type="number" id="txtPhoneNumber" class="form-control" data-field="PhoneNumber" />
+                    <input type="text" id="txtPhoneNumber" class="form-control validate-input" data-field="PhoneNumber" />
                 </div>
             </div>
 
@@ -117,7 +116,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtCurrentAddressLine1">Address Line 1: *</label>
-                    <input type="text" id="txtCurrentAddressLine1" class="form-control"  data-field="CurrentAddressLine1" />
+                    <input type="text" id="txtCurrentAddressLine1" class="form-control validate-input"  data-field="CurrentAddressLine1" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentAddressLine2">Address Line 2:</label>
@@ -127,20 +126,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlCurrentCountry">Country: *</label>
-                    <select id="ddlCurrentCountry" class="form-control"  data-field="CurrentCountry">
+                    <select id="ddlCurrentCountry" class="form-control validate-input"  data-field="CurrentCountry">
                         <option value="">Select Country</option>
                     </select>
 
                 </div>
                 <div class="col-md-4">
                     <label for="ddlCurrentState">State: *</label>
-                    <select id="ddlCurrentState" class="form-control" data-field="CurrentState" >
+                    <select id="ddlCurrentState" class="form-control validate-input" data-field="CurrentState" >
                         <option value="">Select State</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentPincode">Pincode: *</label>
-                    <input type="number" id="txtCurrentPincode" class="form-control" data-field="CurrentPincode"> />
+                    <input type="text" id="txtCurrentPincode" class="form-control validate-input" data-field="CurrentPincode" />
                 </div>
             </div>
 
@@ -152,7 +151,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtPermanentAddressLine1">Address Line 1: *</label>
-                    <input type="text" id="txtPermanentAddressLine1" class="form-control" data-field="PermanentAddressLine1"/>
+                    <input type="text" id="txtPermanentAddressLine1" class="form-control validate-input" data-field="PermanentAddressLine1"/>
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentAddressLine2">Address Line 2:</label>
@@ -162,21 +161,21 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlPermanentCountry">Country: *</label>
-                    <select id="ddlPermanentCountry" class="form-control"  data-field="PermanentCountry">
+                    <select id="ddlPermanentCountry" class="form-control validate-input"  data-field="PermanentCountry">
                         <option value="">Select Country</option>
                     </select>
 
                 </div>
                 <div class="col-md-4">
                     <label for="ddlPermanentState">State: *</label>
-                    <select id="ddlPermanentState" class="form-control" data-field="PermanentState">
+                    <select id="ddlPermanentState" class="form-control validate-input" data-field="PermanentState">
                         <option value="">Select State</option>
                     </select>
 
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentPincode">Pincode: *</label>
-                    <input type="text" id="txtPermanentPincode" class="form-control"  data-field="PermanentPincode"  />
+                    <input type="text" id="txtPermanentPincode" class="form-control validate-input"  data-field="PermanentPincode"  />
                 </div>
             </div>
             <h2>Academic Details</h2>
@@ -184,7 +183,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtMarks10th">Percentage: *</label>
-                    <input type="number" id="txtMarks10th" class="form-control"  data-field="Marks10th"/>
+                    <input type="text" id="txtMarks10th" class="form-control validate-input"  data-field="Marks10th"/>
                 </div>
                 <div class="col-md-3">
                     <label for="ddlBoard10th">Board:</label>
@@ -201,7 +200,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletion10th">Year of Completion:</label>
-                    <input id="txtYearOfCompletion10th" class="form-control" type="month"  data-field="YearOfCompletion10th" />
+                    <input id="txtYearOfCompletion10th" class="form-control" type="date"  data-field="YearOfCompletion10th" />
 
                 </div>
             </div>
@@ -210,7 +209,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtMarks12th">Percentage: *</label>
-                    <input type="number" id="txtMarks12th" class="form-control"  data-field="Marks12th"/>
+                    <input type="text" id="txtMarks12th" class="form-control validate-input"  data-field="Marks12th"/>
                 </div>
                 <div class="col-md-3">
                     <label for="ddlBoard12th">Board:</label>
@@ -226,7 +225,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletion12th">Year of Completion:</label>
-                    <input id="txtYearOfCompletion12th" class="form-control" type="month"   data-field="YearOfCompletion12th"/>
+                    <input id="txtYearOfCompletion12th" class="form-control" type="date"   data-field="YearOfCompletion12th"/>
                 </div>
             </div>
 
@@ -234,7 +233,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtCGPA">CGPA: *</label>
-                    <input type="number" id="txtCGPA" class="form-control"  data-field="CGPA" />
+                    <input type="text" id="txtCGPA" class="form-control validate-input"  data-field="CGPA" />
                 </div>
                 <div class="col-md-3">
                     <label for="txtUniversity">University:</label>
@@ -242,7 +241,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletionGraduation">Year of Completion:</label>
-                    <input id="txtYearOfCompletionGraduation" class="form-control" type="month"  data-field="YearOfCompletionGraduation"/>
+                    <input id="txtYearOfCompletionGraduation" class="form-control" type="date"  data-field="YearOfCompletionGraduation"/>
                 </div>
                 <div class="col-md-3">
                     <label for="resume">Upload your Resume:</label>

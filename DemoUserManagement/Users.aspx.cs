@@ -5,31 +5,34 @@ using System.Web.UI.WebControls;
 
 namespace DemoUserManagement
 {
-    public partial class Users : Page
+    public partial class Users : BasePage
     {
 
         Business business = new Business();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 BindGridView();
             }
+
+
         }
 
         protected void btnAddUser_Click(object sender, EventArgs e)
         {
-            Response.Redirect("UserDetails.aspx");
+            Response.Redirect("UserDetails2.aspx");
         }
 
-      
+
 
         protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)
         {
             int userID = Convert.ToInt32(GridView1.DataKeys[e.NewEditIndex].Value);
-             Response.Redirect($"UserDetails.aspx?UserID={userID}");
+            Response.Redirect($"UserDetails2.aspx?UserID={userID}");
         }
-        
+
         protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int userID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
@@ -66,7 +69,7 @@ namespace DemoUserManagement
 
             int startIndex = currentPageIndex * pageSize + 1;
             int endIndex = startIndex + pageSize - 1;
-            GridView1.DataSource = business.GetUsers(startIndex, endIndex, sortExpression, sortDirection); 
+            GridView1.DataSource = business.GetUsers(startIndex, endIndex, sortExpression, sortDirection);
             GridView1.DataBind();
         }
         protected void SortingGridView(object sender, GridViewSortEventArgs e)
@@ -87,6 +90,16 @@ namespace DemoUserManagement
             BindGridView();
         }
 
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DownloadFile")
+            {
+                int userId = Convert.ToInt32(e.CommandArgument);
+                string url = $"DownloadFile.ashx?userID={userId}";
+                Response.Redirect(url);
+            }
+        }
     }
 
 }

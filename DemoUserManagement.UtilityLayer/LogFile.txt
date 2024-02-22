@@ -930,3 +930,298 @@ StackTrace:    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, E
 18-02-2024 20:16:03 - Exception: Object reference not set to an instance of an object.
 StackTrace:    at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 181
 --------------------------------------------------
+20-02-2024 10:15:40 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 10:15:41 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 10:28:37 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 10:28:37 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 10:44:20 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 10:44:20 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 10:56:06 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 10:56:29 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 11:08:09 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 11:08:20 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 11:09:57 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 11:09:57 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails2.SubmitFormData(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails2.aspx.cs:line 95
+--------------------------------------------------
+20-02-2024 11:12:16 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 11:20:28 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 13:13:10 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 182
+--------------------------------------------------
+20-02-2024 13:13:18 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+20-02-2024 13:13:39 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.EditUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress, Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 221
+--------------------------------------------------
+20-02-2024 13:14:22 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 182
+--------------------------------------------------
+20-02-2024 13:18:27 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:24:31 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:24:36 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:25:15 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:26:16 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:26:53 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:27:10 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:28:28 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:28:39 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:29:31 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:29:59 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:30:40 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:33:06 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:33:14 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+20-02-2024 13:35:51 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:40:18 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:40:18 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:40:24 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:40:55 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:42:06 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:42:54 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 13:44:28 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+20-02-2024 16:32:50 - Exception: An exception occurred during a WebClient request.
+StackTrace:    at System.Net.WebClient.UploadFile(Uri address, String method, String fileName)
+   at DemoUserManagement.DocumentUserControl.UploadFile(String fileName) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\DocumentUserControl.ascx.cs:line 100
+--------------------------------------------------
+21-02-2024 10:07:27 - Exception: Thread was being aborted.
+StackTrace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DemoUserManagement.UserDetails.btnSubmitClick(Object sender, EventArgs e) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement\UserDetails.aspx.cs:line 187
+--------------------------------------------------
+21-02-2024 10:38:56 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+21-02-2024 10:44:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:46:46 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:47:24 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:10 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:11 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:12 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:15 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 10:48:16 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+21-02-2024 11:56:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------
+22-02-2024 16:30:38 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:30:43 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:30:47 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:30:50 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:30:53 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:31:29 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:31:57 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.SaveUserDetails(UserDetailsModel userDetails, AddressDetailsModel currentAddress, AddressDetailsModel permanentAddress) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 97
+--------------------------------------------------
+22-02-2024 16:34:59 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at DemoUserManagement.DataAccessLayer.DataAccess.AssignDefaultRole(Int32 userID) in C:\Users\mehakg\Desktop\Projects\Assignment\DemoUserManagement.DataAccessLayer\DataAccess.cs:line 153
+--------------------------------------------------

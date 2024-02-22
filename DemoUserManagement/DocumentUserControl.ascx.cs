@@ -32,7 +32,12 @@ namespace DemoUserManagement
                 ddlDocumentType.DataValueField = "DocumentId";
                 ddlDocumentType.DataBind();
                 LoadDocuments();
+
+                hdnObjectID.Value = ObjectID.ToString();
+                hdnObjectType.Value = ObjectType.ToString();
             }
+
+
         }
 
         protected void LoadDocuments()
@@ -43,43 +48,13 @@ namespace DemoUserManagement
             }
         }
 
+
         protected void ButtonClick(object sender, EventArgs e)
         {
-            //int objectID = (int)ViewState["ObjectID"];
-            //int objectType = (int)ViewState["ObjectType"];
-            //int documentType = (int)ViewState["DocumentType"];
-
-            //Page.ClientScript.RegisterStartupScript(this.GetType(), "UploadFile", $"uploadFile({objectID}, {objectType}, {documentType});", true);
-            InsertDocument();
             LoadDocuments();
         }
 
-        protected void InsertDocument()
-        {
-            string fileName = "", fileExtension, uniqueFileName = "", uploadFolderPath = "", filePath = "";
-            if (document.HasFile && (int)ViewState["DocumentType"]!=0)
-            {
-                fileName = document.FileName;
-                fileExtension = Path.GetExtension(fileName);
-                uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
-                uploadFolderPath = ConfigurationManager.AppSettings["DocumentFilePath"];
-                filePath = Path.Combine(uploadFolderPath, uniqueFileName);
-                document.SaveAs(filePath);
-
-                var doc = new DocumentModel
-                {
-                    ObjectID = (int)ViewState["ObjectID"],
-                    ObjectType = (int)ViewState["ObjectType"],
-                    DocumentType = (int)ViewState["DocumentType"],
-                    DocumentOriginalName = fileName,
-                    DocumentUniqueName = uniqueFileName
-                };
-                Business business = new Business();
-                business.SaveDocument(doc);
-            }
-        }
-
-        public void GetDocumentData()
+        protected void GetDocumentData()
         {
             List<DocumentModel> doc = business.GetDocuments((int)ViewState["ObjectID"], (int)ViewState["ObjectType"]);
             GridView1.DataSource = doc;
@@ -89,7 +64,7 @@ namespace DemoUserManagement
         protected void ddlDocumentType_SelectedIndexChanged(object sender, EventArgs e)
         {
             DocumentType = int.Parse(ddlDocumentType.SelectedValue);
-            ViewState["DocumentType"] = DocumentType;
+            hdnDocumentType.Value = DocumentType.ToString();
 
         }
 
@@ -97,8 +72,9 @@ namespace DemoUserManagement
         {
             if (e.CommandName == "DownloadFile")
             {
-                string fileName = e.CommandArgument.ToString();
-                string url = "DownloadFile.ashx?fileName=" + fileName;
+                int documentId = Convert.ToInt32(e.CommandArgument);
+                int userId = (int)ViewState["ObjectID"];
+                string url = $"DownloadFile.ashx?documentID={documentId}&userID={userId}";
                 Response.Redirect(url);
             }
         }

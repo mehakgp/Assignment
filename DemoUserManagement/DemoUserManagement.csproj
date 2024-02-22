@@ -105,6 +105,8 @@
     <Content Include="DocumentUserControl.ascx" />
     <Content Include="LogIn.aspx" />
     <Content Include="LogOut.aspx" />
+    <Content Include="Scripts\DemoUserManagement_Document.js" />
+    <Content Include="Scripts\DemoUserManagement_LogIn.js" />
     <Content Include="Scripts\DemoUserManagement_UserDetails.js" />
     <Content Include="Scripts\DemoUserManagement_UserDetails2.js" />
     <Content Include="UserDetails2.aspx" />
@@ -195,6 +197,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="DocumentUserControl.ascx.cs">
       <DependentUpon>DocumentUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

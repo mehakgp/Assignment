@@ -15,6 +15,33 @@ namespace DemoUserManagement
     {
 
         /// <summary>
+        /// hdnObjectID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnObjectID;
+
+        /// <summary>
+        /// hdnObjectType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnObjectType;
+
+        /// <summary>
+        /// hdnDocumentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnDocumentType;
+
+        /// <summary>
         /// ddlDocumentType control.
         /// </summary>
         /// <remarks>

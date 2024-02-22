@@ -1,62 +1,44 @@
-﻿using DemoUserManagement.UtilityLayer;
-using DemoUserManangement.BusinessLayer;
+﻿using DemoUserManangement.BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using static DemoUserManagement.ModelView.Model;
+using static DemoUserManagement.UtilityLayer.Utility;
 
 namespace DemoUserManagement
 {
-    public partial class LogIn : System.Web.UI.Page
+    public partial class LogIn : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        
         }
-        protected void btnLogin_Click(object sender, EventArgs e)
+
+        [WebMethod]
+        public static LogInResponse ValidateUser(string email, string password)
         {
-            string email = txtEmail.Text.Trim();
-            string password = txtPassword.Text.Trim();
-
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                lblMessage.Text = "Please enter UserID and Password.";
-                lblMessage.Visible = true;
-                return;
-            }
-
             Business business = new Business();
             int userID = business.GetUserByEmailAndPassword(email, password);
-
-            if (userID == -1)
+            bool isAdmin = business.CheckIfUserIsAdmin(userID);
+            if (userID != -1)
             {
-                lblMessage.Text = "Invalid UserID or Password.";
-                lblMessage.Visible = true;
-                return;
-            }
-            else
-            {
-
-                bool isAdmin = business.CheckIfUserIsAdmin(userID);
+               
                 SessionModel userSessionInfo = new SessionModel
                 {
                     UserID = userID,
                     IsAdmin = isAdmin
                 };
 
-                Utility.SetUserSessionInfo(userSessionInfo);
-
-                if (isAdmin)
-                {
-                    Response.Redirect("~/Users.aspx");
-                }
-                else
-                {
-                    Response.Redirect($"~/UserDetails.aspx?UserID={userID}");
-                }
+                SetUserSessionInfo(userSessionInfo);
             }
+            return new LogInResponse
+            {
+                userID = userID,
+                IsAdmin = isAdmin,
+            };
         }
+
     }
+
+
 }
