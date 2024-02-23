@@ -1,22 +1,13 @@
 ﻿
 function copyCurrentAddress() {
     var isChecked = document.getElementById("chkSameAsCurrent").checked;
+    var currentAddress = ["txtCurrentAddressLine1", "txtCurrentAddressLine2", "ddlCurrentCountry", "ddlCurrentState", "txtCurrentPincode"];
+    var permanentAddress = ["txtPermanentAddressLine1", "txtPermanentAddressLine2", "ddlPermanentCountry", "ddlPermanentState", "txtPermanentPincode"];
 
-    if (isChecked) {
-        // Copy values from current address fields to permanent address fields
-        document.getElementById("txtPermanentAddressLine1").value = document.getElementById("txtCurrentAddressLine1").value;
-        document.getElementById("txtPermanentAddressLine2").value = document.getElementById("txtCurrentAddressLine2").value;
-        document.getElementById("ddlPermanentCountry").value = document.getElementById("ddlCurrentCountry").value;
-        document.getElementById("ddlPermanentState").value = document.getElementById("ddlCurrentState").value;
-        document.getElementById("txtPermanentPincode").value = document.getElementById("txtCurrentPincode").value;
-    } else {
-        // Clear permanent address fields
-        document.getElementById("txtPermanentAddressLine1").value = "";
-        document.getElementById("txtPermanentAddressLine2").value = "";
-        document.getElementById("ddlPermanentCountry").value = "";
-        document.getElementById("ddlPermanentState").value = "";
-        document.getElementById("txtPermanentPincode").value = "";
-    }
+    var fields = isChecked ? currentAddress : permanentAddress;
+    fields.forEach(function (field, index) {
+        document.getElementById(permanentAddress[index]).value = document.getElementById(field).value;
+    });
 }
 function resetForm() {
 
@@ -311,8 +302,6 @@ function submitFormData() {
     });
 }
 
-
-
 function populateCountries(dropdownId) {
     $.ajax({
         type: "POST",
@@ -333,40 +322,26 @@ function populateCountries(dropdownId) {
     });
 }
 
-function PopulateCurrentStates(countryId) {
+function PopulateStates(countryId, isCurrent, callback) {
+    var stateDropdownId = isCurrent ? "ddlCurrentState" : "ddlPermanentState";
+    var stateUrl = isCurrent ? "UserDetails2.aspx/GetStates" : "UserDetails2.aspx/GetStates";
+
     $.ajax({
         type: "POST",
-        url: "UserDetails2.aspx/GetStates",
+        url: stateUrl,
         data: JSON.stringify({ CountryID: countryId }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            var dropdown = $("#ddlCurrentState");
+            var dropdown = $("#" + stateDropdownId);
             dropdown.empty();
             dropdown.append($("<option></option>").val("").text("Select State"));
             $.each(response.d, function (key, value) {
                 dropdown.append($("<option></option>").val(value.StateID).text(value.StateName));
             });
-        },
-        error: function (xhr, status, error) {
-            console.log(error);
-        }
-    });
-}
-function PopulatePermanentStates(countryId) {
-    $.ajax({
-        type: "POST",
-        url: "UserDetails2.aspx/GetStates",
-        data: JSON.stringify({ CountryID: countryId }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            var dropdown = $("#ddlPermanentState");
-            dropdown.empty();
-            dropdown.append($("<option></option>").val("").text("Select State"));
-            $.each(response.d, function (key, value) {
-                dropdown.append($("<option></option>").val(value.StateID).text(value.StateName));
-            });
+            if (callback) {
+                callback();
+            }
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -396,29 +371,27 @@ function populateFields(userDetails) {
 
 function populateCurrentAddressFields(addressDetails) {
     if (addressDetails) {
-
         document.getElementById("txtCurrentAddressLine1").value = addressDetails.AddressLine1;
         document.getElementById("txtCurrentAddressLine2").value = addressDetails.AddressLine2;
         document.getElementById("ddlCurrentCountry").value = addressDetails.CountryID.toString();
-        PopulateCurrentStates(addressDetails.CountryID);
-        document.getElementById("ddlCurrentState").value = addressDetails.StateID.toString();
+        PopulateStates(addressDetails.CountryID,true, function () {
+            document.getElementById("ddlCurrentState").value = addressDetails.StateID.toString();
+        });
         document.getElementById("txtCurrentPincode").value = addressDetails.Pincode;
     }
 }
 
-
 function populatePermanentAddressFields(addressDetails) {
     if (addressDetails) {
-
         document.getElementById("txtPermanentAddressLine1").value = addressDetails.AddressLine1;
         document.getElementById("txtPermanentAddressLine2").value = addressDetails.AddressLine2;
         document.getElementById("ddlPermanentCountry").value = addressDetails.CountryID.toString();
-        PopulatePermanentStates(addressDetails.CountryID);
-        document.getElementById("ddlPermanentState").value = addressDetails.StateID.toString();
+        PopulateStates(addressDetails.CountryID,false, function () {
+            document.getElementById("ddlPermanentState").value = addressDetails.StateID.toString();
+        });
         document.getElementById("txtPermanentPincode").value = addressDetails.Pincode;
     }
 }
-
 
 
 $(document).ready(function () {
@@ -427,12 +400,12 @@ $(document).ready(function () {
 
     $("#ddlCurrentCountry").change(function () {
         var countryId = $(this).val();
-        PopulateCurrentStates(countryId);
+        PopulateStates(countryId,true);
     });
 
     $("#ddlPermanentCountry").change(function () {
         var countryId = $(this).val();
-        PopulatePermanentStates(countryId);
+        PopulateStates(countryId,false);
     });
 
 
