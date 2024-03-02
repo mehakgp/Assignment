@@ -151,7 +151,7 @@ namespace DemoUserManagement
                 };
                 AddressDetailsModel currentAddress = new AddressDetailsModel
                 {
-                    AddressType = 1,
+                    AddressType = (int)AddressTypeEnum.Current,
                     AddressLine1 = txtCurrentAddressLine1?.Text ?? "",
                     AddressLine2 = txtCurrentAddressLine2?.Text ?? "",
                     Pincode = txtCurrentPincode?.Text ?? "",
@@ -160,7 +160,7 @@ namespace DemoUserManagement
                 };
                 AddressDetailsModel permanentAddress = new AddressDetailsModel
                 {
-                    AddressType = 2,
+                    AddressType = (int)AddressTypeEnum.Permanent,
                     AddressLine1 = txtPermanentAddressLine1?.Text ?? "",
                     AddressLine2 = txtPermanentAddressLine2?.Text ?? "",
                     Pincode = txtPermanentPincode?.Text ?? "",

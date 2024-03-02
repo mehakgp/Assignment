@@ -1,0 +1,41 @@
+﻿
+h1 {
+    text-align: center;
+    color: rgba(33,37,41);
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: rgba(33,37,41);
+    border-bottom: 2px solid rgba(33,37,41);
+    padding-bottom: 10px;
+}
+
+h4 {
+    color: rgba(33,37,41);
+    font-style: italic;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: rgba(33,37,41);
+}
+
+
+.btn-primary, .btn-secondary {
+    background-color: rgba(33,37,41);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.form-check-input {
+    margin-top: 6px;
+}
+

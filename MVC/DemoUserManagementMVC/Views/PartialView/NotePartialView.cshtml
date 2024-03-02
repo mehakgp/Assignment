@@ -1,0 +1,35 @@
+﻿
+<h2>Add Note</h2>
+<div class="input-group mb-3">
+        <input type="text" id="newNote" class="form-control" />
+        <button id="addNoteButton" class="btn btn-primary">Add</button>
+</div>
+
+<div class="row">
+    <table id="notesTable" class="table">
+        <thead>
+            <tr>
+                <th onclick="sortTableNote('ID')">ID</th>
+                <th onclick="sortTableNote('ObjectID')">Object ID</th>
+                <th onclick="sortTableNote('ObjectType')">Object Type</th>
+                <th onclick="sortTableNote('Note')">Note</th>
+                <th onclick="sortTableNote('DateTime')">Date Time</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div id="pageNumbersNote"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+     var objectID = @Html.Raw(Json.Encode(ViewData["objectID"]));
+    var objectType = @Html.Raw(Json.Encode(ViewData["objectType"]));
+
+</script>
+<script src="~/Scripts/NotePartialView.js"></script>

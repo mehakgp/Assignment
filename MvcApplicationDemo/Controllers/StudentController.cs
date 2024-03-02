@@ -13,5 +13,11 @@ namespace MvcApplicationDemo.Controllers
         {
             return View();
         }
+        public ActionResult About()
+        {
+            ViewBag.Message = "Student--about.";
+
+            return View();
+        }
     }
 }

@@ -1,0 +1,323 @@
+﻿@model DemoUserManagementMVC.ModelView.UserModel
+@using DemoUserManagementMVC.UtilityLayer
+
+@{
+    ViewBag.Title = "User Details Form";
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+<link href="~/Content/UserDetailsForm.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("UserDetailsForm", "UserDetails", FormMethod.Post, new { id = "userDetailsForm" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <h1>User Details Form</h1>
+
+
+        <h2>Personal Details</h2>
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.FirstName, "First Name: *")
+                @Html.TextBoxFor(model => model.UserDetails.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.MiddleName, "Middle Name: ")
+                @Html.TextBoxFor(model => model.UserDetails.MiddleName, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.LastName, "Last Name: ")
+                @Html.TextBoxFor(model => model.UserDetails.MiddleName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.Gender, "Gender: *")
+                @Html.DropDownListFor(model => model.UserDetails.Gender, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Select Gender", Value = "" },
+                    new SelectListItem { Text = "Male", Value = "Male" },
+                    new SelectListItem { Text = "Female", Value = "Female" },
+                    new SelectListItem { Text = "Other", Value = "Other" }
+                }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.Gender, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.DateOfBirth, "Date of Birth: *")
+                @{
+                    string formattedDateOfBirth = Model.UserDetails != null && Model.UserDetails.DateOfBirth != null
+                        ? Model.UserDetails.DateOfBirth.ToString("yyyy-MM-dd")
+                        : string.Empty;
+                }
+                @Html.TextBoxFor(model => model.UserDetails.DateOfBirth, formattedDateOfBirth, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.UserDetails.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.AadharNo, "Aadhar No: *")
+                @Html.TextBoxFor(model => model.UserDetails.AadharNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.AadharNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <h2>Contact Details</h2>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.Email, "Email: *")
+                @Html.TextBoxFor(model => model.UserDetails.Email, new { @class = "form-control", id = "txtEmail" })
+                @Html.ValidationMessageFor(model => model.UserDetails.Email, "", new { @class = "text-danger" })
+                <span id="emailErrorMessage" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.Password, "Password: *")
+                @Html.TextBoxFor(model => model.UserDetails.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.UserDetails.PhoneNumber, "Phone Number: *")
+                @Html.TextBoxFor(model => model.UserDetails.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.PhoneNumber, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+
+        <h2>Address Details</h2>
+
+
+        <h4>Current Address</h4>
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CurrentAddress.AddressLine1, "Address Line 1: *")
+                @Html.TextBoxFor(model => model.CurrentAddress.AddressLine1, new { @class = "form-control", @id = "txtCurrentAddressLine1" })
+                @Html.ValidationMessageFor(model => model.CurrentAddress.AddressLine1, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CurrentAddress.AddressLine2, "Address Line 2:")
+                @Html.TextBoxFor(model => model.CurrentAddress.AddressLine2, new { @class = "form-control", @id = "txtCurrentAddressLine2" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CurrentAddress.CountryID, "Country: *")
+                @Html.DropDownListFor(model => model.CurrentAddress.CountryID, ViewBag.Countries as SelectList, "Select Country", new { @class = "form-control", @id = "ddlCurrentCountry" })
+                @Html.ValidationMessageFor(model => model.CurrentAddress.CountryID, "", new { @class = "text-danger", })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CurrentAddress.StateID, "State: *")
+                @{
+                    var currentStates = ViewBag.CurrentStates as SelectList ?? Enumerable.Empty<SelectListItem>();
+                }
+                @Html.DropDownListFor(model => model.CurrentAddress.StateID, currentStates, "Select State", new { @class = "form-control", @id = "ddlCurrentState" })
+                @Html.ValidationMessageFor(model => model.CurrentAddress.StateID, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.CurrentAddress.Pincode, "Pincode: *")
+                @Html.TextBoxFor(model => model.CurrentAddress.Pincode, new { @class = "form-control", @id = "txtCurrentPincode" })
+                @Html.ValidationMessageFor(model => model.CurrentAddress.Pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <h4>Permanent Address</h4>
+
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="chkSameAsCurrent" onclick="copyCurrentAddress()">
+            <label class="form-check-label" for="chkSameAsCurrent">Same as Current Address</label>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PermanentAddress.AddressLine1, "Address Line 1: *")
+                @Html.TextBoxFor(model => model.PermanentAddress.AddressLine1, new { @class = "form-control", @id = "txtPermanentAddressLine1" })
+                @Html.ValidationMessageFor(model => model.PermanentAddress.AddressLine1, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PermanentAddress.AddressLine2, "Address Line 2:")
+                @Html.TextBoxFor(model => model.PermanentAddress.AddressLine2, new { @class = "form-control", @id = "txtPermanentAddressLine2" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PermanentAddress.CountryID, "Country: *")
+                @Html.DropDownListFor(model => model.PermanentAddress.CountryID, ViewBag.Countries as SelectList, "Select Country", new { @class = "form-control", id = "ddlPermanentCountry" })
+                @Html.ValidationMessageFor(model => model.PermanentAddress.CountryID, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PermanentAddress.StateID, "State: *")
+                @{
+                    var permanentStates = ViewBag.PermanentStates as SelectList ?? Enumerable.Empty<SelectListItem>();
+                }
+                @Html.DropDownListFor(model => model.PermanentAddress.StateID, permanentStates, "Select State", new { @class = "form-control", id = "ddlPermanentState" })
+                @Html.ValidationMessageFor(model => model.PermanentAddress.StateID, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.PermanentAddress.Pincode, "Pincode: *")
+                @Html.TextBoxFor(model => model.PermanentAddress.Pincode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PermanentAddress.Pincode, "", new { @class = "text-danger", @id = "txtPermanentPincode" })
+            </div>
+        </div>
+
+
+        <h2>Academic Details</h2>
+
+
+        <h4>Class 10</h4>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.Marks10th, "Percentage: *")
+                @Html.TextBoxFor(model => model.UserDetails.Marks10th, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.Marks10th, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.Board10th, "Board: ")
+                @Html.DropDownListFor(model => model.UserDetails.Board10th, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Select Board", Value = "" },
+                    new SelectListItem { Text = "CBSE", Value = "CBSE" },
+                    new SelectListItem { Text = "ICSE", Value = "ICSE" }
+                }, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.School10th, "School: ")
+                @Html.TextBoxFor(model => model.UserDetails.School10th, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.YearOfCompletion10th, "Year of Completion: ")
+                @{
+                    string formattedDate10th = Model.UserDetails != null && Model.UserDetails.YearOfCompletion10th != null
+                        ? Model.UserDetails.YearOfCompletion10th.ToString("yyyy-MM-dd") : string.Empty;
+                }
+                @Html.TextBoxFor(model => model.UserDetails.YearOfCompletion10th, formattedDate10th, new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+
+
+
+        <h4>Class 12</h4>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.Marks12th, "Percentage: *")
+                @Html.TextBoxFor(model => model.UserDetails.Marks12th, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.Marks12th, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.Board12th, "Board: ")
+                @Html.DropDownListFor(model => model.UserDetails.Board12th, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Select Board", Value = "" },
+                    new SelectListItem { Text = "CBSE", Value = "CBSE" },
+                    new SelectListItem { Text = "ICSE", Value = "ICSE" }
+                }, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.School12th, "School: ")
+                @Html.TextBoxFor(model => model.UserDetails.School12th, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.YearOfCompletion12th, "Year of Completion: ")
+                @{
+                    string formattedDate12th = Model.UserDetails != null && Model.UserDetails.YearOfCompletion12th != null
+                        ? Model.UserDetails.YearOfCompletion12th.ToString("yyyy-MM-dd") : string.Empty;
+                }
+                @Html.TextBoxFor(model => model.UserDetails.YearOfCompletion12th, formattedDate12th, new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+
+
+        <h4>Graduation</h4>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.CGPA, "CGPA: *")
+                @Html.TextBoxFor(model => model.UserDetails.CGPA, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDetails.CGPA, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.University, "University: ")
+                @Html.TextBoxFor(model => model.UserDetails.University, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.UserDetails.YearOfCompletionGraduation, "Year of Completion: ")
+                @{
+                    string formattedDate = Model.UserDetails != null && Model.UserDetails.YearOfCompletionGraduation != null
+                        ? Model.UserDetails.YearOfCompletionGraduation.ToString("yyyy-MM-dd") : string.Empty;
+                }
+                @Html.TextBoxFor(model => model.UserDetails.YearOfCompletionGraduation, formattedDate, new { @class = "form-control", type = "date" })
+            </div>
+            <div class="col-md-3">
+                <label for="resume">Upload your Resume:</label>
+                <input type="file" id="resume" name="resume" class="form-control" />
+                @Html.HiddenFor(model => model.UserDetails.OriginalFileName, new { id = "OriginalFileName" })
+                @Html.HiddenFor(model => model.UserDetails.UniqueFileName, new { id = "UniqueFileName" })
+            </div>
+        </div>
+    </div>
+
+    <h2>Other Details</h2>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.UserDetails.Hobbies, "Hobbies: ")
+            @Html.TextBoxFor(model => model.UserDetails.Hobbies, new { @class = "form-control", rows = "2" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.UserDetails.Comments, "Comments/ Feedback: ")
+            @Html.TextBoxFor(model => model.UserDetails.Comments, new { @class = "form-control", rows = "2" })
+        </div>
+    </div>
+    if(ViewContext.RouteData.Values["id"] != null && int.TryParse(ViewContext.RouteData.Values["id"].ToString(), out int objectID))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Partial("~/Views/PartialView/NotePartialView.cshtml", new ViewDataDictionary { { "objectID", objectID }, { "objectType", (int)Utility.ObjectTypeEnum.UserDetails } })
+            </div>
+
+            <div class="col-md-6">
+                @Html.Partial("~/Views/PartialView/DocumentPartialView.cshtml", new ViewDataDictionary { { "objectID", objectID }, { "objectType", (int)Utility.ObjectTypeEnum.UserDetails } })
+            </div>
+        </div>
+    }
+   
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary ml-2">Reset</button>
+
+        </div>
+    </div>
+
+
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    var userID = @((ViewContext.RouteData.Values["id"] != null && int.TryParse(ViewContext.RouteData.Values["id"].ToString(), out int id)) ? id : 0);
+</script>
+<script src="~/Scripts/UserDetails.js"></script>

@@ -60,24 +60,24 @@
             <h1>USER DETAILS FORM</h1>
             <h2>Personal Details</h2>
             <div class="row">
-                <div class="col-md-4" >
+                <div class="col-md-4">
                     <label for="txtFirstName">First Name: *</label>
-                    <input type="text" id="txtFirstName" class="form-control validate-input"  data-field="FirstName" />
+                    <input type="text" id="txtFirstName" class="form-control validate-input" data-field="FirstName" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtMiddleName">Middle Name:</label>
-                    <input type="text" id="txtMiddleName" class="form-control"  data-field="MiddleName"/>
+                    <input type="text" id="txtMiddleName" class="form-control" data-field="MiddleName" />
 
                 </div>
                 <div class="col-md-4">
                     <label for="txtLastName">Last Name:</label>
-                    <input type="text" id="txtLastName" class="form-control"  data-field="LastName" />
+                    <input type="text" id="txtLastName" class="form-control" data-field="LastName" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlGender">Gender: *</label>
-                    <select id="ddlGender" class="form-control validate-input"  data-field="Gender">
+                    <select id="ddlGender" class="form-control validate-input" data-field="Gender">
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtAadharNo">Aadhar No: *</label>
-                    <input type="text" id="txtAadharNo" class="form-control validate-input"  data-field="AadharNo" />
+                    <input type="text" id="txtAadharNo" class="form-control validate-input" data-field="AadharNo" />
                 </div>
             </div>
 
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtEmail">Email: *</label>
-                    <input type="text" id="txtEmail" class="form-control validate-input"  data-field="Email"/>
+                    <input type="text" id="txtEmail" class="form-control validate-input" data-field="Email" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtPassword">Password: *</label>
@@ -116,24 +116,24 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtCurrentAddressLine1">Address Line 1: *</label>
-                    <input type="text" id="txtCurrentAddressLine1" class="form-control validate-input"  data-field="CurrentAddressLine1" />
+                    <input type="text" id="txtCurrentAddressLine1" class="form-control validate-input" data-field="CurrentAddressLine1" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtCurrentAddressLine2">Address Line 2:</label>
-                    <input type="text" id="txtCurrentAddressLine2" class="form-control" data-field="CurrentAddressLine2"  />
+                    <input type="text" id="txtCurrentAddressLine2" class="form-control" data-field="CurrentAddressLine2" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlCurrentCountry">Country: *</label>
-                    <select id="ddlCurrentCountry" class="form-control validate-input"  data-field="CurrentCountry">
+                    <select id="ddlCurrentCountry" class="form-control validate-input" data-field="CurrentCountry">
                         <option value="">Select Country</option>
                     </select>
 
                 </div>
                 <div class="col-md-4">
                     <label for="ddlCurrentState">State: *</label>
-                    <select id="ddlCurrentState" class="form-control validate-input" data-field="CurrentState" >
+                    <select id="ddlCurrentState" class="form-control validate-input" data-field="CurrentState">
                         <option value="">Select State</option>
                     </select>
                 </div>
@@ -151,7 +151,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtPermanentAddressLine1">Address Line 1: *</label>
-                    <input type="text" id="txtPermanentAddressLine1" class="form-control validate-input" data-field="PermanentAddressLine1"/>
+                    <input type="text" id="txtPermanentAddressLine1" class="form-control validate-input" data-field="PermanentAddressLine1" />
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentAddressLine2">Address Line 2:</label>
@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="ddlPermanentCountry">Country: *</label>
-                    <select id="ddlPermanentCountry" class="form-control validate-input"  data-field="PermanentCountry">
+                    <select id="ddlPermanentCountry" class="form-control validate-input" data-field="PermanentCountry">
                         <option value="">Select Country</option>
                     </select>
 
@@ -175,7 +175,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="txtPermanentPincode">Pincode: *</label>
-                    <input type="text" id="txtPermanentPincode" class="form-control validate-input"  data-field="PermanentPincode"  />
+                    <input type="text" id="txtPermanentPincode" class="form-control validate-input" data-field="PermanentPincode" />
                 </div>
             </div>
             <h2>Academic Details</h2>
@@ -183,7 +183,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtMarks10th">Percentage: *</label>
-                    <input type="text" id="txtMarks10th" class="form-control validate-input"  data-field="Marks10th"/>
+                    <input type="text" id="txtMarks10th" class="form-control validate-input" data-field="Marks10th" />
                 </div>
                 <div class="col-md-3">
                     <label for="ddlBoard10th">Board:</label>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletion10th">Year of Completion:</label>
-                    <input id="txtYearOfCompletion10th" class="form-control" type="date"  data-field="YearOfCompletion10th" />
+                    <input id="txtYearOfCompletion10th" class="form-control" type="date" data-field="YearOfCompletion10th" />
 
                 </div>
             </div>
@@ -209,7 +209,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtMarks12th">Percentage: *</label>
-                    <input type="text" id="txtMarks12th" class="form-control validate-input"  data-field="Marks12th"/>
+                    <input type="text" id="txtMarks12th" class="form-control validate-input" data-field="Marks12th" />
                 </div>
                 <div class="col-md-3">
                     <label for="ddlBoard12th">Board:</label>
@@ -225,7 +225,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletion12th">Year of Completion:</label>
-                    <input id="txtYearOfCompletion12th" class="form-control" type="date"   data-field="YearOfCompletion12th"/>
+                    <input id="txtYearOfCompletion12th" class="form-control" type="date" data-field="YearOfCompletion12th" />
                 </div>
             </div>
 
@@ -233,15 +233,15 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="txtCGPA">CGPA: *</label>
-                    <input type="text" id="txtCGPA" class="form-control validate-input"  data-field="CGPA" />
+                    <input type="text" id="txtCGPA" class="form-control validate-input" data-field="CGPA" />
                 </div>
                 <div class="col-md-3">
                     <label for="txtUniversity">University:</label>
-                    <input type="text" id="txtUniversity" class="form-control"  data-field="University" />
+                    <input type="text" id="txtUniversity" class="form-control" data-field="University" />
                 </div>
                 <div class="col-md-3">
                     <label for="txtYearOfCompletionGraduation">Year of Completion:</label>
-                    <input id="txtYearOfCompletionGraduation" class="form-control" type="date"  data-field="YearOfCompletionGraduation"/>
+                    <input id="txtYearOfCompletionGraduation" class="form-control" type="date" data-field="YearOfCompletionGraduation" />
                 </div>
                 <div class="col-md-3">
                     <label for="resume">Upload your Resume:</label>
@@ -253,11 +253,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="txtHobbies">Hobbies:</label>
-                    <input type="text" id="txtHobbies" class="form-control" textmode="MultiLine" rows="2"  data-field="Hobbies" />
+                    <input type="text" id="txtHobbies" class="form-control" textmode="MultiLine" rows="2" data-field="Hobbies" />
                 </div>
                 <div class="col-md-4 form-group">
                     <label for="txtComments">Comments/ Feedback:</label>
-                    <input type="text" id="txtComments" class="form-control" textmode="MultiLine" rows="2"  data-field="Comments" />
+                    <input type="text" id="txtComments" class="form-control" textmode="MultiLine" rows="2" data-field="Comments" />
                 </div>
             </div>
             <div class="row">

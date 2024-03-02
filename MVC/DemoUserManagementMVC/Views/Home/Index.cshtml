@@ -1,0 +1,35 @@
+﻿
+@model DemoUserManagementMVC.ModelView.LoginViewModel
+
+@{
+    ViewBag.Title = "LogIn";
+}
+<h2>LogIn</h2>
+<div class="row">
+    <div class="col-md-6">
+        <label id="lblMessage" class="text-danger" style="display:none;"></label>
+        @using (Html.BeginForm())
+        {
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @for = "txtEmail" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "txtEmail" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @for = "txtPassword" })
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @id = "txtPassword", type = "password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group" style="margin-top: 5px;">
+                <input type="submit" value="Login" class="btn btn-primary" />
+                @Html.ActionLink("SignUp", "UserDetailsForm", "UserDetails", null, new { @class = "btn btn-secondary ms-2" })
+
+            </div>
+        }
+    </div>
+</div>

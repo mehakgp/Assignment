@@ -1,0 +1,30 @@
+﻿<h2>Add Document</h2>
+
+<div class="input-group mb-3">
+    <select id="ddlDocumentType" class="form-control"></select>
+    <input type="file" id="document" class="form-control " />
+    <button id="btnUpload" class="btn btn-primary">Upload</button>
+</div>
+
+
+<table id="documentTable" class="table">
+    <thead>
+        <tr>
+            <th onclick="sortTableDocument('ID')">ID</th>
+            <th onclick="sortTableDocument('DocumentType')">DocumentType</th>
+            <th onclick="sortTableDocument('DocumentOriginalName')">DocumentName</th>
+            <th onclick="sortTableDocument('DateTime')">Date Time</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div id="pageNumbersDocument"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var objectID = @Html.Raw(Json.Encode(ViewData["objectID"]));
+    var objectType = @Html.Raw(Json.Encode(ViewData["objectType"]));
+
+</script>
+<script src="~/Scripts/DocumentPartialView.js"></script>
