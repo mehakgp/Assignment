@@ -42,6 +42,7 @@ namespace DemoUserManagementMVC.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorizeAttributeForUserDetails]
         public ActionResult GetFormDetails(int userId)
         {
             UserModel user = new Business().GetFormDetails(userId);
