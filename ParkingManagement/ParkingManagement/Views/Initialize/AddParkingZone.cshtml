@@ -1,0 +1,48 @@
+﻿@model ParkingManagement.ModelView.AddParkingZoneModel
+@{
+    ViewBag.Title = "AddParkingZone";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+<style>
+    .custom-label {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        font-size: large;
+    }
+</style>
+<h2>Add Parking Zone</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ParkingZoneTitle, "Parking Zone Title", new { @class = "control-label custom-label" })
+    @Html.TextBoxFor(model => model.ParkingZoneTitle, new { @class = "form-control", id = "parkingZoneTitle" })
+    @Html.ValidationMessageFor(model => model.ParkingZoneTitle, "", new { @class = "text-danger" })
+    <span id="errorMessage" class="text-danger"></span>
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumberOfSpaces, "Number of Parking Spaces", new { @class = "control-label custom-label" })
+        @Html.TextBoxFor(model => model.NumberOfSpaces, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NumberOfSpaces, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" id="submitButton" class="btn btn-primary mt-2">Save</button>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/AddParkingZone.js"></script>

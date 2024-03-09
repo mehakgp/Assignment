@@ -1,0 +1,147 @@
+﻿@model ParkingManagement.ModelView.ParkingSpaceListViewModel
+@using ParkingManagement.UtilityLayer
+@{
+    ViewBag.Title = "Dashboard";
+    var userSessionInfo = Utility.GetUserSessionInfo();
+}
+
+<style>
+        .parking-space {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            height: @(String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase) ? "120px" : "60px");
+        }
+
+        .vacant {
+            background-color: lightgreen;
+        }
+
+        .occupied {
+            background-color: lightgray;
+        }
+
+        .parking-title {
+            font-weight: bold;
+        }
+
+        .vehicle-number {
+            font-style: italic;
+        }
+
+    .fixed-height-btn {
+        height: 60px;
+        line-height: 1.5;
+    }
+</style>
+
+
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+
+<div class="container">
+    @if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="row mt-2">
+            <div class="col-md-3 mt-2 fixed-height-btn">
+                <a href="@Url.Action("ParkingZoneReport", "Report")" class="btn btn-primary">View Parking Zone Report</a>
+            </div>
+
+            <div class="col-md-3 mt-2 fixed-height-btn">
+                <a href="@Url.Action("AddParkingZone", "Initialize")" class="btn btn-primary">Add New Parking Zone</a>
+            </div>
+
+            <div class="col-md-3 mt-2 fixed-height-btn">
+                <a href="@Url.Action("AddParkingSpace", "Initialize")" class="btn btn-primary">Add New Parking Space</a>
+            </div>
+
+            <div class="col-md-3 mt-2 fixed-height-btn">
+                <form action="@Url.Action("ReleaseAllParkingSpace", "Dashboard")" method="post">
+                    @foreach (var selectedZoneId in Model.SelectedZoneIds)
+                    {
+                        <input type="hidden" name="selectedZoneIds" value="@selectedZoneId" />
+                    }
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to release all parking spaces?');">Release All Parking Spaces</button>
+                </form>
+            </div>
+        </div>
+    }
+    @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get))
+    {
+        <div class="row mt-2">
+            <div class="col-md-2 mt-1">
+                <select name="selectedZoneIds" id="selectedZoneIds" class="form-control" multiple>
+                    @foreach (var zone in Model.ParkingZones)
+                    {
+                        <option value="@zone.ParkingZoneId">@zone.ParkingZoneTitle</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-auto mt-1">
+                <button type="submit" class="btn btn-primary">Filter by Zone</button>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+<h2 class="mt-2">Parking Spaces:  </h2>
+<div class="row">
+    @foreach (var space in Model.ParkingSpaces)
+    {
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 parking-space @(space.IsOccupied ? "occupied" : "vacant") mb-2">
+            <div class="parking-title">@space.ParkingSpaceTitle</div>
+            @if (space.IsOccupied)
+            {
+                <span class="vehicle-number">@space.VehicleRegistrationNumber</span>
+                if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+
+                    <form action="@Url.Action("ReleaseParkingSpace", "Dashboard")" method="post">
+                        @Html.Hidden("parkingSpaceId", space.ParkingSpaceId)
+                        @Html.Hidden("vehicleRegistrationNumber", space.VehicleRegistrationNumber)
+                        @foreach (var selectedZoneId in Model.SelectedZoneIds)
+                        {
+                            <input type="hidden" name="selectedZoneIds" value="@selectedZoneId" />
+                        }
+                        <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to release space @space.ParkingSpaceTitle?');">Release</button>
+                    </form>
+
+                }
+
+            }
+            else
+            {
+                if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    <form action="@Url.Action("BookParkingSpace", "Dashboard")" method="post">
+                        @Html.Hidden("parkingSpaceId", space.ParkingSpaceId)
+                        @Html.TextBox("vehicleRegistrationNumber", null, new { placeholder = "Vehicle Registration Number", @class = "form-control", required = "required", id = "vehicleRegistrationNumber_" + space.ParkingSpaceId })
+                        @foreach (var selectedZoneId in Model.SelectedZoneIds)
+                        {
+                            <input type="hidden" name="selectedZoneIds" value="@selectedZoneId" />
+                        }
+                        <button type="submit" id="bookParkingSpaceButton_@space.ParkingSpaceId" class="btn btn-primary mt-2">Book</button>
+                    </form>
+                }
+
+            }
+        </div>
+    }
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/Dashboard.js"></script>

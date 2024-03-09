@@ -1,0 +1,45 @@
+﻿
+@model ParkingManagement.ModelView.AddParkingSpaceModel
+
+@{
+    ViewBag.Title = "Add Parking Space";
+}
+
+<style>
+    .custom-label {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        font-size: large;
+    }
+</style>
+<h2>Add Parking Space</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SelectedZoneId, "Select Parking Zone: ", new { @class = "control-label custom-label" })
+        @Html.DropDownListFor(m => m.SelectedZoneId, new SelectList(ViewBag.ListOfParkingZone, "ParkingZoneId", "ParkingZoneTitle"), "Please select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SelectedZoneId,"", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.NumberOfSpaces, "Number of Spaces: ", new { @class = "control-label custom-label" })
+        @Html.TextBoxFor(m => m.NumberOfSpaces, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NumberOfSpaces,"", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+}

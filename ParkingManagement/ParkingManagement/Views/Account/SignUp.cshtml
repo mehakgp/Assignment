@@ -1,0 +1,51 @@
+﻿@using ParkingManagement.UtilityLayer
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<h2>SignUp</h2>
+<style>
+    .custom-label {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        font-size: large;
+    }
+</style>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-success">@ViewBag.ErrorMessage</div>
+}
+
+@model ParkingManagement.ModelView.UserModel
+
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { id = "signupForm" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name,"Enter Name: ", new { @class = "control-label custom-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, "Enter Email Address: ", new { @class = "control-label custom-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "txtEmail" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        <span id="email-error" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password , "Enter Password: ", new { @class = "control-label custom-label" })
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type, "Select User Type: ", new { @class = "control-label custom-label" })
+        @Html.DropDownListFor(m => m.Type, new SelectList(Enum.GetValues(typeof(Utility.UserType))), "-- Select Type --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Sign Up</button>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/signup.js"></script>
