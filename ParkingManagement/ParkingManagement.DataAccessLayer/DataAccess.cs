@@ -11,7 +11,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using static ParkingManagement.UtilityLayer.Utility;
+using static ParkingManagement.ExceptionHandling.ExceptionHandler;
 
 namespace ParkingManagement.DataAccessLayer
 {

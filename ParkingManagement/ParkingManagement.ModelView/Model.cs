@@ -85,7 +85,7 @@ namespace ParkingManagement.ModelView
 
     public class SessionModel
     {
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public string Type { get; set; }
     }
     public class AddParkingZoneModel

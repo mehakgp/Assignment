@@ -18,7 +18,7 @@ namespace ParkingManagement.BusinessLayer
             {
                 SessionModel userSessionInfo = new SessionModel
                 {
-                    UserID = user.UserId,
+                    UserId = user.UserId,
                     Type = user.Type
 
                 };

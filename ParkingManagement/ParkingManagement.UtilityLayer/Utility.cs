@@ -12,19 +12,6 @@ namespace ParkingManagement.UtilityLayer
     public class Utility
     {
 
-        public static string logFilePath = ConfigurationManager.AppSettings["logFilePath"];
-        public static void LogException(Exception ex)
-        {
-
-            using (StreamWriter writer = new StreamWriter(logFilePath, true))
-            {
-                writer.WriteLine($"{DateTime.Now} - Exception: {ex.Message}");
-                writer.WriteLine($"StackTrace: {ex.StackTrace}");
-                writer.WriteLine("--------------------------------------------------");
-            }
-
-        }
-
         public enum UserType
         {
             BookingCounterAgent,

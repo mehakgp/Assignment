@@ -81,6 +81,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ParkingManagement.ExceptionHandling\ParkingManagement.ExceptionHandling.csproj">
+      <Project>{a5c5a8d3-6d68-41c1-9afe-cbfb3705fb79}</Project>
+      <Name>ParkingManagement.ExceptionHandling</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ParkingManagement.ModelView\ParkingManagement.ModelView.csproj">
       <Project>{cd9c0a5b-f967-456b-91e9-2cb497238161}</Project>
       <Name>ParkingManagement.ModelView</Name>
