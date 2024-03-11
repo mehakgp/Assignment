@@ -5,39 +5,7 @@
     var userSessionInfo = Utility.GetUserSessionInfo();
 }
 
-<style>
-        .parking-space {
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-align: center;
-            height: @(String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase) ? "120px" : "60px");
-        }
-
-        .vacant {
-            background-color: lightgreen;
-        }
-
-        .occupied {
-            background-color: lightgray;
-        }
-
-        .parking-title {
-            font-weight: bold;
-        }
-
-        .vehicle-number {
-            font-style: italic;
-        }
-
-    .fixed-height-btn {
-        height: 60px;
-        line-height: 1.5;
-    }
-</style>
-
-
+<link href="~/Content/dashboardStyle.css" rel="stylesheet" />
 
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
@@ -101,7 +69,8 @@
 <div class="row">
     @foreach (var space in Model.ParkingSpaces)
     {
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2 parking-space @(space.IsOccupied ? "occupied" : "vacant") mb-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 parking-space @(space.IsOccupied ? "occupied" : "vacant")
+             @(String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase) ? "booking-counter-agent" : "") mb-2">
             <div class="parking-title">@space.ParkingSpaceTitle</div>
             @if (space.IsOccupied)
             {

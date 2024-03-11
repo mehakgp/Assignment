@@ -1,0 +1,33 @@
+﻿.parking-space {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    height: 60px; 
+}
+
+    .parking-space.booking-counter-agent {
+        height: 120px;
+    }
+
+.vacant {
+    background-color: lightgreen;
+}
+
+.occupied {
+    background-color: lightgray;
+}
+
+.parking-title {
+    font-weight: bold;
+}
+
+.vehicle-number {
+    font-style: italic;
+}
+
+.fixed-height-btn {
+    height: 60px;
+    line-height: 1.5;
+}
