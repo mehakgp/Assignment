@@ -1,4 +1,4 @@
-﻿
+﻿@model ParkingManagement.ModelView.LogInModel
 @{
     ViewBag.Title = "LogIn";
 }
@@ -18,17 +18,15 @@
 
 <link href="~/Content/FormStyle.css" rel="stylesheet" />
 
-@model ParkingManagement.ModelView.LogInModel
-
 @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Email,"Email: ", new { @class = "control-label custom-label" })
+        @Html.LabelFor(m => m.Email, "Email: ", new { @class = "control-label custom-label" })
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password,"Password: ", new { @class = "control-label custom-label" })
+        @Html.LabelFor(m => m.Password, "Password: ", new { @class = "control-label custom-label" })
         @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
     </div>

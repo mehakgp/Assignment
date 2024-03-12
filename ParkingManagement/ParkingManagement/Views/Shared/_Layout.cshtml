@@ -1,6 +1,6 @@
 ﻿@using ParkingManagement.UtilityLayer
 @{
-    var userSessionInfo = Utility.GetUserSessionInfo();
+    var userSessionInfo = Utility.UserSessionInfo;
 }
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    @if (Utility.GetUserSessionInfo() != null)
+                    @if (userSessionInfo != null)
                     {
                         <li>@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
                         if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))

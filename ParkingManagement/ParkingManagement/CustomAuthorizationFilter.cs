@@ -12,7 +12,7 @@ namespace ParkingManagement
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            SessionModel userSessionInfo = Utility.GetUserSessionInfo();
+            SessionModel userSessionInfo = Utility.UserSessionInfo;
             if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 return true;

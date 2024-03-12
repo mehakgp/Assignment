@@ -2,7 +2,7 @@
 @using ParkingManagement.UtilityLayer
 @{
     ViewBag.Title = "Dashboard";
-    var userSessionInfo = Utility.GetUserSessionInfo();
+    var userSessionInfo = Utility.UserSessionInfo;
 }
 
 <link href="~/Content/dashboardStyle.css" rel="stylesheet" />
@@ -17,24 +17,27 @@
     <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
 }
 
+<div id="vehicleRegistrationNumberError" class="alert alert-danger"  style="display:none;" >Invalid Vehicle Registration Number.</div>
 
 <div class="container">
-    @if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
-    {
-        <div class="row mt-2">
-            <div class="col-md-3 mt-2 fixed-height-btn">
-                <a href="@Url.Action("ParkingZoneReport", "Report")" class="btn btn-primary">View Parking Zone Report</a>
-            </div>
+    <div class="row">
+        <div class="col">
+            @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get))
+            {
 
-            <div class="col-md-3 mt-2 fixed-height-btn">
-                <a href="@Url.Action("AddParkingZone", "Initialize")" class="btn btn-primary">Add New Parking Zone</a>
-            </div>
+                <select name="selectedZoneIds" id="selectedZoneIds" class="form-control" multiple>
+                    @foreach (var zone in Model.ParkingZones)
+                    {
+                        <option value="@zone.ParkingZoneId">@zone.ParkingZoneTitle</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary">Filter by Zone</button>
+            }
+        </div>
 
-            <div class="col-md-3 mt-2 fixed-height-btn">
-                <a href="@Url.Action("AddParkingSpace", "Initialize")" class="btn btn-primary">Add New Parking Space</a>
-            </div>
-
-            <div class="col-md-3 mt-2 fixed-height-btn">
+        @if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="col">
                 <form action="@Url.Action("ReleaseAllParkingSpace", "Dashboard")" method="post">
                     @foreach (var selectedZoneId in Model.SelectedZoneIds)
                     {
@@ -43,27 +46,10 @@
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to release all parking spaces?');">Release All Parking Spaces</button>
                 </form>
             </div>
-        </div>
-    }
-    @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get))
-    {
-        <div class="row mt-2">
-            <div class="col-md-2 mt-1">
-                <select name="selectedZoneIds" id="selectedZoneIds" class="form-control" multiple>
-                    @foreach (var zone in Model.ParkingZones)
-                    {
-                        <option value="@zone.ParkingZoneId">@zone.ParkingZoneTitle</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-auto mt-1">
-                <button type="submit" class="btn btn-primary">Filter by Zone</button>
-            </div>
-        </div>
-    }
+        }
 
+    </div>
 </div>
-
 
 <h2 class="mt-2">Parking Spaces:  </h2>
 <div class="row">

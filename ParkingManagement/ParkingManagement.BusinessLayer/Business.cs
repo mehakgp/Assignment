@@ -22,7 +22,8 @@ namespace ParkingManagement.BusinessLayer
                     Type = user.Type
 
                 };
-                SetUserSessionInfo(userSessionInfo);
+                UserSessionInfo= userSessionInfo;
+ 
                 return true;
             }
             else

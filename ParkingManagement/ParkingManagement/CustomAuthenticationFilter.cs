@@ -14,7 +14,7 @@ namespace ParkingManagement
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            SessionModel userSessionInfo = Utility.GetUserSessionInfo();
+            SessionModel userSessionInfo = Utility.UserSessionInfo;
 
             if (userSessionInfo == null)
             {

@@ -88,6 +88,7 @@ namespace ParkingManagement.ModelView
         public int UserId { get; set; }
         public string Type { get; set; }
     }
+
     public class AddParkingZoneModel
     {
         [Required(ErrorMessage = "Parking Zone Title is required")]
@@ -96,8 +97,8 @@ namespace ParkingManagement.ModelView
         [Required(ErrorMessage = "Number of spaces is required")]
         [Range(1, int.MaxValue, ErrorMessage = "Number of spaces must be at least 1")]
         public int NumberOfSpaces { get; set; }
-
     }
+
     public class AddParkingSpaceModel
     {
         [Required(ErrorMessage = "Please select a parking zone")]

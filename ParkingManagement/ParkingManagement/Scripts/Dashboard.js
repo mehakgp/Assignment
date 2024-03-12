@@ -7,10 +7,12 @@
         var parkingSpaceId = $(this).attr('id').replace('vehicleRegistrationNumber_', '');
 
         if (!regex.test(vehicleRegNumber)) {
-            alert("Invalid Vehicle Registration Number.")
+            $('#vehicleRegistrationNumberError').show();
             $('#bookParkingSpaceButton_' + parkingSpaceId).prop('disabled', true);
         } else {
+            $('#vehicleRegistrationNumberError').hide();
             $('#bookParkingSpaceButton_' + parkingSpaceId).prop('disabled', false);
         }
     });
+
 });

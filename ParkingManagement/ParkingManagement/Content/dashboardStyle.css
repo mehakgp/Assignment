@@ -4,7 +4,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
-    height: 60px; 
+    height: 60px;
 }
 
     .parking-space.booking-counter-agent {
@@ -25,9 +25,4 @@
 
 .vehicle-number {
     font-style: italic;
-}
-
-.fixed-height-btn {
-    height: 60px;
-    line-height: 1.5;
 }
