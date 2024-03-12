@@ -86,6 +86,12 @@ namespace ParkingManagement.BusinessLayer
         {
             return new DataAccess().IsParkingZoneTitleExists(parkingZoneTitle);
         }
+
+        public bool EditParkingSpace(AddParkingSpaceModel editParkingSpace)
+        {
+            return new DataAccess().EditParkingSpace(editParkingSpace);
+        }
+
     }
 
 }

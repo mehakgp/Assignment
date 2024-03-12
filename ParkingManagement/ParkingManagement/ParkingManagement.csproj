@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InitializeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Views\Report\ParkingZoneReport.cshtml" />
     <Content Include="Views\Initialize\AddParkingZone.cshtml" />
     <Content Include="Views\Initialize\AddParkingSpace.cshtml" />
+    <Content Include="Views\Edit\EditParkingSpace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

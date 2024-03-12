@@ -52,7 +52,6 @@ namespace ParkingManagement.ModelView
         public string ParkingSpaceTitle { get; set; }
         public int ParkingZoneId {  get; set; }
         public bool IsOccupied { get; set; }
-
         public string VehicleRegistrationNumber { get; set; }
     }
 

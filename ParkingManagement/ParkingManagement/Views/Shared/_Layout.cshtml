@@ -10,7 +10,14 @@
     <title>@ViewBag.Title - Parking Management Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .nav-item.active .nav-link {
+           color:white;
+            font-weight:bold;
+        }
+    </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -24,16 +31,28 @@
                 <ul class="navbar-nav flex-grow-1">
                     @if (userSessionInfo != null)
                     {
-                        <li>@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "active" : "")">
+                            @Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                         if (String.Equals(userSessionInfo.Type, Utility.UserType.BookingCounterAgent.ToString(), StringComparison.OrdinalIgnoreCase))
                         {
-                            <li>@Html.ActionLink("Add Zone", "AddParkingZone", "Initialize", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Add Space", "AddParkingSpace", "Initialize", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Report", "ParkingZoneReport", "Report", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "AddParkingZone" ? "active" : "")">
+                                @Html.ActionLink("Add Zone", "AddParkingZone", "Initialize", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "AddParkingSpace" ? "active" : "")">
+                                @Html.ActionLink("Add Space", "AddParkingSpace", "Initialize", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "EditParkingSpace" ? "active" : "")">
+                                @Html.ActionLink("Edit Space", "EditParkingSpace", "Edit", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "ParkingZoneReport" ? "active" : "")">
+                                @Html.ActionLink("Report", "ParkingZoneReport", "Report", new { area = "" }, new { @class = "nav-link" })
+                            </li>
                         }
-                        <li>@Html.ActionLink("Log Out", "LogOut", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "LogOut" ? "active" : "")">
+                            @Html.ActionLink("Log Out", "LogOut", "Home", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                     }
-
                 </ul>
             </div>
         </div>

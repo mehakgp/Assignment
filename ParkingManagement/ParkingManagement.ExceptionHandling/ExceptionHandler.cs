@@ -13,6 +13,10 @@ namespace ParkingManagement.ExceptionHandling
         public static string logFilePath = ConfigurationManager.AppSettings["logFilePath"];
         public static void LogException(Exception ex)
         {
+            if (!File.Exists(logFilePath))
+            {
+                using (FileStream fs = File.Create(logFilePath)) { }
+            }
 
             using (StreamWriter writer = new StreamWriter(logFilePath, true))
             {

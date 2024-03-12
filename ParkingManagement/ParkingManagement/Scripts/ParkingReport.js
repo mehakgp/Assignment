@@ -4,7 +4,7 @@ document.getElementById('exportPdf').addEventListener('click', function () {
     var fileName = 'report_' + selectedDate + '.pdf';
 
     var doc = new jsPDF();
-    doc.text("Parking Zone Report", 10, 10);
+    doc.text("Parking Zone Report- " + selectedDate, 10, 10);
     var table = document.getElementById('reportTable');
     doc.autoTable({ html: table });
     doc.save(fileName);

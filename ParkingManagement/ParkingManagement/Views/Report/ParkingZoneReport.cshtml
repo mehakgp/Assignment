@@ -10,7 +10,7 @@
         <h4>Select a Date:</h4>
         <div class="row">
             <div class="col-md-2">
-                @Html.TextBox("date", DateTime.Today.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date", id="selectedDate" })
+                @Html.TextBox("date", DateTime.Today.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date", id = "selectedDate" })
             </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-success">Generate Report</button>
@@ -29,18 +29,26 @@
                     <th>Parking Zone</th>
                     <th>Parking Space</th>
                     <th>Number of Bookings</th>
-                    <th>Is Vehicles Parked </th>
+                    <th>Is Vehicles Parked</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var zoneGroup in Model.GroupBy(item => item.ParkingZoneTitle))
                 {
-                    <tr>
-                        <td>@item.ParkingZoneTitle</td>
-                        <td>@item.ParkingSpaceTitle</td>
-                        <td>@item.NumberOfBookings</td>
-                        <td>@(item.IsVehicleParked ? "Yes" : "No")</td>
-                    </tr>
+                    var isFirstRow = true;
+                    foreach (var item in zoneGroup)
+                    {
+                        <tr>
+                            @if (isFirstRow)
+                            {
+                                <td rowspan="@zoneGroup.Count()">@item.ParkingZoneTitle</td>
+                                isFirstRow = false;
+                            }
+                            <td>@item.ParkingSpaceTitle</td>
+                            <td>@item.NumberOfBookings</td>
+                            <td>@(item.IsVehicleParked ? "Yes" : "No")</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

@@ -340,7 +340,7 @@ namespace ParkingManagement.DataAccessLayer
         {
             using (var context = new ParkingManagementEntities())
             {
-                return context.ParkingZones.Any(p => p.ParkingZoneTitle == parkingZoneTitle);               
+                return context.ParkingZones.Any(p => p.ParkingZoneTitle == parkingZoneTitle);
 
             }
         }
@@ -357,6 +357,38 @@ namespace ParkingManagement.DataAccessLayer
                     {
                         vehicle.ReleaseDateTime = DateTime.Now;
                     }
+
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+                return false;
+            }
+        }
+
+
+        public bool EditParkingSpace(AddParkingSpaceModel editParkingSpace)
+        {
+            try
+            {
+                using (var context = new ParkingManagementEntities())
+                {
+                    var parkingZone = context.ParkingZones.FirstOrDefault(p => p.ParkingZoneId == editParkingSpace.SelectedZoneId);
+                    var parkingSpaceTitles = Enumerable.Range(1, editParkingSpace.NumberOfSpaces).Select(i => $"{parkingZone.ParkingZoneTitle}{i:D2}");
+
+                    var spacesToDelete = context.ParkingSpaces.Where(p => p.ParkingZoneId == editParkingSpace.SelectedZoneId).ToList();
+                    context.ParkingSpaces.RemoveRange(spacesToDelete);
+
+                    var newParkingSpaces = parkingSpaceTitles.Select(title => new ParkingSpace
+                    {
+                        ParkingSpaceTitle = title,
+                        ParkingZoneId = editParkingSpace.SelectedZoneId
+                    });
+
+                    context.ParkingSpaces.AddRange(newParkingSpaces);
 
                     context.SaveChanges();
                     return true;
