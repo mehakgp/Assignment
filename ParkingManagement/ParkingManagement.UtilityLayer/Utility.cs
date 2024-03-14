@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Web;
 using ParkingManagement.ModelView;
 
 namespace ParkingManagement.UtilityLayer
@@ -22,11 +15,22 @@ namespace ParkingManagement.UtilityLayer
         {
             get
             {
-                return HttpContext.Current.Session["UserSessionInfo"] as SessionModel;
+                if (HttpContext.Current != null)
+                {
+                    return HttpContext.Current.Session["UserSessionInfo"] as SessionModel;
+                }
+                return null;
+
             }
             set
             {
-                HttpContext.Current.Session["UserSessionInfo"] = value;
+                if(HttpContext.Current !=null)
+                {
+                    if(value != null)
+                    {
+                        HttpContext.Current.Session["UserSessionInfo"] = value;
+                    }
+                }
             }
         }
     }

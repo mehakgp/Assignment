@@ -74,12 +74,25 @@ namespace ParkingManagement.BusinessLayer
 
         public bool AddParkingZone(AddParkingZoneModel newParkingZone)
         {
-            return new DataAccess().AddParkingZone(newParkingZone);
+            if(newParkingZone.NumberOfSpaces > 0)
+            {
+                return new DataAccess().AddParkingZone(newParkingZone);
+            }
+            else
+            {
+                return false;
+            }
+          
         }
 
         public bool AddParkingSpace(AddParkingSpaceModel newParkingSpace)
         {
-            return new DataAccess().AddParkingSpace(newParkingSpace);
+            if(newParkingSpace.NumberOfSpaces > 0)
+            {
+                return new DataAccess().AddParkingSpace(newParkingSpace);
+            }
+            else { return false; }
+           
         }
 
         public bool IsParkingZoneTitleExists(string parkingZoneTitle)
@@ -89,7 +102,15 @@ namespace ParkingManagement.BusinessLayer
 
         public bool EditParkingSpace(AddParkingSpaceModel editParkingSpace)
         {
-            return new DataAccess().EditParkingSpace(editParkingSpace);
+            if(editParkingSpace.NumberOfSpaces > 0)
+            {
+                return new DataAccess().EditParkingSpace(editParkingSpace);
+            }
+            else
+            {
+                return false;
+            }
+          
         }
 
     }

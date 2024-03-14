@@ -22,3 +22,33 @@ StackTrace:    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
    at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
    at ParkingManagement.DataAccessLayer.DataAccess.IsValidUser(String email, String password) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 26
 --------------------------------------------------
+13-03-2024 17:35:05 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.AddParkingZone(AddParkingZoneModel newParkingZone) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 265
+--------------------------------------------------
+13-03-2024 18:03:09 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------
+13-03-2024 18:05:08 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------
+13-03-2024 18:05:47 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------
+14-03-2024 09:43:37 - Exception: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+StackTrace:    at System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------
+14-03-2024 09:50:08 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------
+14-03-2024 10:20:54 - Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.SaveUser(UserModel model) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 81
+--------------------------------------------------
