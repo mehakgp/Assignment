@@ -1,0 +1,41 @@
+﻿@model List<SchoolManagement.ModelView.StudentModel>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+@Html.ActionLink("Add Student", "StudentForm", "Initialize", null, new { @class = "btn btn-primary" })
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+<h1>Student List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => student.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => student.LastName)</td>
+                <td>
+                    @Html.ActionLink("Edit", "StudentForm", "Initialize", new { id = student.StudentId }) |
+                    @Html.ActionLink("Details", "DetailsStudent", "Details", new { id = student.StudentId }) |
+                    @Html.ActionLink("Delete", "DeleteStudent", "Delete", new { id = student.StudentId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

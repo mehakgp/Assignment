@@ -1,0 +1,59 @@
+﻿@model SchoolManagement.ModelView.CourseDetailsModel
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h1>Course Details</h1>
+
+
+@if (Model.Course == null)
+{
+    <p>No details found for this course.</p>
+}
+else
+{
+    <h4 class="fw-bold">Course Information</h4>
+    <h6><strong>Course Name:</strong> @Model.Course.CourseName</h6>
+    <h6><strong>Credits:</strong> @Model.Course.Credits</h6>
+
+    <h4 class="fw-bold">Teacher Information</h4>
+    @if (Model.Teacher != null)
+    {
+        <h6><strong>Teacher Name:</strong> @Model.Teacher.FirstName @Model.Teacher.LastName</h6>
+    }
+    else
+    {
+        <p>No teacher assigned to this course.</p>
+    }
+
+    <h2>Enrolled Students</h2>
+    @if (Model.Students.Count == 0)
+    {
+        <p>No students enrolled in this course.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+@Html.ActionLink("Back to Course List", "CourseList", "Home", null, new { @class = "btn btn-primary" })

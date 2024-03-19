@@ -1,0 +1,37 @@
+﻿@model SchoolManagement.ModelView.StudentDetailsModel
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>Student Details</h1>
+<h4><strong>Name:</strong> @Model.FirstName @Model.LastName</h4>
+
+@if (Model.Enrollments.Count == 0)
+{
+    <p>No enrollments found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course</th> 
+                <th>Credits</th>
+                <th>Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var enrollment in Model.Enrollments)
+            {
+                <tr>
+                    <td>@enrollment.CourseName</td>
+                    <td>@enrollment.Credits</td>
+                    <td>@enrollment.Teacher.FullName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@Html.ActionLink("Back to Student List", "StudentList", "Home", null, new { @class = "btn btn-primary" })
