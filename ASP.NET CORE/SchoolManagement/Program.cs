@@ -1,13 +1,9 @@
-//using Microsoft.Extensions.DependencyInjection;
-//using SchoolManagement.DataAccessLayer.Interfaces;
-//using SchoolManagement.DataAccessLayer.Models;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using SchoolManagement.BusinessLayer;
 using SchoolManagement.DataAccessLayer;
 using SchoolManagement.DataAccessLayer.Models;
-using System.Configuration;
+using SchoolManagement.ExceptionHandling;
 
 namespace SchoolManagement
 {
@@ -22,7 +18,11 @@ namespace SchoolManagement
             builder.Services.AddScoped<IBusiness,Business>();
             builder.Services.AddScoped<IDataAccess,DataAccess>();
 
+            // Register ExceptionHandler as a singleton
+            builder.Services.AddSingleton<ExceptionHandler>();
+
             builder.Services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolDBConnectionString")));
+         
 
             var app = builder.Build();
 

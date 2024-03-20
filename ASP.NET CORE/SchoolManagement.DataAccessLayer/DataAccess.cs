@@ -5,13 +5,15 @@ using SchoolManagement.ExceptionHandling;
 namespace SchoolManagement.DataAccessLayer
 
 {
+
     public class DataAccess : IDataAccess
     {
         private readonly SchoolDbContext _context;
-
-        public DataAccess(SchoolDbContext context)
+        private readonly ExceptionHandler _exceptionHandler;
+        public DataAccess(SchoolDbContext context, ExceptionHandler exceptionHandler)
         {
             _context = context;
+            _exceptionHandler = exceptionHandler;
         }
 
         public List<StudentModel> GetAllStudents()
@@ -28,7 +30,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                //log exception
+                _exceptionHandler.LogException(ex);
                 return new List<StudentModel>();
             }
         }
@@ -48,7 +50,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                //  LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return new List<TeacherModel>();
             }
         }
@@ -68,7 +70,7 @@ namespace SchoolManagement.DataAccessLayer
 
             catch (Exception ex)
             {
-                //LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return new List<CourseModel>();
             }
         }
@@ -89,7 +91,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                //    LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -110,7 +112,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                //  LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -132,7 +134,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -151,7 +153,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -188,7 +190,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                //  LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return null;
             }
         }
@@ -210,7 +212,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return new List<StudentModel>();
             }
         }
@@ -259,7 +261,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return new TeacherDetailsModel();
             }
         }
@@ -288,7 +290,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return new CourseDetailsModel();
             }
         }
@@ -315,7 +317,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return null;
             }
         }
@@ -340,7 +342,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return null;
             }
         }
@@ -366,7 +368,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return null;
             }
         }
@@ -391,7 +393,7 @@ namespace SchoolManagement.DataAccessLayer
             }
             catch (Exception ex)
             {
-                // LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -417,7 +419,7 @@ namespace SchoolManagement.DataAccessLayer
 
             catch (Exception ex)
             {
-                //   LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
@@ -426,27 +428,88 @@ namespace SchoolManagement.DataAccessLayer
         {
             try
             {
-                    var courseToUpdate = _context.Courses.Find(course.CourseId);
+                var courseToUpdate = _context.Courses.Find(course.CourseId);
 
-                    if (courseToUpdate != null)
-                    {
-                        courseToUpdate.CourseName = course.CourseName;
-                        courseToUpdate.Credits = course.Credits;
-                        courseToUpdate.TeacherId = course.TeacherId;
-
-                        return _context.SaveChanges() > 0;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                if (courseToUpdate != null)
+                {
+                    courseToUpdate.CourseName = course.CourseName;
+                    courseToUpdate.Credits = course.Credits;
+                    courseToUpdate.TeacherId = course.TeacherId;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                //LogException(ex);
+                _exceptionHandler.LogException(ex);
                 return false;
             }
         }
 
+        public bool DeleteStudent(int studentId)
+        {
+            try
+            {
+                var studentToDelete = _context.Students.Find(studentId);
+
+                if (studentToDelete != null)
+                {
+                    _context.Students.Remove(studentToDelete);
+                    return _context.SaveChanges() > 0;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _exceptionHandler.LogException(ex);
+                return false;
+            }
+        }
+
+        public bool DeleteTeacher(int teacherId)
+        {
+            try
+            {
+                var teacherToDelete = _context.Teachers.Find(teacherId);
+
+                if (teacherToDelete != null)
+                {
+                    _context.Teachers.Remove(teacherToDelete);
+                    return _context.SaveChanges() > 0;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                _exceptionHandler.LogException(ex);
+                return false;
+            }
+        }
+
+        public bool DeleteCourse(int courseId)
+        {
+            try
+            {
+                var courseToDelete = _context.Courses.Find(courseId);
+
+                if (courseToDelete != null)
+                {
+                    _context.Courses.Remove(courseToDelete);
+                    return _context.SaveChanges() > 0;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                _exceptionHandler.LogException(ex);
+                return false;
+            }
+        }
     }
 }

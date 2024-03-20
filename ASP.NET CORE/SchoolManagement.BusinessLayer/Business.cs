@@ -1,5 +1,4 @@
 ﻿using SchoolManagement.DataAccessLayer;
-using SchoolManagement.DataAccessLayer.Models;
 using SchoolManagement.ModelView;
 
 namespace SchoolManagement.BusinessLayer
@@ -77,6 +76,18 @@ namespace SchoolManagement.BusinessLayer
         public  bool EditCourse(CourseModel course)
         {
             return _dataAccess.EditCourse(course);
+        }
+        public bool DeleteStudent(int studentId)
+        {
+            return _dataAccess.DeleteStudent(studentId);
+        }
+        public bool DeleteTeacher(int teacherId)
+        {
+            return _dataAccess.DeleteTeacher(teacherId);
+        }
+        public bool DeleteCourse(int courseId)
+        {
+            return _dataAccess.DeleteCourse(courseId);
         }
     }
 }

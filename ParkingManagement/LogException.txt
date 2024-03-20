@@ -52,3 +52,7 @@ StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
 StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
    at ParkingManagement.DataAccessLayer.DataAccess.SaveUser(UserModel model) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 81
 --------------------------------------------------
+20-03-2024 10:46:13 - Exception: An error occurred while updating the entries. See the inner exception for details.
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at ParkingManagement.DataAccessLayer.DataAccess.EditParkingSpace(AddParkingSpaceModel editParkingSpace) in D:\Assignment\ParkingManagement\ParkingManagement.DataAccessLayer\DataAccess.cs:line 393
+--------------------------------------------------

@@ -20,6 +20,7 @@
         <tr>
             <th>Course Name</th>
             <th>Credits</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +32,10 @@
                 <td>
                     @Html.ActionLink("Edit", "CourseForm", "Initialize", new { id = course.CourseId }) |
                     @Html.ActionLink("Details", "DetailsCourse", "Details", new { id = course.CourseId }) |
-                    @Html.ActionLink("Delete", "DeleteCourse", "Delete", new { id = course.CourseId })
+                    <form method="post" action="/Delete/DeleteCourse" style="display: inline;">
+                        <input type="hidden" name="id" value="@course.CourseId" />
+                        <button type="submit" class="btn btn-link " style="padding:0px;">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

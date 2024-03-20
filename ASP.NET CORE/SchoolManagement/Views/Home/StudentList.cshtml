@@ -33,8 +33,12 @@
                 <td>
                     @Html.ActionLink("Edit", "StudentForm", "Initialize", new { id = student.StudentId }) |
                     @Html.ActionLink("Details", "DetailsStudent", "Details", new { id = student.StudentId }) |
-                    @Html.ActionLink("Delete", "DeleteStudent", "Delete", new { id = student.StudentId })
+                    <form method="post" action="/Delete/DeleteStudent" style="display: inline;">
+                        <input type="hidden" name="id" value="@student.StudentId" />
+                        <button type="submit" class="btn btn-link" style="padding:0px;">Delete</button>
+                    </form>
                 </td>
+
             </tr>
         }
     </tbody>

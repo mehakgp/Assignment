@@ -1,9 +1,4 @@
 ﻿using SchoolManagement.ModelView;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolManagement.BusinessLayer
 {
@@ -28,5 +23,9 @@ namespace SchoolManagement.BusinessLayer
         public bool EditStudent(StudentModel student);
         public bool EditTeacher(TeacherModel teacher);
         public bool EditCourse(CourseModel course);
+
+        public bool DeleteStudent(int studentId);
+        public bool DeleteTeacher(int teacherId);
+        public bool DeleteCourse(int courseId);
     }
 }

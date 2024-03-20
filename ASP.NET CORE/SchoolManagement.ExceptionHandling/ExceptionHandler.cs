@@ -6,26 +6,26 @@ namespace SchoolManagement.ExceptionHandling
 {
     public class ExceptionHandler
     {
-        //private readonly string _logFilePath;
 
-        //public ExceptionHandler(IConfiguration configuration)
-        //{
-        //    _logFilePath = configuration["LogFilePath"];
-        //}
+        private readonly string _logFilePath;
 
-        //public  void LogException(Exception ex)
-        //{
-        //    if (!File.Exists(_logFilePath))
-        //    {
-        //        using (FileStream fs = File.Create(_logFilePath)) { }
-        //    }
+        public ExceptionHandler(IConfiguration configuration)
+        {
+            _logFilePath = configuration["Logging:FilePath"];
+        }
+        public void LogException(Exception ex)
+        {
+            if (!File.Exists(_logFilePath))
+            {
+                using (FileStream fs = File.Create(_logFilePath)) { }
+            }
 
-        //    using (StreamWriter writer = new StreamWriter(_logFilePath, true))
-        //    {
-        //        writer.WriteLine($"{DateTime.Now} - Exception: {ex.Message}");
-        //        writer.WriteLine($"StackTrace: {ex.StackTrace}");
-        //        writer.WriteLine("--------------------------------------------------");
-        //    }
-        //}
+            using (StreamWriter writer = new StreamWriter(_logFilePath, true))
+            {
+                writer.WriteLine($"{DateTime.Now} - Exception: {ex.Message}");
+                writer.WriteLine($"StackTrace: {ex.StackTrace}");
+                writer.WriteLine("--------------------------------------------------");
+            }
+        }
     }
 }

@@ -20,18 +20,45 @@ namespace SchoolManagement.Controllers
 
         public IActionResult StudentList()
         {
+            if (TempData["SuccessMessage"] != null)
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
+
+            if (TempData["ErrorMessage"] != null)
+            {
+                ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            }
             List<StudentModel> students = _business.GetAllStudents();
             return View(students);
         }
 
         public IActionResult TeacherList()
         {
+            if (TempData["SuccessMessage"] != null)
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
+
+            if (TempData["ErrorMessage"] != null)
+            {
+                ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            }
             List<TeacherModel> teachers = _business.GetAllTeachers();
             return View(teachers);
         }
 
         public IActionResult CourseList()
         {
+            if (TempData["SuccessMessage"] != null)
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
+
+            if (TempData["ErrorMessage"] != null)
+            {
+                ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            }
             List<CourseModel> courses = _business.GetAllCourses();
             return View(courses);
         }

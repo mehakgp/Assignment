@@ -3,6 +3,7 @@
     ViewData["Title"] = "Teacher List";
 }
 @Html.ActionLink("Add Teacher", "TeacherForm", "Initialize", null, new { @class = "btn btn-primary" })
+
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
     <div class="alert alert-success">@ViewBag.SuccessMessage</div>
@@ -33,7 +34,10 @@
                 <td>
                     @Html.ActionLink("Edit", "TeacherForm", "Initialize", new { id = teacher.TeacherId }) |
                     @Html.ActionLink("Details", "DetailsTeacher", "Details", new { id = teacher.TeacherId }) |
-                    @Html.ActionLink("Delete", "DeleteTeacher", "Delete", new { id = teacher.TeacherId })
+                    <form method="post" action="/Delete/DeleteTeacher" style="display: inline;">
+                        <input type="hidden" name="id" value="@teacher.TeacherId" />
+                        <button type="submit" class="btn btn-link" style="padding:0px;">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

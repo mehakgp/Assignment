@@ -1,0 +1,7 @@
+20-03-2024 12:13:33 - Exception: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+StackTrace:    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at SchoolManagement.DataAccessLayer.DataAccess.GetAllStudents() in D:\Assignment\ASP.NET CORE\SchoolManagement.DataAccessLayer\DataAccess.cs:line 23
+--------------------------------------------------
