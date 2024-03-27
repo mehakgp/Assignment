@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Appointment.ModelView.AppointmentViewModel>
+
+@{
+    ViewData["Title"] = "Appointment List";
+}
+<link href="@Url.Content("~/css/buttonstylesheet.css")" rel="stylesheet" />
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+<div class="row">
+    <div class="col-6">
+        <form method="get" action="@Url.Action("AppointmentList", "Appointment")">
+            <input type="date" id="date" name="date" value="@ViewBag.SelectedDate.ToString("yyyy-MM-dd")" class="form-control" style="width:60%;display:inline;">
+            <button type="submit" class="btn btn-pastel col-4">Apply</button>
+        </form>
+    </div>
+    <div class="col-3">
+        <form method="get" action="@Url.Action("AppointmentSummaryReport", "Report")">
+            <input type="hidden" name="month" value="@ViewBag.SelectedDate.Month" />
+            <input type="hidden" name="year" value="@ViewBag.SelectedDate.Year" />
+            <button type="submit" class="btn btn-pastel col-12">Appointment Summary Report</button>
+        </form>
+    </div>
+    <div class="col-3">
+        <form method="get" action="@Url.Action("AppointmentDetailedReport", "Report")">
+            <input type="hidden" name="month" value="@ViewBag.SelectedDate.Month" />
+            <input type="hidden" name="year" value="@ViewBag.SelectedDate.Year" />
+            <button type="submit" class="btn btn-pastel col-12">Appointment Detailed Report</button>
+        </form>
+    </div>
+</div>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <h2>Appointment List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PatientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PatientEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PatientPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AppointmentTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AppointmentStatus)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatientEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatientPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentStatus)
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col" style="padding: 0;">
+                                <form method="post" action="@Url.Action("CloseAppointment", "Appointment", new { AppointmentId = item.AppointmentId, selectedDate =ViewBag.SelectedDate })">
+                                    <button type="submit" class="btn btn-pastel">Close</button>
+                                </form>
+                            </div>
+                            <div class="col" style="padding: 0;">
+                                <form method="post" action="@Url.Action("CancelAppointment", "Appointment", new { AppointmentId = item.AppointmentId , selectedDate =ViewBag.SelectedDate})">
+                                    <button type="submit" class="btn btn-pastel">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-primary"> NO APPOINTMENTS FOR THIS DATE</div>
+}

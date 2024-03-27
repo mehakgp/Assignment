@@ -1,0 +1,120 @@
+21-03-2024 16:23:19 - Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Appointment.DataAccessLayer.DataAccess.SignUp(SignUpModel newUser, TimeOnly startTime, TimeOnly endTime) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+21-03-2024 16:25:19 - Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Appointment.DataAccessLayer.DataAccess.SignUp(SignUpModel newUser, TimeOnly startTime, TimeOnly endTime) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 22
+--------------------------------------------------
+26-03-2024 15:27:35 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 15:28:26 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 15:36:35 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 16:39:49 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 16:40:34 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 16:42:35 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 16:50:46 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 17:22:23 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 17:34:01 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 20:33:05 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 20:34:28 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 227
+--------------------------------------------------
+26-03-2024 21:02:36 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 21:03:08 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 21:06:10 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentDetailedReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 260
+--------------------------------------------------
+26-03-2024 21:09:22 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentDetailedReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 260
+--------------------------------------------------
+26-03-2024 21:09:49 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 21:31:03 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentDetailedReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 260
+--------------------------------------------------
+26-03-2024 22:56:32 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 23:05:56 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentDetailedReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 260
+--------------------------------------------------
+26-03-2024 23:07:33 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 23:08:05 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 23:08:23 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------
+26-03-2024 23:17:38 - Exception: Year, Month, and Day parameters describe an un-representable DateTime.
+StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
+   at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
+--------------------------------------------------

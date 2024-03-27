@@ -1,0 +1,56 @@
+﻿@model Appointment.ModelView.SignUpModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-success">@ViewBag.ErrorMessage</div>
+}
+<link href="@Url.Content("~/css/buttonstylesheet.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/formstylesheet.css")" rel="stylesheet" />
+
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { id = "registerForm" }))
+{
+    <div class="col-4">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, "Enter Name: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, "Enter Email Address: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "txtEmail" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <span id="email-error" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, "Enter Password: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AppointmentSlotTime, "Appointment Slot Time: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.AppointmentSlotTime, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AppointmentSlotTime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DayStartTime, "Day Start Time: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.DayStartTime, new { @class = "form-control timepicker", id = "dayStartTimeInput" })
+            @Html.ValidationMessageFor(m => m.DayStartTime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DayEndTime, "Day End Time: ", new { @class = "control-label custom-label" })
+            @Html.TextBoxFor(m => m.DayEndTime, new { @class = "form-control timepicker", id = "dayEndTimeInput" })
+            @Html.ValidationMessageFor(m => m.DayEndTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-pastel mt-2">Register</button>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="@Url.Content("~/js/register.js")"></script>

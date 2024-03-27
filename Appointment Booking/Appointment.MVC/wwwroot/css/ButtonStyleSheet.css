@@ -1,0 +1,11 @@
+﻿
+.btn-pastel {
+    background-color: #2e4450;
+    color: white;
+}
+
+.btn-pastel:hover {
+    background-color: #d7baad;
+    color: black;
+}
+
