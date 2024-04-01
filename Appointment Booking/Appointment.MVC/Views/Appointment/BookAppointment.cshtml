@@ -3,7 +3,8 @@
     ViewData["Title"] = "Book Appointment";
 }
 
-<h2>Book Appointment</h2>
+<h2>Please provide the following details:</h2>
+
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
     <div class="alert alert-success">@ViewBag.SuccessMessage</div>
@@ -14,47 +15,69 @@
 {
     <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
 }
+
 <link href="@Url.Content("~/css/buttonstylesheet.css")" rel="stylesheet" />
 <link href="@Url.Content("~/css/formstylesheet.css")" rel="stylesheet" />
 
-@using (Html.BeginForm("BookAppointment", "Appointment", FormMethod.Post))
-{
-    <div class="col-4">
+<div class="form-container">
+    @using (Html.BeginForm("BookAppointment", "Appointment", FormMethod.Post))
+    {
+        <div class="row mt-2">
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DoctorId, "Doctor: ", new { @class = "control-label custom-label" })
+                    @Html.DropDownListFor(model => model.DoctorId, (IEnumerable<SelectListItem>)ViewBag.Doctors, "Select Doctor", new { @class = "form-control", id = "doctorId" })
+                    @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AppointmentDate, "Appointment Date: ", new { @class = "control-label custom-label" })
+                    @Html.TextBoxFor(model => model.AppointmentDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "appointmentDate" })
+                    @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DoctorId, "Doctor: ", new { @class = "control-label custom-label" })
-            @Html.DropDownListFor(model => model.DoctorId, (IEnumerable<SelectListItem>)ViewBag.Doctors, "Select Doctor", new { @class = "form-control", id = "doctorId" })
-            @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
+        <div class="row mt-2">
+            <div class="form-group">
+                <label id="appointmentTimeLabel" class="control-label custom-label" style="display: none;">Available Time Slot: </label>
+                <div id="timeSlots">
+                    <!-- Time slots dynamically populated-->
+                </div>
+                @Html.HiddenFor(model => model.AppointmentTime, new { id = "selectedTimeSlot" })
+                @Html.ValidationMessageFor(model => model.AppointmentTime, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.AppointmentDate, "Appointment Date: ", new { @class = "control-label custom-label" })
-            @Html.TextBoxFor(model => model.AppointmentDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "appointmentDate" })
-            @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
+        <div class="row mt-2">
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PatientName, "Patient's Name: ", new { @class = "control-label custom-label" })
+                    @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PatientName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PatientEmail, "Patient's Email Address: ", new { @class = "control-label custom-label" })
+                    @Html.TextBoxFor(model => model.PatientEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PatientEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PatientPhone, "Patient's Phone Number: ", new { @class = "control-label custom-label" })
+                    @Html.TextBoxFor(model => model.PatientPhone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PatientPhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.AppointmentTime, "Appointment Time Slot: ", new { @class = "control-label custom-label" })
-            @Html.DropDownListFor(model => model.AppointmentTime, Enumerable.Empty<SelectListItem>(), "Select Time", new { @class = "form-control", id = "appointmentTime" })
-            @Html.ValidationMessageFor(model => model.AppointmentTime, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.PatientName, "Patient Name: ", new { @class = "control-label custom-label" })
-            @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PatientName, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.PatientEmail, "Patient Email: ", new { @class = "control-label custom-label" })
-            @Html.TextBoxFor(model => model.PatientEmail, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PatientEmail, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.PatientPhone, "Patient Phone: ", new { @class = "control-label custom-label" })
-            @Html.TextBoxFor(model => model.PatientPhone, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PatientPhone, "", new { @class = "text-danger" })
-        </div>
+
 
         <button type="submit" class="btn btn-pastel mt-2">Book Appointment</button>
 
-    </div>
-}
+    }
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="@Url.Content("~/js/bookappointment.js")"></script>

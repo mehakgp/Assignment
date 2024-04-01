@@ -32,9 +32,9 @@ namespace Appointment.WebAPI.Controllers
         }
   
         [HttpPost]
-        public IActionResult Register([FromBody] SignUpModel newUser)
+        public async Task<IActionResult> Register([FromBody] SignUpModel newUser)
         {
-            return Ok(_business.Register(newUser));
+            return Ok(await _business.Register(newUser));
 
         }
 

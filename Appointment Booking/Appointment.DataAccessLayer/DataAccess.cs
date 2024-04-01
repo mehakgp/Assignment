@@ -33,7 +33,7 @@ namespace Appointment.DataAccessLayer
                     }
                 };
                 _context.Users.Add(user);
-              await  _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -109,7 +109,7 @@ namespace Appointment.DataAccessLayer
                     AppointmentStatus = newAppointment.AppointmentStatus
                     //AppointmentStatus =Utility.AppointmentStatus.Open.ToString()
                 });
-                await _context.SaveChangesAsync(); 
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -161,6 +161,7 @@ namespace Appointment.DataAccessLayer
             {
                 return _context.Appointments
              .Where(appointment => appointment.DoctorId == doctorId && appointment.AppointmentDate == selectedDate)
+             .OrderBy(appointment => appointment.AppointmentTime)
              .Select(appointment => new AppointmentViewModel
              {
                  AppointmentId = appointment.AppointmentId,
@@ -246,7 +247,7 @@ namespace Appointment.DataAccessLayer
                     {
                         Date = g.Key,
                         NumberOfAppointments = g.Count(),
-                        NumberOfAppointmentsClosed = g.Count(a => a.AppointmentStatus ==Utility.AppointmentStatus.Closed.ToString() /*"Closed"*/),
+                        NumberOfAppointmentsClosed = g.Count(a => a.AppointmentStatus == Utility.AppointmentStatus.Closed.ToString() /*"Closed"*/),
                         NumberOfAppointmentsCancelled = g.Count(a => a.AppointmentStatus == Utility.AppointmentStatus.Cancelled.ToString() /*"Cancelled"*/)
                     })
                     .ToList();

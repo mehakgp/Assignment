@@ -118,3 +118,10 @@ StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
 StackTrace:    at System.DateOnly..ctor(Int32 year, Int32 month, Int32 day)
    at Appointment.DataAccessLayer.DataAccess.GetAppointmentSummaryReport(Int32 doctorId, Int32 month, Int32 year) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 226
 --------------------------------------------------
+01-04-2024 13:33:11 - Exception: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'AppointmentBookingDbContext'.
+StackTrace:    at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Appointment.DataAccessLayer.DataAccess.BookAppointment(AppointmentViewModel newAppointment) in D:\Assignment\Appointment Booking\Appointment.DataAccessLayer\DataAccess.cs:line 112
+--------------------------------------------------

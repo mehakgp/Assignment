@@ -26,9 +26,9 @@ namespace Appointment.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult BookAppointment([FromBody] AppointmentViewModel newAppointment)
+        public async Task<IActionResult> BookAppointment([FromBody] AppointmentViewModel newAppointment)
         {
-            return Ok(_business.BookAppointment(newAppointment));
+            return Ok(await _business.BookAppointment(newAppointment));
         }
         [HttpGet]
         public IActionResult GetTimeSlots(int doctorId, string appointmentDate)
@@ -52,15 +52,15 @@ namespace Appointment.WebAPI.Controllers
         }
         [HttpGet]
         [Authorize]
-        public IActionResult CloseAppointment(int appointmentId)
+        public async Task<IActionResult> CloseAppointment(int appointmentId)
         {
-            return Ok(_business.CloseAppointment(appointmentId));
+            return Ok( await _business.CloseAppointment(appointmentId));
         }
         [HttpGet]
         [Authorize]
-        public IActionResult CancelAppointment(int appointmentId)
+        public async Task<IActionResult> CancelAppointment(int appointmentId)
         {
-            return Ok(_business.CancelAppointment(appointmentId));
+            return Ok(await _business.CancelAppointment(appointmentId));
         }
     }
 }

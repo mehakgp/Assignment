@@ -19,16 +19,16 @@ namespace Appointment.ModelView
         [Required(ErrorMessage = "Please select a doctor.")]
         public int DoctorId { get; set; }
 
-        [Display(Name = "Patient Name")]
+        [Display(Name = "Patient's Name")]
         [Required(ErrorMessage = "Please enter the patient's name.")]
         public string PatientName { get; set; } = null!;
 
-        [Display(Name = "Patient Email")]
+        [Display(Name = "Patient's Email Address")]
         [Required(ErrorMessage = "Please enter the patient's email address.")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
         public string PatientEmail { get; set; } = null!;
 
-        [Display(Name = "Patient Phone")]
+        [Display(Name = "Patient's Phone Number")]
         [Required(ErrorMessage = "Please enter the patient's phone number.")]
         [Phone(ErrorMessage = "Please enter a valid phone number.")]
         public string PatientPhone { get; set; } = null!;
