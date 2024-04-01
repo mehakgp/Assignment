@@ -1,6 +1,8 @@
 ﻿using Appointment.DataAccessLayer.EFModels;
 using Appointment.ModelView;
 using SchoolManagement.ExceptionHandling;
+using Appointment.UtilityLayer;
+
 namespace Appointment.DataAccessLayer
 {
     public class DataAccess : IDataAccess
@@ -13,7 +15,7 @@ namespace Appointment.DataAccessLayer
             _exceptionHandler = exceptionHandler;
         }
 
-        public bool Register(SignUpModel newUser, TimeOnly startTime, TimeOnly endTime)
+        public async Task<bool> Register(SignUpModel newUser, TimeOnly startTime, TimeOnly endTime)
         {
             try
             {
@@ -31,7 +33,7 @@ namespace Appointment.DataAccessLayer
                     }
                 };
                 _context.Users.Add(user);
-                _context.SaveChanges();
+              await  _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -92,7 +94,7 @@ namespace Appointment.DataAccessLayer
             }
         }
 
-        public bool BookAppointment(AppointmentViewModel newAppointment)
+        public async Task<bool> BookAppointment(AppointmentViewModel newAppointment)
         {
             try
             {
@@ -107,7 +109,7 @@ namespace Appointment.DataAccessLayer
                     AppointmentStatus = newAppointment.AppointmentStatus
                     //AppointmentStatus =Utility.AppointmentStatus.Open.ToString()
                 });
-                _context.SaveChanges();
+                await _context.SaveChangesAsync(); 
                 return true;
             }
             catch (Exception ex)
@@ -178,15 +180,15 @@ namespace Appointment.DataAccessLayer
 
         }
 
-        public bool CancelAppointment(int appointmentId)
+        public async Task<bool> CancelAppointment(int appointmentId)
         {
             try
             {
                 var appointment = _context.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
                 if (appointment != null)
                 {
-                    appointment.AppointmentStatus = "Cancelled";
-                    _context.SaveChanges();
+                    appointment.AppointmentStatus = Utility.AppointmentStatus.Cancelled.ToString(); /*"Cancelled"*/
+                    await _context.SaveChangesAsync();
                     return true;
                 }
                 else
@@ -201,15 +203,15 @@ namespace Appointment.DataAccessLayer
                 return false;
             }
         }
-        public bool CloseAppointment(int appointmentId)
+        public async Task<bool> CloseAppointment(int appointmentId)
         {
             try
             {
                 var appointment = _context.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
                 if (appointment != null)
                 {
-                    appointment.AppointmentStatus = "Closed";
-                    _context.SaveChanges();
+                    appointment.AppointmentStatus = Utility.AppointmentStatus.Closed.ToString(); /*"Closed"*/;
+                    await _context.SaveChangesAsync();
                     return true;
                 }
                 else
@@ -244,8 +246,8 @@ namespace Appointment.DataAccessLayer
                     {
                         Date = g.Key,
                         NumberOfAppointments = g.Count(),
-                        NumberOfAppointmentsClosed = g.Count(a => a.AppointmentStatus == "Closed"),
-                        NumberOfAppointmentsCancelled = g.Count(a => a.AppointmentStatus == "Cancelled")
+                        NumberOfAppointmentsClosed = g.Count(a => a.AppointmentStatus ==Utility.AppointmentStatus.Closed.ToString() /*"Closed"*/),
+                        NumberOfAppointmentsCancelled = g.Count(a => a.AppointmentStatus == Utility.AppointmentStatus.Cancelled.ToString() /*"Cancelled"*/)
                     })
                     .ToList();
 

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appointment.ExceptionHandli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appointment.MVC", "..\Appointment.MVC\Appointment.MVC.csproj", "{40796569-4354-449E-86D6-D2FB02C04E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.UtilityLayer", "..\Appointment.UtilityLayer\Appointment.UtilityLayer.csproj", "{D451B4AE-3082-45D7-9664-9BC116ADFBA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appointment.UtilityLayer", "..\Appointment.UtilityLayer\Appointment.UtilityLayer.csproj", "{D451B4AE-3082-45D7-9664-9BC116ADFBA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.BusinessLayer.Tests", "..\Appointment.BusinessLayer.Tests\Appointment.BusinessLayer.Tests.csproj", "{088D1FE6-5632-40CA-B77A-317D9DBC02BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{D451B4AE-3082-45D7-9664-9BC116ADFBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D451B4AE-3082-45D7-9664-9BC116ADFBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D451B4AE-3082-45D7-9664-9BC116ADFBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

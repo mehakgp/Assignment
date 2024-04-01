@@ -14,7 +14,7 @@ namespace Appointment.BusinessLayer
             _dataAccess = dataAccess;
         }
 
-        public bool Register(SignUpModel newUser)
+        public Task<bool> Register(SignUpModel newUser)
         {
             TimeOnly startTime = TimeOnly.ParseExact(newUser.DayStartTime, "HH:mm", CultureInfo.InvariantCulture);
             TimeOnly endTime = TimeOnly.ParseExact(newUser.DayEndTime, "HH:mm", CultureInfo.InvariantCulture);
@@ -33,7 +33,7 @@ namespace Appointment.BusinessLayer
         {
             return _dataAccess.GetDoctors();
         }
-        public bool BookAppointment(AppointmentViewModel newAppointment)
+        public Task<bool> BookAppointment(AppointmentViewModel newAppointment)
         {
             return _dataAccess.BookAppointment(newAppointment);
         }
@@ -49,11 +49,11 @@ namespace Appointment.BusinessLayer
            return  _dataAccess.GetListOfAppointments(doctorId, selectedDate);
         }
 
-        public bool CancelAppointment(int appointmentId)
+        public Task<bool> CancelAppointment(int appointmentId)
         {
             return _dataAccess.CancelAppointment(appointmentId);
         }
-        public bool CloseAppointment(int appointmentId)
+        public Task<bool> CloseAppointment(int appointmentId)
         {
             return _dataAccess.CloseAppointment(appointmentId);
         }

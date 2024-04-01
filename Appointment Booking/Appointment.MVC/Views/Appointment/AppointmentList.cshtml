@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Appointment.ModelView.AppointmentViewModel>
-
+@using Appointment.UtilityLayer;
 @{
     ViewData["Title"] = "Appointment List";
 }
@@ -83,18 +83,22 @@
                         @Html.DisplayFor(modelItem => item.AppointmentStatus)
                     </td>
                     <td>
-                        <div class="row">
-                            <div class="col" style="padding: 0;">
-                                <form method="post" action="@Url.Action("CloseAppointment", "Appointment", new { AppointmentId = item.AppointmentId, selectedDate =ViewBag.SelectedDate })">
-                                    <button type="submit" class="btn btn-pastel">Close</button>
-                                </form>
+                        @if (item.AppointmentStatus == Utility.AppointmentStatus.Open.ToString())
+                        {
+                            <div class="row">
+                                <div class="col" style="padding: 0;">
+                                    <form method="post" action="@Url.Action("CloseAppointment", "Appointment", new { AppointmentId = item.AppointmentId, selectedDate =ViewBag.SelectedDate })">
+                                        <button type="submit" class="btn btn-pastel">Close</button>
+                                    </form>
+                                </div>
+                                <div class="col" style="padding: 0;">
+                                    <form method="post" action="@Url.Action("CancelAppointment", "Appointment", new { AppointmentId = item.AppointmentId , selectedDate =ViewBag.SelectedDate})">
+                                        <button type="submit" class="btn btn-pastel">Cancel</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col" style="padding: 0;">
-                                <form method="post" action="@Url.Action("CancelAppointment", "Appointment", new { AppointmentId = item.AppointmentId , selectedDate =ViewBag.SelectedDate})">
-                                    <button type="submit" class="btn btn-pastel">Cancel</button>
-                                </form>
-                            </div>
-                        </div>
+                        }
+                       
                     </td>
                 </tr>
             }

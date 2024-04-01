@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Appointment.ExceptionHandling\Appointment.ExceptionHandling.csproj" />
     <ProjectReference Include="..\Appointment.ModelView\Appointment.ModelView.csproj" />
+    <ProjectReference Include="..\Appointment.UtilityLayer\Appointment.UtilityLayer.csproj" />
   </ItemGroup>
 
 </Project>

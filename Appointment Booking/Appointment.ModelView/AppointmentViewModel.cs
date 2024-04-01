@@ -33,7 +33,7 @@ namespace Appointment.ModelView
         [Phone(ErrorMessage = "Please enter a valid phone number.")]
         public string PatientPhone { get; set; } = null!;
         [Display(Name = "Appointment Status")]
-        public string AppointmentStatus { get; set; } = "Open";
+        public string AppointmentStatus { get; set; } = UtilityLayer.Utility.AppointmentStatus.Open.ToString(); /* "Open"*/
     }
 
 }
