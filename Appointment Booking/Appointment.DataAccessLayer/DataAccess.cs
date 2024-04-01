@@ -17,16 +17,22 @@ namespace Appointment.DataAccessLayer
         {
             try
             {
-                var user = new User { Name = newUser.Name, Email = newUser.Email, Password = newUser.Password };
-                _context.Users.Add(user);
-                int success = _context.SaveChanges();
-                if (success != 0)
+                var user = new User
                 {
-                    _context.Doctors.Add(new Doctor { DoctorName = newUser.Name, UserId = user.UserId, AppointmentSlotTime = newUser.AppointmentSlotTime, DayEndTime = endTime, DayStartTime = startTime });
-                    _context.SaveChanges();
-                    return true;
-                }
-                return false;
+                    Name = newUser.Name,
+                    Email = newUser.Email,
+                    Password = newUser.Password,
+                    Doctor = new Doctor
+                    {
+                        DoctorName = newUser.Name,
+                        AppointmentSlotTime = newUser.AppointmentSlotTime,
+                        DayEndTime = endTime,
+                        DayStartTime = startTime
+                    }
+                };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
