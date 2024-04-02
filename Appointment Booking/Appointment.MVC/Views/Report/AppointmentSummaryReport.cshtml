@@ -41,7 +41,7 @@
         </div>
 
         <div class="col">
-            <button type="submit" class="btn btn-pastel" style="margin-top:30px;">Generate Report</button>
+            <button type="submit" class="btn btn-green" style="margin-top:30px;">Generate Report</button>
         </div>
     </div>
 </form>
@@ -73,14 +73,14 @@
         </table>
     </div>
     <div class="row">
-        <div class="col-3" style="width:150px;">
-            <button id="exportPdf" class="btn btn-success">Export to PDF</button>
+        <div class="col-3" >
+            <button id="exportPdf" class="btn btn-pastel">Export to PDF</button>
         </div>
         <div class="col-3">
             <form method="get" action="@Url.Action("AppointmentDetailedReport", "Report")">
                 <input type="hidden" name="month" value="@ViewBag.SelectedMonth" />
                 <input type="hidden" name="year" value="@ViewBag.SelectedYear" />
-                <button type="submit" class="btn btn-pastel">Appointment Detailed Report</button>
+                <button type="submit" class="btn btn-green">Appointment Detailed Report</button>
             </form>
         </div>
     </div>

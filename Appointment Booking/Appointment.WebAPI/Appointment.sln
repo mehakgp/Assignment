@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appointment.UtilityLayer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.BusinessLayer.Tests", "..\Appointment.BusinessLayer.Tests\Appointment.BusinessLayer.Tests.csproj", "{088D1FE6-5632-40CA-B77A-317D9DBC02BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.MVC.Tests.Controllers", "..\Appointment.MVC.ControllerTests\Appointment.MVC.Tests.Controllers.csproj", "{E56DF380-5B2E-4E34-9ABD-807F254A3257}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +57,6 @@ Global
 		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{088D1FE6-5632-40CA-B77A-317D9DBC02BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E56DF380-5B2E-4E34-9ABD-807F254A3257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E56DF380-5B2E-4E34-9ABD-807F254A3257}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E56DF380-5B2E-4E34-9ABD-807F254A3257}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E56DF380-5B2E-4E34-9ABD-807F254A3257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

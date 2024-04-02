@@ -2,14 +2,21 @@
     ViewBag.Title = "Home";
 }
 <link href="@Url.Content("~/css/buttonstylesheet.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/formstylesheet.css")" rel="stylesheet" />
 
-<div class="text-center">
+<div class="container text-center">
     <h2>Welcome to the Appointment Booking System</h2>
     <p>Manage your appointments easily with our simple booking system.</p>
 </div>
 
-<div class="text-center mt-4">
-    <a href="@Url.Action("LogIn", "Home")" class="btn btn-pastel btn-lg mr-3">Log In</a>
-    <a href="@Url.Action("Register", "Home")" class="btn btn-pastel btn-lg mr-3">Register</a>
-    <a href="@Url.Action("BookAppointment", "Appointment")" class="btn btn-pastel btn-lg">Book an Appointment</a>
+<div class="container text-center">
+    <div>
+        <img src="https://uploads-ssl.webflow.com/62ce2b4e3ae3bc60403df9d1/62ce384be6734072a79978b7_app-icon-alternate.png" alt="Logo" class="logo">
+    </div>
+    <div class="mt-4">
+        <a href="@Url.Action("LogIn", "Home")" class="btn btn-pastel btn-lg mr-3">Log In</a>
+        <a href="@Url.Action("Register", "Home")" class="btn btn-pastel btn-lg mr-3">Register</a>
+        <a href="@Url.Action("BookAppointment", "Appointment")" class="btn btn-pastel btn-lg">Book an Appointment</a>
+    </div>
+
 </div>

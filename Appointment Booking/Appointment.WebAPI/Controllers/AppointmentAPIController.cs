@@ -36,7 +36,6 @@ namespace Appointment.WebAPI.Controllers
             DateTime parsedDate = DateTime.ParseExact(appointmentDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
             DateOnly dateOnly = new DateOnly(parsedDate.Year, parsedDate.Month, parsedDate.Day);
 
-            // Get time slots using the business layer
             List<TimeOnly> slots = _business.GetTimeSlots(doctorId, dateOnly);
             return Ok(slots);
         }

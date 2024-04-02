@@ -7,7 +7,8 @@
             url: "/Appointment/GetTimeSlots",
             type: "GET",
             data: { doctorId: doctorId, appointmentDate: appointmentDate },
-            success: function (data) {
+            success: function (data)
+            {
                 var timeSlotsDiv = $("#timeSlots");
                 timeSlotsDiv.empty();
 
@@ -25,7 +26,8 @@
                 }
                 $("#appointmentTimeLabel").show();
             },
-            error: function () {
+            error: function ()
+            {
                 alert("Error fetching time slots.");
             }
         });

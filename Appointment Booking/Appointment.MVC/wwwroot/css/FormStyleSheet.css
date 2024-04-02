@@ -7,14 +7,29 @@
 }
 
 body {
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #fefded; /* light yellow */
+    color: #a1c398; /* green */
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top:0px;
+}
+
+p {
+    color: #57af55;
 }
 
 h2 {
-    color: #333;
+    color: #e95f5f; 
     margin-bottom: 20px;
+    margin-top:20px;
+    font-family:cursive;
 }
 
 .form-container {

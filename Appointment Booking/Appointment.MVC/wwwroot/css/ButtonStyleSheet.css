@@ -1,11 +1,23 @@
 ﻿
 .btn-pastel {
-    background-color: #2e4450;
-    color: white;
+    background-color: #e95f5f;
+    color: #fefded;
 }
 
-.btn-pastel:hover {
-    background-color: #d7baad;
-    color: black;
+    .btn-pastel:hover {
+        background-color: #57af55;
+        color: #fefded;
+    }
+
+.btn-green {
+    background-color: #57af55;
+    color: #fefded;
 }
 
+.logo {
+    width: 200px;
+    height: auto;
+    opacity: 0.8;
+    border:hidden;
+    border-radius:20px;
+}
