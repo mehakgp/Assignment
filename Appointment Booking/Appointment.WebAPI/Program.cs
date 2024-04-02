@@ -43,7 +43,7 @@ namespace Appointment.WebAPI
             //// Register ExceptionHandler as a singleton
             builder.Services.AddSingleton<ExceptionHandler>();
 
-         builder.Services.AddDbContext<AppointmentBookingDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AppointmentBookingDBConnectionString")));
+            builder.Services.AddDbContext<AppointmentBookingDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AppointmentBookingDBConnectionString")));
 
 
 
@@ -59,7 +59,7 @@ namespace Appointment.WebAPI
 
             app.UseAuthentication();
             app.UseAuthorization();
-         
+
 
             app.MapControllers();
 
