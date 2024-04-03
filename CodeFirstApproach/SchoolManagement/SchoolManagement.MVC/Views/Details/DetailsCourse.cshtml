@@ -1,0 +1,73 @@
+﻿@model SchoolManagement.ModelView.CourseDetailsModel
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h1>Course Details</h1>
+
+@if (Model.Course == null)
+{
+    <p class="text-danger">No details found for this course.</p>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <h4 class="fw-bold mb-0">Course Information</h4>
+        </div>
+        <div class="card-body">
+            <h6><strong>Course Name:</strong> @Model.Course.CourseName</h6>
+            <h6><strong>Credits:</strong> @Model.Course.Credits</h6>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4 class="fw-bold mb-0">Teacher Information</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Teacher != null)
+            {
+                <h6><strong>Teacher Name:</strong> @Model.Teacher.FirstName @Model.Teacher.LastName</h6>
+            }
+            else
+            {
+                <p class="text-danger">No teacher assigned to this course.</p>
+            }
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4 class="fw-bold mb-0">Enrolled Students</h4>
+        </div>
+        <div class="card-body">
+            @if (Model.Students.Count == 0)
+            {
+                <p class="text-danger">No students enrolled in this course.</p>
+            }
+            else
+            {
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var student in Model.Students)
+                        {
+                            <tr>
+                                <td>@student.FirstName</td>
+                                <td>@student.LastName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Back to Course List", "CourseList", "Home", null, new { @class = "btn btn-dark mt-3" })

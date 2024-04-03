@@ -1,0 +1,55 @@
+﻿@model SchoolManagement.ModelView.StudentDetailsModel
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>Student Details</h1>
+<div class="card">
+    <div class="card-header">
+        <h4 class="fw-bold mb-0">Name:</h4>
+    </div>
+    <div class="card-body">
+        <h4>@Model.FirstName @Model.LastName</h4>
+    </div>
+</div>
+
+@if (Model.Enrollments.Count == 0)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <p class="text-danger">No enrollments found.</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4 class="fw-bold mb-0">Enrollments</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var enrollment in Model.Enrollments)
+                    {
+                        <tr>
+                            <td>@enrollment.CourseName</td>
+                            <td>@enrollment.Credits</td>
+                            <td>@enrollment.Teacher.FullName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Back to Student List", "StudentList", "Home", null, new { @class = "btn btn-dark mt-3" })

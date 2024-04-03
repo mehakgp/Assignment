@@ -1,0 +1,62 @@
+﻿@model SchoolManagement.ModelView.TeacherDetailsModel
+
+@{
+    ViewData["Title"] = "Teacher Details";
+}
+
+<h1>Teacher Details</h1>
+<div class="card">
+    <div class="card-header">
+        <h4 class="fw-bold mb-0">Name:</h4>
+    </div>
+    <div class="card-body">
+        <h4>@Model.Teacher.FirstName @Model.Teacher.LastName</h4>
+    </div>
+</div>
+
+@if (Model.ListOfCoursesAndStudents.Count == 0)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <p class="text-danger">No Course details found for this teacher.</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4 class="fw-bold mb-0">Courses Taught</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Credits</th>
+                        <th>Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var teacherDetail in Model.ListOfCoursesAndStudents)
+                    {
+                        <tr>
+                            <td>@teacherDetail.CourseName</td>
+                            <td>@teacherDetail.Credits</td>
+                            <td>
+                                <ul>
+                                    @foreach (var student in teacherDetail.Students)
+                                    {
+                                        <li>@student.FirstName @student.LastName</li>
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Back to Teacher List", "TeacherList", "Home", null, new { @class = "btn btn-dark mt-3" })
