@@ -1,0 +1,28 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/StudentAdmission/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7233
+        }
+      ],
+      "UpstreamPathTemplate": "/admission/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/StudentAttendance/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7091
+        }
+      ],
+      "UpstreamPathTemplate": "/attendance/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ]
+}
